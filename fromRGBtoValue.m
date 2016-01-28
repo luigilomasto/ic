@@ -11,9 +11,7 @@ for i=1:x
     for j=1:y
         min = 1000;
         for k=1:x1
-          matrix(1,:) = lab_image(i,j,:);
-          matrix(2,:) = lab_colors(k,1:3);
-          deltaE = sqrt((matrix(1,1)-matrix(2,1))^2 + (matrix(1,2)-matrix(2,2))^2 + (matrix(3,1)-matrix(3,2))^2);
+          deltaE = sqrt((lab_image(i,j,1)-lab_colors(k,1))^2 + (lab_image(i,j,2)-lab_colors(k,2))^2 + (lab_image(i,j,3)-lab_colors(k,3))^2);
           if(deltaE < min)
             minIndex = k;
             min = deltaE;
