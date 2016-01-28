@@ -1,23 +1,27 @@
-[x,y,z] = size(piedergb);
-piedeValue=zeros(x,y);
-notExistent;
+piedergb = imread("000.bmp");
+lab_image = rgb2lab(piedergb);
+lab_colors = rgb2lab(myMatrixColor);
+clear piedergb;
+[x,y,z] = size(lab_image);
+[x1,y1] = size(lab_colors);
+piedeValue=zeros(x,y,z);
 indice=1;
-found_equal = false;
+
 for i=1:x
     for j=1:y
-        for k=1:40
-            if (piedergb(i,j,1)==super_matrix(k,1) && piedergb(i,j,2)==super_matrix(k,2) && piedergb(i,j,3)==super_matrix(k,3))
-                piedeValue(i,j)=super_matrix(k,4);
-                found_equal = true;
-                break;
-            end
+        min = 1000;
+        for k=1:x1
+          matrix(1,:) = lab_image(i,j,:);
+          matrix(2,:) = lab_colors(k,1:3);
+          deltaE = sqrt((matrix(1,1)-matrix(2,1))^2 + (matrix(1,2)-matrix(2,2))^2 + (matrix(3,1)-matrix(3,2))^2);
+          if(deltaE < min)
+            minIndex = k;
+            min = deltaE;
+          end
         end
-        if ~found_equal
-            notExistent(indice, :) = piedergb(i,j,:);
-            indice = indice + 1;
-        end
-        found_equal = false;
+        piedeValue(i,j,:) = lab_colors(i,j,:);
     end
 end
 
-notExistent = unique(notExistent, 'rows')
+final_image = lab2rgb(piedeValue);
+
