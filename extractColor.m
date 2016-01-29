@@ -1,7 +1,7 @@
 imdata = imread('colori.bmp');
 orig_color=imdata(9,:,:);
 
-myMatrixColor=zeros(20,3);
+myMatrixColor=zeros(20,3, 'uint8');
 indice=1;
 % for i=1:812
 %     actualPixel=color(1,i,:);
