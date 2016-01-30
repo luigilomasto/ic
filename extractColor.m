@@ -1,27 +1,37 @@
-imdata = imread('colori.bmp');
-orig_color=imdata(9,:,:);
-
-myMatrixColor=zeros(20,3, 'uint8');
-indice=1;
-% for i=1:812
-%     actualPixel=color(1,i,:);
-%     for j=i+1:812
-%         if actualPixel==color(1,j,:)
-%             tmp=[1000,1000,1000];
-%             color(1,j,:)=tmp;
-%         end
-%     end
-% end
-i=20;
-j=60;
-while(i<812)
-    actualPixel=orig_color(1,i,:);
-    while(j<812)
-         myMatrixColor(indice,:)= squeeze(orig_color(1,j,:));
-         indice=indice+1;
-        j=j+40;
-    end
-     i=i+40;
+isOctave = exist('OCTAVE_VERSION', 'builtin') ~= 0;
+if isOctave
+	pkg load image
 end
-% colorAsMatrix = squeeze(myMatrixColor(1,:,:));
-% result=unique(colorAsMatrix,'rows');
+imdata = imread('color.bmp');
+orig_color=squeeze(imdata(9,:,:));
+[num_pixels, num_rgb] = size(orig_color);
+
+white = [255,255,255];
+black = [0, 0 ,0];
+myMatrixColor = zeros(41, 3, 'uint8');
+myMatrixColor(1, :) = white;
+myMatrixColor(2, :) = black;
+last_pixel = black;
+indice = 3;
+for i=1:num_pixels
+    test = last_pixel ~= orig_color(i,:);
+    if test(1) == 1 | test(2) == 1 | test(3) ==1
+        myMatrixColor(indice, :) = orig_color(i, :);
+        last_pixel = orig_color(i, :);
+        indice = indice + 1;
+    end
+end
+
+[num_colors, num_rgb1] = size(myMatrixColor);
+
+col_to_add = zeros(1, num_colors);
+col_to_add(:,1:2) = 0;
+col_to_add(:,3:num_colors) = linspace(0,40,num_colors-2);
+
+myMatrixColor = im2double(myMatrixColor);
+myMatrixColor = [myMatrixColor col_to_add'];
+
+clear imdata; clear orig_color; clear num_pixels; clear num_rgb;
+clear white; clear black; clear last_pixel; clear indice;
+clear test; clear num_colors; clear num_rgb1; clear col_to_add;
+clear i;
