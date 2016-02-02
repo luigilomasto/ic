@@ -47,7 +47,8 @@ end
 
 %imwrite(piedeImg, 'piedeClustered.bmp');
 
-save(strcat(imagePath, '_binary'), piedeValue);
+%save(strcat(imagePath, '_binary'), piedeValue);
+imwrite(piedeValue, 'piedeBN.bmp')
 clear x; clear y; clear z; clear minIndex; clear min; clear diff; clear i;
 clear j; clear k; clear x1; clear y1; clear piedeValue;
 toc
