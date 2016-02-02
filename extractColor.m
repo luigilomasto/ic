@@ -7,12 +7,10 @@ orig_color=squeeze(imdata(9,:,:));
 [num_pixels, num_rgb] = size(orig_color);
 
 white = [255,255,255];
-black = [0, 0 ,0];
-myMatrixColor = zeros(41, 3, 'uint8');
+myMatrixColor = zeros(40, 3, 'uint8');
 myMatrixColor(1, :) = white;
-myMatrixColor(2, :) = black;
-last_pixel = black;
-indice = 3;
+last_pixel = white;
+indice = 2;
 for i=1:num_pixels
     test = last_pixel ~= orig_color(i,:);
     if test(1) == 1 | test(2) == 1 | test(3) ==1
