@@ -25,7 +25,7 @@ end
 
 col_to_add = zeros(1, num_colors);
 col_to_add(:,1) = 0;
-col_to_add(:,2:num_colors) = linspace(0,40,num_colors-1);
+col_to_add(:,2:num_colors) = linspace(0,1,num_colors-1);
 
 myMatrixColor = im2double(myMatrixColor);
 myMatrixColor = [myMatrixColor col_to_add'];
