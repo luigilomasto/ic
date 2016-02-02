@@ -1,10 +1,12 @@
+function fromRGBtoValue(imagePath)
 isOctave = exist('OCTAVE_VERSION', 'builtin') ~= 0;
 if isOctave
-	pkg load image
-	pkg load parallel
+	pkg load image;
+	pkg load parallel;
 end
-piedergb = im2double(imread('000.bmp'));
+piedergb = im2double(imread(imagePath));
 [x,y,z] = size(piedergb);
+myMatrixColor = extractColor('color.bmp');
 [x1,y1] = size(myMatrixColor);
 piedeImg=zeros(x,y,z, 'double');
 piedeValue=zeros(x,y, 'double');
@@ -44,6 +46,9 @@ else
 end
 
 imwrite(piedeImg, 'piedeClustered.bmp');
+%shouold be in grayscale
+imwrite(piedeValue, 'piedeClusteredValues.bmp')
 clear x; clear y; clear z; clear minIndex; clear min; clear diff; clear i;
 clear j; clear k; clear x1; clear y1;
 toc
+end

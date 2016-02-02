@@ -1,8 +1,9 @@
+function myMatrixColor = extractColor(colorImagePath)
 isOctave = exist('OCTAVE_VERSION', 'builtin') ~= 0;
 if isOctave
 	pkg load image
 end
-imdata = imread('color.bmp');
+imdata = imread(colorImagePath);
 orig_color=squeeze(imdata(9,:,:));
 [num_pixels, num_rgb] = size(orig_color);
 
@@ -33,3 +34,4 @@ clear imdata; clear orig_color; clear num_pixels; clear num_rgb;
 clear white; clear black; clear last_pixel; clear indice;
 clear test; clear num_colors; clear num_rgb1; clear col_to_add;
 clear i;
+end
