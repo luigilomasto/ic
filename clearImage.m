@@ -4,7 +4,7 @@ isOctave = exist('OCTAVE_VERSION', 'builtin') ~= 0;
 if isOctave
 	pkg load image
 end
-
+ 
 image = im2double(imread(imagePath));
 
 [x,y,z] = size(image);
@@ -38,16 +38,16 @@ else
 	%computing on the left
 	for j=half-1:-1:1
 	    actualCol = squeeze(image(:,j,:));
-	    if isequal(whiteCol, actualCol);
-		break;
+	    if ~isequal(whiteCol, actualCol);
+            break;
 	    end
 	end
 
 	%computing on the right
 	for k=half+1:y
-	    actualCol = squeeze(image(:,j,:));
-	    if isequal(whiteCol, actualCol);
-		break;
+	    actualCol = squeeze(image(:,k,:));
+	    if ~isequal(whiteCol, actualCol);
+            break;
 	    end
 	end
 
