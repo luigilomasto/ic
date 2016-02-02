@@ -8,7 +8,7 @@ piedergb = im2double(imread(imagePath));
 [x,y,z] = size(piedergb);
 myMatrixColor = extractColor('color.bmp');
 [x1,y1] = size(myMatrixColor);
-piedeImg=zeros(x,y,z, 'double');
+%piedeImg=zeros(x,y,z, 'double');
 piedeValue=zeros(x,y, 'double');
 tic
 if ~isOctave
@@ -23,7 +23,7 @@ if ~isOctave
 		    min = diff;
 		  end
 		end
-		piedeImg(i,j,:) = myMatrixColor(minIndex, 1:3);
+		%piedeImg(i,j,:) = myMatrixColor(minIndex, 1:3);
 		piedeValue(i,j) = myMatrixColor(minIndex,4);
 	    end
 	end
@@ -39,16 +39,16 @@ else
 		    min = diff;
 		  end
 		end
-		piedeImg(i,j,:) = myMatrixColor(minIndex, 1:3);
+		%piedeImg(i,j,:) = myMatrixColor(minIndex, 1:3);
 		piedeValue(i,j) = myMatrixColor(minIndex,4);
 	    end
 	end
 end
 
-imwrite(piedeImg, 'piedeClustered.bmp');
-%shouold be in grayscale
-imwrite(piedeValue, 'piedeClusteredValues.bmp')
+%imwrite(piedeImg, 'piedeClustered.bmp');
+
+save(strcat(imagePath, '_binary'), piedeValue);
 clear x; clear y; clear z; clear minIndex; clear min; clear diff; clear i;
-clear j; clear k; clear x1; clear y1;
+clear j; clear k; clear x1; clear y1; clear piedeValue;
 toc
 end
