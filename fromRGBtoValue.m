@@ -6,8 +6,8 @@ end
 piedergb = im2double(imread('000.bmp'));
 [x,y,z] = size(piedergb);
 [x1,y1] = size(myMatrixColor);
-piedeImg=zeros(x,y,z);
-piedeValue=zeros(x,y);
+piedeImg=zeros(x,y,z, 'double');
+piedeValue=zeros(x,y, 'double');
 tic
 if ~isOctave
 	parfor i=1:x
@@ -42,6 +42,8 @@ else
 	    end
 	end
 end
+
+imwrite(piedeImg, 'piedeClustered.bmp');
 clear x; clear y; clear z; clear minIndex; clear min; clear diff; clear i;
 clear j; clear k; clear x1; clear y1;
 toc
