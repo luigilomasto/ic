@@ -1,4 +1,4 @@
-function piedeValue = fromRGBtoValue(imagePath)
+function piedeValue = fromRGBtoValue(imagePath, colorImagePath)
 isOctave = exist('OCTAVE_VERSION', 'builtin') ~= 0;
 if isOctave
 	pkg load image;
@@ -6,7 +6,7 @@ if isOctave
 end
 piedergb = im2double(imread(imagePath));
 [x,y,z] = size(piedergb);
-myMatrixColor = extractColor('../color.bmp');
+myMatrixColor = extractColor(colorImagePath);
 [num_colors,rgb] = size(myMatrixColor);
 piedeValue=zeros(x,y,'double');
 tic
