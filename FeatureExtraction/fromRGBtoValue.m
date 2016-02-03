@@ -42,7 +42,9 @@ else
 	end
 end
 
-imwrite(piedeValue, 'piedeBN.bmp')
+newImagePath = strrep(imagePath, '.bmp', '');
+newImagePath = strcat(newImagePath, "_bn.bmp");
+imwrite(piedeValue, newImagePath);
 clear x; clear y; clear z; clear minIndex; clear min; clear diff; clear i;
 clear j; clear k; clear num_colors; clear rgb; 
 toc
