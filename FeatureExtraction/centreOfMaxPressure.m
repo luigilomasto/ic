@@ -32,7 +32,6 @@ metaPiede = idivide(int32(metaPiede), 2, 'round');
 point1 = findCentreOfMaxPressure(piedeValue, inizio, fine, metaPiede, true);
 point2 = findCentreOfMaxPressure(piedeValue, inizio, fine, metaPiede, false);
 
-
 end
 
 

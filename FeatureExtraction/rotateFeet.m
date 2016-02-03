@@ -35,12 +35,15 @@ x1 = point1(1);
 y1 = point1(2);
 x2 = point2(1);
 y2 = point2(2);
+x1 = num_rows - x1;
+x2 = num_rows - x2;
 angolar_coefficient = (y2-y1)/(x2-x1);
 angle = atan(angolar_coefficient);
+angle = radtodeg(angle); 
 
-if left
-    angle = -angle;
-end
+%if left
+   % angle = -angle;
+%end
 rotated_image = rotateAround(img, row_start_piede, col_start_piede, angle);
 pathRotatedImage= strrep(imagePath, '.bmp', '');
 pathRotatedImage = strcat(pathRotatedImage, '_rotated.bmp');
