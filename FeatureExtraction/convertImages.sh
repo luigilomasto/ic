@@ -9,11 +9,11 @@ fi
 if [ -z "$2" ]; then
 	endIndex=0
 else
-	endIndex=$1
+	endIndex=$2
 fi
 
 cd ~/Dati
-for i in {$startIndex..$endIndex};do
+for (( i = $startIndex; i < $endIndex; i++ )); do
 	image=$i"_cleared.bmp"
 	if [ -f $image ]; then
 		string="fromRGBtoValue(\"$image\", \"~/ic/color.bmp\")"
