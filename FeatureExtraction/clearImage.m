@@ -74,6 +74,8 @@ else
 	end
 end
 
-imwrite(image,imagePath);
+pathNoExtension = strrep(imagePath, '.bmp', '');
+pathNoExtension = strcat(pathNoExtension, '_cleared.bmp');
+imwrite(image,pathNoExtension);
 
 end
