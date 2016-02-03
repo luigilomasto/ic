@@ -30,7 +30,11 @@ for row_start_piede=num_rows:-1:1
   end
 end
 
-[x1, y1, x2, y2] = centreOfMaxPressure(img);
+[point1, point2] = centreOfMaxPressure(img);
+x1 = point1(1);
+y1 = point1(2);
+x2 = point2(1);
+y2 = point2(2);
 angolar_coefficient = (y2-y1)/(x2-x1);
 angle = atan(angolar_coefficient);
 
