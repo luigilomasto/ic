@@ -2,6 +2,7 @@ function rotateFeet(imagePath, left)
 isOctave = exist('OCTAVE_VERSION', 'builtin') ~= 0;
 if isOctave
 	pkg load image;
+  pkg load mapping;
 end
 img = im2double(imread(imagePath));
 [num_rows, num_cols] = size(img);
@@ -39,7 +40,7 @@ x1 = num_rows - x1;
 x2 = num_rows - x2;
 angolar_coefficient = (y2-y1)/(x2-x1);
 angle = atan(angolar_coefficient);
-angle = radtodeg(angle); 
+angle = rad2deg(angle); 
 
 %if left
    % angle = -angle;
