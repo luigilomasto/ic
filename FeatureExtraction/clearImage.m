@@ -51,13 +51,6 @@ else
 	    end
 	end
 
-	%if one of the two indices arrived at the beginning/end of image
-	%than barycenter overlaps(in columns) at least on feet.
-	%in this case we remove manually.
-	if k == y | j == 1
-		return;
-	end
-
 	kdiff = abs(half - k);
 	jdiff = abs(half - j);
 	%barycenter on the left
