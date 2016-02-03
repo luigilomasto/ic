@@ -1,3 +1,4 @@
+
 [x,y] = size(piedeValue);
 
 metaImmagine=idivide(int32(y), 2, 'round');
