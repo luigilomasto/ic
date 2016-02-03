@@ -1,7 +1,8 @@
 #!/bin/zsh
 
 cd ~/Dati
-for file in $(ls *.bmp);do
-	octave --silent --eval "fromRGBtoValue(\"$file\", \"~/ic/color.bmp \")"
+for file in $(ls *_cleared.bmp);do
+	string="fromRGBtoValue(\"$file\", \"~/ic/color.bmp\")"
+	octave --silent --eval "$string"
 done 
 cd -
