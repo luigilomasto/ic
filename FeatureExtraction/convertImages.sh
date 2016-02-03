@@ -1,8 +1,23 @@
 #!/bin/zsh
 
+if [ -z "$1" ]; then
+	startIndex=0
+else
+	startIndex=$1
+fi
+
+if [ -z "$2" ]; then
+	endIndex=0
+else
+	endIndex=$1
+fi
+
 cd ~/Dati
-for file in $(ls *_cleared.bmp);do
-	string="fromRGBtoValue(\"$file\", \"~/ic/color.bmp\")"
-	octave --silent --eval "$string"
+for i in {$startIndex..$endIndex};do
+	image=$i"_cleared.bmp"
+	if [ -f $image ]; then
+		string="fromRGBtoValue(\"$image\", \"~/ic/color.bmp\")"
+		octave --silent --eval "$string"
+	fi
 done 
 cd -
