@@ -1,4 +1,4 @@
-function piedeValue = fromRGBtoValue(imagePath, colorImagePath)
+function fromRGBtoValue(imagePath, colorImagePath)
 isOctave = exist('OCTAVE_VERSION', 'builtin') ~= 0;
 if isOctave
 	pkg load image;
