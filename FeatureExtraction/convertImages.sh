@@ -7,7 +7,7 @@ else
 fi
 
 if [ -z "$2" ]; then
-	endIndex=0
+	endIndex=322
 else
 	endIndex=$2
 fi
