@@ -4,3 +4,9 @@
 *.mat
 *.asv
 octave-workspace
+development.sh
+*.aux
+*.bcf
+*.run.xml
+*.log
+*.pdf
