@@ -35,7 +35,7 @@ if ~isequal(whiteCol, middle_col)
 	image(:,(half:j),:) = 1;
 %barycenter does not cross center...left or right?
 else
-	%computing on the left
+	%computing on the left first non-white column
 	for j=half-1:-1:1
 	    actualCol = squeeze(image(:,j,:));
 	    if ~isequal(whiteCol, actualCol);
@@ -43,12 +43,19 @@ else
 	    end
 	end
 
-	%computing on the right
+	%computing on the right first non-white column
 	for k=half+1:y
 	    actualCol = squeeze(image(:,k,:));
 	    if ~isequal(whiteCol, actualCol);
             break;
 	    end
+	end
+
+	%if one of the two indices arrived at the beginning/end of image
+	%than barycenter overlaps(in columns) at least on feet.
+	%in this case we remove manually.
+	if k == y | j == 1
+		return;
 	end
 
 	kdiff = abs(half - k);
