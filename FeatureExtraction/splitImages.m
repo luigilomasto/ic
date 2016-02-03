@@ -12,16 +12,17 @@ if isequal(middle_col, black_col)
 	for i=half:-1:1
 		actual_col = img(:, i);
 		if ~isequal(black_col, actual_col)
-			leftBorder = i;
+			break;
 		end
 	end
+	leftBorder = i;
 	for i=half:num_cols
 		actual_col = img(:, i);
 		if ~isequal(black_col, actual_col)
-			rightBorder = i;
+			break;
 		end
 	end
-
+    rightBorder = i;
 	splitCol = leftBorder + rightBorder;
 	splitCol = idivide(int32(splitCol), 2, 'round');
 
