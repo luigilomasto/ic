@@ -1,20 +1,10 @@
 function [lengthMinIstmo,lengthMaxAvampiede,lunghezzaMediaIstmo] = RegionOfInterest(pathImage_bn)
 
 piedeValue= im2double(imread(pathImage_bn));
-%imshow(piedeValue);
 
-[x,y] = size(piedeValue);
+[num_rows,num_cols] = size(piedeValue);
 
-metaImmagine=idivide(int32(y), 2, 'round');
-
-whiteVector=ones(1,metaImmagine);
-
-[left_bound, right_bound, upper_bound, lower_bound] = findFootBoundaries(piedeValue);
-
-inizio=upper_bound;
-fine=lower_bound;
-
-metaPiede=idivide(int32(upper_bound+lower_bound),2,'round');
+metaPiede=idivide(int32(num_rows),2,'round');
 
 [maxPressureTallone, rectangleTallone] = findCentreOfMaxPressure(piedeValue, true);
 [maxPressureAvampiede, rectangleAvampiede] = findCentreOfMaxPressure(piedeValue, false);

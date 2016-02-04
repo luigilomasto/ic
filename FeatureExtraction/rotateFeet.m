@@ -27,7 +27,9 @@ angolar_coefficient = (y2-y1)/(x2-x1);
 angle = atan(angolar_coefficient);
 angle = rad2deg(angle); 
 
-space = 200;
+%we can be quite generous with the amount of space since later we
+%will crop the image
+space = 400;
 
 cols_to_add = zeros(num_rows, space);
 rows_to_add = zeros(space, num_cols+space);
@@ -39,10 +41,13 @@ else
 end
 
 img = [rows_to_add; img];
-%if left
-   % angle = -angle;
-%end
+
 rotated_image = rotateAround(img, row_start_piede, col_start_piede, angle, 'bicubic');
+%crop image here
+%new boundaries must be found before crop
+[left_bound, right_bound, upper_bound, lower_bound] = findFootBoundaries(img);
+rotated_image = rotated_image(left_bound:right_bound, lower_bound:upper_bound);
+%save image
 pathRotatedImage= strrep(imagePath, '.png', '');
 pathRotatedImage = strcat(pathRotatedImage, '_rotated.png');
 imwrite(rotated_image, pathRotatedImage);
