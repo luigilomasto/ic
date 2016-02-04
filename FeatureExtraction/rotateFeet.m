@@ -46,7 +46,7 @@ angle = rad2deg(angle);
    % angle = -angle;
 %end
 rotated_image = rotateAround(img, row_start_piede, col_start_piede, angle);
-pathRotatedImage= strrep(imagePath, '.bmp', '');
-pathRotatedImage = strcat(pathRotatedImage, '_rotated.bmp');
+pathRotatedImage= strrep(imagePath, '.png', '');
+pathRotatedImage = strcat(pathRotatedImage, '_rotated.png');
 imwrite(rotated_image, pathRotatedImage);
 end

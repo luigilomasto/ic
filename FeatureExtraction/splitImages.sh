@@ -14,7 +14,7 @@ fi
 
 cd ~/Dati
 for (( i = $startIndex; i < $endIndex; i++ )); do
-	image=$i"_cleared_bn.bmp"
+	image=$i"_cleared_bn.png"
 	if [ -f $image ]; then
 		string="splitImages(\"$image\")"
 		octave --silent --eval "$string"

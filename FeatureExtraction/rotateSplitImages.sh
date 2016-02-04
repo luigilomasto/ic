@@ -14,12 +14,12 @@ fi
 
 cd ~/Dati
 for (( i = $startIndex; i < $endIndex; i++ )); do
-	image=$i"_cleared_bn_left.bmp"
+	image=$i"_cleared_bn_left.png"
 	if [ -f $image ]; then
 		string="rotateFeet(\"$image\", true)"
 		octave --silent --eval "$string"
 	fi
-	image=$i"_cleared_bn_right.bmp"
+	image=$i"_cleared_bn_right.png"
 	if [ -f $image ]; then
 		string="rotateFeet(\"$image\", false)"
 		octave --silent --eval "$string"

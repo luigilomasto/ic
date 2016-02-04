@@ -41,7 +41,7 @@ else
 	end
 end
 
-newImagePath = strrep(imagePath, '.bmp', '');
-newImagePath = strcat(newImagePath, '_bn.bmp');
+newImagePath = strrep(imagePath, '.png', '');
+newImagePath = strcat(newImagePath, '_bn.png');
 imwrite(piedeValue, newImagePath);
 end

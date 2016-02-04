@@ -29,10 +29,10 @@ if isequal(middle_col, black_col)
 	leftImage = img(:, 1:splitCol);
 	rightImage = img(:, splitCol:num_cols);
 
-	pathLeft = strrep(imagePath, '.bmp', '');
-	pathLeft = strcat(pathLeft, '_left.bmp');
-	pathRight = strrep(imagePath, '.bmp', '');
-	pathRight = strcat(pathRight, '_right.bmp');
+	pathLeft = strrep(imagePath, '.png', '');
+	pathLeft = strcat(pathLeft, '_left.png');
+	pathRight = strrep(imagePath, '.png', '');
+	pathRight = strcat(pathRight, '_right.png');
 	imwrite(leftImage,pathLeft);
 	imwrite(rightImage,pathRight);
 end
