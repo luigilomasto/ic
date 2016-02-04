@@ -1,4 +1,4 @@
-function rectangle = findCentreOfMaxPressure(piedeValue, inizio, fine, metaPiede, down)
+function [max_value, rectangle] = findCentreOfMaxPressure(piedeValue, inizio, fine, metaPiede, down)
 
 point = zeros(1, 2);
 [x,y] = size(piedeValue);
@@ -72,11 +72,6 @@ rectangle(3,2)=firstColMaxPressureAvampiede;
 rectangle(4,1)=lastRowMaxPressureAvampiede;
 rectangle(4,2)=lastColMaxPressureAvampiede;
 
-
-
-point(1) = idivide(int32(firstRowMaxPressureAvampiede + lastRowMaxPressureAvampiede), 2, 'round');
-point(2) = idivide(int32(firstColMaxPressureAvampiede + lastColMaxPressureAvampiede), 2, 'round');
-
-
+max_value = maxPressureAvampiede;
 
 end
