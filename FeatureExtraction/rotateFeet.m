@@ -42,10 +42,22 @@ angolar_coefficient = (y2-y1)/(x2-x1);
 angle = atan(angolar_coefficient);
 angle = rad2deg(angle); 
 
+space = 200;
+
+cols_to_add = zeros(num_rows, space);
+rows_to_add = zeros(space, num_cols+space);
+
+if left
+  img = [img cols_to_add];
+else
+  img = [cols_to_add img];
+end
+
+img = [rows_to_add; img];
 %if left
    % angle = -angle;
 %end
-rotated_image = rotateAround(img, row_start_piede, col_start_piede, angle);
+rotated_image = rotateAround(img, row_start_piede, col_start_piede, angle, 'bicubic');
 pathRotatedImage= strrep(imagePath, '.png', '');
 pathRotatedImage = strcat(pathRotatedImage, '_rotated.png');
 imwrite(rotated_image, pathRotatedImage);
