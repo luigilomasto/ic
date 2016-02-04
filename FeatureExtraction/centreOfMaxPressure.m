@@ -7,31 +7,16 @@ end
 
 [x,y] = size(piedeValue);
 
-whiteVector=zeros(1,y);
-%vado all'inizio del piede
-for i=1:x
-    if ~isequal(piedeValue(i,:), whiteVector)
-        break;
-    end
-end
-inizio=i;
+[left_bound, right_bound, upper_bound, lower_bound] = findFootBoundaries(piedeValue);
 
-%fino alla fine del piede
-for i=x:-1:1
-    if ~isequal(piedeValue(i,:), whiteVector)
-        break;
-    end
-end
-
-fine=i;
+inizio = upper_bound;
+fine=lower_bound;
 
 metaPiede=(inizio+fine);
 metaPiede = idivide(int32(metaPiede), 2, 'round');
 
-rectangleAvampiede=zeros(4,2);
-rectangleTallone=zeros(4,2);
-rectangleTallone = findCentreOfMaxPressure(piedeValue, inizio, fine, metaPiede, true);
-rectangleAvampiede = findCentreOfMaxPressure(piedeValue, inizio, fine, metaPiede, false);
+[max_value_tallone, rectangleTallone] = findCentreOfMaxPressure(piedeValue, inizio, fine, metaPiede, true);
+[max_value_avampiede, rectangleAvampiede] = findCentreOfMaxPressure(piedeValue, inizio, fine, metaPiede, false);
 
 pointTallone=zeros(1,2);
 pointAvampiede=zeros(1,2);
@@ -43,6 +28,3 @@ pointAvampiede(1) = idivide(int32(rectangleAvampiede(1,1)+rectangleAvampiede(3,1
 pointAvampiede(2) = idivide(int32(rectangleAvampiede(1,2)+rectangleAvampiede(4,2)),2, 'round');
 
 end
-
-
-

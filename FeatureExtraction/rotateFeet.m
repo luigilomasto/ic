@@ -6,29 +6,14 @@ if isOctave
 end
 img = im2double(imread(imagePath));
 [num_rows, num_cols] = size(img);
-black_col = zeros(num_rows, 1);
-black_row = zeros(1, num_cols);
-if left
-  index_begin = num_cols;
-  index_end = 1;
-  step = -1;
-else
-  index_begin = 1;
-  index_end = num_cols;
-  step = 1;
-end
-for col_start_piede=index_begin:step:index_end
-  actual_col = img(:, col_start_piede);
-  if ~isequal(actual_col, black_col)
-    break;
-  end
-end
 
-for row_start_piede=num_rows:-1:1
-  actual_row = img(row_start_piede, :);
-  if ~isequal(actual_row, black_row)
-    break;
-  end
+[left_bound, right_bound, upper_bound, lower_bound] = findFootBoundaries(img);
+
+row_start_piede = lower_bound;
+if left
+  col_start_piede = right_bound;
+else
+  col_start_piede = left_bound;
 end
 
 [point1, point2] = centreOfMaxPressure(img);
