@@ -14,7 +14,7 @@ cd ~/Dati
 for (( i = $startIndex; i <= $endIndex; i++ )); do
 	image=$i"_cleared.png"
 	if [ -f $image ]; then
-		string="fromRGBtoValue(\"$image\", \"~/ic/color.png\")"
+		string="fromRGBtoValue(\"$image\", \"~/ic/color.bmp\")"
 		octave --silent --eval "$string"
 	fi
 done 
