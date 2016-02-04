@@ -11,7 +11,7 @@ else
 fi
 
 cd ~/Dati
-for (( i = $startIndex; i < $endIndex; i++ )); do
+for (( i = $startIndex; i <= $endIndex; i++ )); do
 	image=$i"_cleared_bn.png"
 	if [ -f $image ]; then
 		string="splitImages(\"$image\")"
