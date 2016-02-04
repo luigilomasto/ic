@@ -32,9 +32,4 @@ col_to_add(2:num_colors) = linspace(0,1,num_colors-1);
 
 myMatrixColor = im2double(myMatrixColor);
 myMatrixColor = [myMatrixColor col_to_add'];
-
-clear imdata; clear orig_color; clear num_pixels; clear rgb;
-clear white; clear last_pixel; clear indice;
-clear test; clear num_colors; clear num_rgb1; clear col_to_add;
-clear i; clear half_horizontal; clear rows; clear cols;
 end
