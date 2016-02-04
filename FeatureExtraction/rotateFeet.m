@@ -45,10 +45,10 @@ img = [rows_to_add; img];
 rotated_image = rotateAround(img, row_start_piede, col_start_piede, angle, 'bicubic');
 %crop image here
 %new boundaries must be found before crop
-[left_bound, right_bound, upper_bound, lower_bound] = findFootBoundaries(img);
-rotated_image = rotated_image(left_bound:right_bound, lower_bound:upper_bound);
+[left_bound, right_bound, upper_bound, lower_bound] = findFootBoundaries(rotated_image);
 %save image
 pathRotatedImage= strrep(imagePath, '.png', '');
 pathRotatedImage = strcat(pathRotatedImage, '_rotated.png');
+rotated_image = rotated_image(upper_bound:lower_bound, left_bound:right_bound);
 imwrite(rotated_image, pathRotatedImage);
 end
