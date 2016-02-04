@@ -1,7 +1,15 @@
-function [max_value, rectangle] = findCentreOfMaxPressure(piedeValue, inizio, fine, metaPiede, down)
+function [max_value, rectangle] = findCentreOfMaxPressure(piedeValue, down)
 
 point = zeros(1, 2);
 [x,y] = size(piedeValue);
+
+[left_bound, right_bound, upper_bound, lower_bound] = findFootBoundaries(piedeValue);
+
+inizio = upper_bound;
+fine = lower_bound;
+
+metaPiede=(inizio+fine);
+metaPiede = idivide(int32(metaPiede), 2, 'round');
 
 if ~down
     inizioFor = metaPiede;

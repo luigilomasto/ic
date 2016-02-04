@@ -9,7 +9,6 @@ metaImmagine=idivide(int32(y), 2, 'round');
 
 whiteVector=ones(1,metaImmagine);
 
-
 [left_bound, right_bound, upper_bound, lower_bound] = findFootBoundaries(piedeValue);
 
 inizio=upper_bound;
@@ -17,8 +16,8 @@ fine=lower_bound;
 
 metaPiede=idivide(int32(upper_bound+lower_bound),2,'round');
 
-[maxPressureTallone, rectangleTallone] = findCentreOfMaxPressure(piedeValue, inizio, fine, metaPiede, true);
-[maxPressureAvampiede, rectangleAvampiede] = findCentreOfMaxPressure(piedeValue, inizio, fine, metaPiede, false);
+[maxPressureTallone, rectangleTallone] = findCentreOfMaxPressure(piedeValue, true);
+[maxPressureAvampiede, rectangleAvampiede] = findCentreOfMaxPressure(piedeValue, false);
 
 positionMaxPressureAvampiede=rectangleAvampiede(1,1);
 positionMaxPressureTallone=rectangleTallone(1,1);
@@ -92,9 +91,4 @@ piedeValue(minIstmo,left_bound:right_bound)=1;
 figure(1)
 imshow(piedeValue);
 
-
-
-
-
 end
-
