@@ -46,7 +46,7 @@ Il resto del lavoro \'e organizzato come segue: nella sezione \ref{sec:dataset} 
 Il dataset utilizzato consiste in 100 immagini derivate dall'analisi statica di 100 pazienti diversi, ed \'e stato fornito dal dott. NOME DOTTORE in forma anonima. Un esempio di immagine \'e fornito in figura \ref{fig:immagineEsempio}. 
 \begin{figure}
 \centering
-\includegraphics[width=300px, keepaspectratio]{esempio.png}
+\includegraphics[height=100px, keepaspectratio]{4.png}
 \label{fig:immagineEsempio}
 \caption{Un immagine del dataset}
 \end{figure}
@@ -64,13 +64,46 @@ FIGURA/DIAGRAMMA DI FLUSSO
 
 Ogni immagine viene suddivisa in piede sinistro e piede destro. Sul piede singolo prima viene effettuata la classificazione cavo vs piatto, in quanto le classi sono mutualmente esclusive, dopodich\'e viene effettuata la classificazione valgo vs non valgo. Le informazioni sui piedi vengono combinate alla fine per stabilire se la patologia \'e bilaterale o meno.
 
-\subsection{Preprocessing}
+\section{Preprocessing}
+\label{sec:preprocessing}
+Prima di estrarre le features, \'e stato necessario effettuare delle operazioni preliminari di pulizia e di normalizzazioni sulle immagini. In questa sezione vengono illustrate tutte le operazioni effettuate sulle immagine, fornendo le motivazioni che hanno portato ad ogni operazione ed analizzando il codice Matlab prodotto.
 
-Prima di estrarre le features dalle immagini, \'e stato necessario un lavoro di preprocessing su tutto il dataset. Come si pu\'o vedere nella figura \ref{fig:esempio}, in ogni immagine al centro c'\'e il tracciato del baricentro durante l'analisi statica. Tale tracciato viene utilizzato dal medico per questioni relative alla postura ed al bilanciamento del corpo, quindi non \'e utile al fine della nostra classificazione. Per questo motivo, il primo passo \'e stato eliminare tale tracciato da ogni immagine. Abbiamo utilizzato una semplice funzione in matlab/octave che funziona nella maggioranza dei casi. Per i casi al limite, cio\'e quelli in cui si rischiava di cancellare anche parte di un piede, la rimozione \'e stata fatta manualmente.
+\subsection{Rimozione del baricentro}
+La prima operazione effettuata \'e stata la rimozione del tracciato del baricentro da ogni immagine. Tale tracciato viene generato automaticamente dalla macchiana che produce l'immagine piedebarometrica, e serve per determinare la distribuzione del peso sulle gambe del soggetto, quindi \'e inutile ai fini della nostra classificazione. Per rimuovere tale tracciato, abbiamo utilizzato una semplice funzione matlab che funziona in tutti i casi in cui c'e' almeno una colonna bianca tra il tracciato del baricentro ed i piedi, cio\'e nella maggioranza dei casi. Per gli altri casi ($2\%$ di tutto il dataset), si rischiava di cancellare anche parte dei piedi, per cui la rimozione \'e stata fatta manualmente.
+
+\begin{figure}
+\centering
+\includegraphics[height=100px, keepaspectratio]{4cleared.png}
+\caption{L'immagine ripulita dal tracciato del baricentro}
+\end{figure}
 
 \lstinputlisting[style=octave, caption=Image Cleaner Function]{../FeatureExtraction/clearImage.m}
 
+\subsection{Conversione dell'immagine in scala di grigi}
+Cosi' come sono fornite, le immagini non forniscono una chiara lettura delle aree di pressione per un computer. Infatti, ad ogni pixel corrisponde una tripla (R, G, B) che descrive il colore del pixel, ma tale valore \'e completamente scollegato dalla pressione esercitata in quel punto. Per ovviare a tale problema, abbiamo dovuto effettuare una trasformazione dallo spazio dei colori RGB allo spazio della scala di grigi, in modo tale che ad un pixel sia associato un singolo valore, che indichi univocamente la pressione effettuata in un punto, consentendo di ordinare le pressioni in maniera semplice. Per effettuare tale trasfomazione tuttavia, occorre una funzione che faccia un mapping dai colori RGB alla scala di grigi. Un'idea per fare ci\'o \'e la seguente:
+\begin{enumerate}
+	\item Fare un clustering sull'immagine, e costruire cos\'i la gamma dei colori dell'immagine. Ad ogni cluster corrisponde un colore.
+	\item Ordinare i cluster, cio\'e associare ad ogni cluster un valore compreso tra 0 ed 1. Tale valore \'e tanto pi\'u grande maggiore \'e la pressione effettuata dal piede nei punti colorati con il colore del cluster.
+	\item Sostituire ogni pixel nell'immagine con il valore assegnato al cluster, ottenendo cos\'i un'immagine in scala di grigi.
+\end{enumerate}
+Tale approccio tuttavia presenta diversi problemi: innanzitutto, bisognerebbe determinare la taglia dei cluster, qualsiasi algoritmo di cluster si usi. Nel caso si usi il k-means, occorre provare con diversi valori di $k$. Nel caso si usino algoritmi di cluster gerarchico occorrerebbe provare diverse procedure di linkage, oltre che tagli a diverse altezze del dendogramma. Inoltre, il passo $2$ va fatto a mano e non pu\'o essere automatizzato in alcun modo.
+
+Il nostro approccio si basa su questa idea, sfruttando per\'o la seguente immagine di supporto che ci \'e stata fornita dal medico.
+\begin{figure}
+\centering
+\includegraphics[keepaspectratio, width=300px]{color.png}
+\caption{La barra ordinata dei colori corrispondente a pressioni crescente}
+\end{figure}
+Analizzando questa immagine pixel per pixel, abbiamo ottenuto una gamma di 40 colori ordinati\footnote{Il bianco \'e stato aggiunto manualmente.}, dal colore corrispondente alla pressiore minore al colore corrispondente alla pressione maggiore. Per questi valori, abbiamo generato uno spazio lineare tra 0 e i di 40 punti, associando ad ogni colore un valore. Sfruttando l'immagine, abbiamo automatizzato il passo 2, in quanto \'e come se avessimo ottenuto una serie di centroidi ordinati. Il passo 3 \'e stato effettuato calcolando per ogni pixel la distanza da ogni colore della gamma dei 40. Trovata la distanza minore, al pixel viene associato il valore relativo a quel centroide.
+
+\begin{figure}
+\centering
+\includegraphics[keepaspectratio, height=100px]{4clearedbn.png}
+\caption{L'immagine convertita in scala di grigi.}
+\end{figure}
+
 \section{Feature Extraction}
+
 \label{sec:implementation}
 
 \end{document}
