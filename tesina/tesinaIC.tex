@@ -1,5 +1,4 @@
-%\documentclass[11pt,twoside,a4paper]{article}
-\documentclass[11pt,a4paper]{article}
+\documentclass[11pt,twoside,a4paper]{article}
 \usepackage[italian]{babel}
 \usepackage{listings}
 \usepackage{color}
@@ -41,7 +40,7 @@
 IL termine Pedobarography deriva dal latino \emph{pedes}, piede, e dal greco \emph{baros}, peso o pressione, e si riferisce allo studio dei campi di pressione della superficie plantare del piede su una superficie di supporto. La Pedobarography \'e spesso usata per l'analisi biomeccanica del movimento animale e per l'analisi della postura. In questo lavoro, il nostro obiettivo \'e quello di addestrare un sistema di Machine Learning in grado di classificare le immagini derivate dall'analisi statica, tramite Pattern Recognition Statistico.
 Il resto del lavoro \'e organizzato come segue: nella sezione \ref{sec:dataset} viene descritto il dataset utilizzato nel lavoro, e il lavoro di preprocessing effettuato su di esso. Nella sezione \ref{sec:features} vengono descritte le feature scelte per addestrare il classificatore, e la loro convalida tramite metodi noti in letteratura. Nella sezione \ref{sec:classification} vengono descritti i classificatori utilizzati. Nella sezione \ref{sec:results} vengono illustrati i risultati, ed infine nella sezione \ref{sec:conclusions} vengono tratte le considirezioni su quanto fatto, ed analizzati alcuni possibili sviluppi futuri.
 
-\section{Dataset}
+\section{Dataset ed obiettivi della classificazione}
 \label{sec:dataset}
 Il dataset utilizzato consiste in 100 immagini derivate dall'analisi statica di 100 pazienti diversi, ed \'e stato fornito dal dott. NOME DOTTORE in forma anonima. Un esempio di immagine \'e fornito in figura \ref{fig:immagineEsempio}. 
 \begin{figure}
@@ -74,7 +73,7 @@ La prima operazione effettuata \'e stata la rimozione del tracciato del baricent
 \begin{figure}
 \centering
 \includegraphics[height=100px, keepaspectratio]{4cleared.png}
-\caption{L'immagine ripulita dal tracciato del baricentro}
+\caption{Immagine ripulita dal tracciato del baricentro}
 \end{figure}
 
 \lstinputlisting[style=octave, caption=Image Cleaner Function]{../FeatureExtraction/clearImage.m}
@@ -92,16 +91,26 @@ Il nostro approccio si basa su questa idea, sfruttando per\'o la seguente immagi
 \begin{figure}
 \centering
 \includegraphics[keepaspectratio, width=300px]{color.png}
-\caption{La barra ordinata dei colori corrispondente a pressioni crescente}
+\caption{La barra ordinata dei colori corrispondente a pressioni crescenti}
 \end{figure}
 Analizzando questa immagine pixel per pixel, abbiamo ottenuto una gamma di 40 colori ordinati\footnote{Il bianco \'e stato aggiunto manualmente.}, dal colore corrispondente alla pressiore minore al colore corrispondente alla pressione maggiore. Per questi valori, abbiamo generato uno spazio lineare tra 0 e i di 40 punti, associando ad ogni colore un valore. Sfruttando l'immagine, abbiamo automatizzato il passo 2, in quanto \'e come se avessimo ottenuto una serie di centroidi ordinati. Il passo 3 \'e stato effettuato calcolando per ogni pixel la distanza da ogni colore della gamma dei 40. Trovata la distanza minore, al pixel viene associato il valore relativo a quel centroide.
 
 \begin{figure}
 \centering
 \includegraphics[keepaspectratio, height=100px]{4clearedbn.png}
-\caption{L'immagine convertita in scala di grigi.}
+\caption{Immagine convertita in scala di grigi.}
 \end{figure}
 
+\lstinputlisting[style=octave, caption=Script che converte le immagini.]{../FeatureExtraction/fromRGBtoValue.m}
+\lstinputlisting[style=octave, caption=Script che estrae i colori dalla barra.]{../FeatureExtraction/extractColor.m}
+
+\subsection{Splitting, rotazione e cropping delle immagini}
+\label{subsec:splitting}
+Per fare una classificazione gerarchica come illustrato nella sezione \ref{sec:dataset}, \'e stato necessario separare i piedi destri dai piedi sinistri. Questa separazione \'e stata molto semplice da effettuare: dato che per la natura del test i piedi non si toccano, nell'immagine in bianco e nero esiste sempre almeno una colonna tutta nera tra il piede destro e sinistro. 
+
+\lstinputlisting[style=octave, caption=Script di separazione dei piedi.]{../FeatureExtraction/splitImages.m}
+
+Ottenute le immagini dei piedi singoli, abbiamo notato che molti non erano orientati in maniera perfettamente verticale. Ci\'o avrebbe potuto costituire un problema nella fase di individuazione delle regioni di interesse, per cui abbiamo deciso di ruotare le immagini. La funzione che ruota le immagini \'e stata scritta in modo che sia la stessa sia per il piede sinistro che per il piede destro\footnote{Il senso di rotazione \'e opposto, ed il punto da cui applicare la rotazione \'e differente.}, e sfrutta una libreria per matlab scaricata da mathworks. Per essere certi che ruotando l'immagine essa non esca fuori dai confini, l'immagine e' stata preventivamente allargata, e dopo la rotazione \'e stato eseguito un cropping in modo da non avere un enorme area nera attorno al piede.
 \section{Feature Extraction}
 
 \label{sec:implementation}
