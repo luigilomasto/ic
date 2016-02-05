@@ -13,48 +13,53 @@ whiteCol = ones(x, z);
 half = idivide(int32(y), 2, 'round');
 middle_col = squeeze(image(:,half,:));
 
-%barycenter crosses the middle of image
+% Il baricentro attraversa la meta' dell'immagine
 if ~isequal(whiteCol, middle_col)
-	for j=half-1:-1:1
-	    actualCol = squeeze(image(:,j,:));
+
+        % Trova la prima colonna bianca a sinistra...
+	for i=half-1:-1:1
+	    actualCol = squeeze(image(:,i,:));
 	    if isequal(whiteCol, actualCol);
 		break;
 	    end
 	end
 
 
-	image(:,(j:half),:) = 1;
 
+	% ... e a destra.
 	for j=half+1:y
 	    actualCol = squeeze(image(:,j,:));
 	    if isequal(whiteCol, actualCol);
 		break;
 	    end
 	end
-
+	
+	% Pulizia
+	image(:,(i:half),:) = 1;
 	image(:,(half:j),:) = 1;
-%barycenter does not cross center...left or right?
+% Il baricentro non attraversa il centro.
 else
-	%computing on the left first non-white column
+	% Calcolo la prima colonna non bianca a sinistra.
 	for j=half-1:-1:1
 	    actualCol = squeeze(image(:,j,:));
 	    if ~isequal(whiteCol, actualCol);
-            break;
+		    break;
 	    end
 	end
 
-	%computing on the right first non-white column
+	% Calcolo la prima colonna non bianca a destra.
 	for k=half+1:y
 	    actualCol = squeeze(image(:,k,:));
 	    if ~isequal(whiteCol, actualCol);
-            break;
+		    break;
 	    end
 	end
 
+	% Quella piu' vicina al centro stabilisce la locazione del baricentro
 	kdiff = abs(half - k);
 	jdiff = abs(half - j);
-	%barycenter on the left
 	if(jdiff < kdiff)
+		% Il baricentro e' a sinistra.
 		for i=j:-1:1
 		    actualCol = squeeze(image(:,i,:));
 		    if isequal(whiteCol, actualCol);
@@ -62,8 +67,8 @@ else
 		    end
 		end
 		image(:, (i:j),:) = 1;
-	%barycenter on the right
 	else
+		% IL baricentro e' a destra.
 		for i=k:y
 		    actualCol = squeeze(image(:,i,:));
 		    if isequal(whiteCol, actualCol);
