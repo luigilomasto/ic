@@ -4,6 +4,7 @@
 \usepackage{color}
 \usepackage{mathtools}
 \usepackage{biblatex}
+\usepackage{subcaption}
 %useful colors
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
@@ -91,14 +92,19 @@ Il nostro approccio si basa su questa idea, sfruttando per\'o la seguente immagi
 \begin{figure}
 \centering
 \includegraphics[keepaspectratio, width=300px]{color.png}
-\caption{La barra ordinata dei colori corrispondente a pressioni crescenti}
+\caption{La barra dei colori utilizzata, ordinata per pressione applicata crescente}
 \end{figure}
 Analizzando questa immagine pixel per pixel, abbiamo ottenuto una gamma di 40 colori ordinati\footnote{Il bianco \'e stato aggiunto manualmente.}, dal colore corrispondente alla pressiore minore al colore corrispondente alla pressione maggiore. Per questi valori, abbiamo generato uno spazio lineare tra 0 e i di 40 punti, associando ad ogni colore un valore. Sfruttando l'immagine, abbiamo automatizzato il passo 2, in quanto \'e come se avessimo ottenuto una serie di centroidi ordinati. Il passo 3 \'e stato effettuato calcolando per ogni pixel la distanza da ogni colore della gamma dei 40. Trovata la distanza minore, al pixel viene associato il valore relativo a quel centroide.
 
 \begin{figure}
 \centering
+\begin{subfigure}{.4\textwidth}
+\includegraphics[keepaspectratio, height=100px]{4cleared.png}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
 \includegraphics[keepaspectratio, height=100px]{4clearedbn.png}
-\caption{Immagine convertita in scala di grigi.}
+\end{subfigure}
+\caption{Immagine originale e convertita a confronto.}
 \end{figure}
 
 \lstinputlisting[style=octave, caption=Script che converte le immagini.]{../FeatureExtraction/fromRGBtoValue.m}
