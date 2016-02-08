@@ -14,7 +14,7 @@ positionMaxPressureAvampiede=rectangleAvampiede(1,1);
 positionMaxPressureTallone=rectangleTallone(1,1);
 
 %calcoliamo la lunghezza media delle righe dell'istmo
-[left_bound, right_bound, upper_bound, lower_bound] = findFootBoundaries(piedeValue)
+[left_bound, right_bound, upper_bound, lower_bound] = findFootBoundaries(piedeValue);
 lunghezzaMediaIstmo=0;
 
 for i=positionMaxPressureAvampiede:positionMaxPressureTallone
@@ -22,7 +22,7 @@ for i=positionMaxPressureAvampiede:positionMaxPressureTallone
 end
 
 lunghezzaMediaIstmo=lunghezzaMediaIstmo/(positionMaxPressureTallone-positionMaxPressureAvampiede+1);
-lunghezzaMediaIstmo
+lunghezzaMediaIstmo;
 
 
 maxIstmoAvampiede=metaPiede;
@@ -66,7 +66,7 @@ else
 end
 
 lengthMaxIstmo=sum(piedeValue(maxIstmo,left_bound:right_bound)>0);
-lengthMinIstmo=sum(piedeValue(minIstmo,left_bound:right_bound)>0)
+lengthMinIstmo=sum(piedeValue(minIstmo,left_bound:right_bound)>0);
 
 lengthMaxAvampiede=0;
 for i=rectangleAvampiede(3,1):rectangleAvampiede(1,1)
@@ -79,7 +79,7 @@ end
 piedeValue(maxIstmo,left_bound:right_bound)=1;
 piedeValue(minIstmo,left_bound:right_bound)=1;
 
-figure(1)
-imshow(piedeValue);
+%figure(1)
+%imshow(piedeValue);
 
 end
