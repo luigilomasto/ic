@@ -1,6 +1,6 @@
 % restituisce la matrice contenente tutte le feature delle immagini (primo classificatore)
 function matrix = FeaturesFirstClassifier (numImage)
-matrix=zeros(numImage*2,7,'double');
+matrix=zeros(numImage*2,5,'double');
 path='../DatiPreprocessed/';
 for i=1:numImage
 path=strcat(path,num2str(i-1),'_cleared_bn_left_rotated.png');
@@ -12,7 +12,7 @@ try
    matrix(j,3)=lengthMediaIstmo;
    matrix(j,4)=indicePatologia;
    matrix(j,5)=mediumPressure;
-   matrix(j,6)=i-1;
+   %matrix(j,6)=i-1;
 catch exception
    matrix(j,:)=0;
 end
@@ -25,7 +25,7 @@ try
    matrix(j+1,3)=lengthMediaIstmo;
    matrix(j+1,4)=indicePatologia;
    matrix(j+1,5)=mediumPressure;
-   matrix(j+1,6)=i-1;
+   %matrix(j+1,6)=i-1;
 catch exception
    matrix(j+1,:)=0;
 end
