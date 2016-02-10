@@ -5,6 +5,7 @@ point = zeros(1, 2);
 
 [left_bound, right_bound, upper_bound, lower_bound] = findFootBoundaries(piedeValue);
 
+
 inizio = upper_bound;
 fine = lower_bound;
 
@@ -17,7 +18,7 @@ if ~down
     step = -1;
 else
     inizioFor = metaPiede;
-    fineFor = x;
+    fineFor = fine;
     step = 1;
 end
 

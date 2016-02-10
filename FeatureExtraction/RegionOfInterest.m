@@ -1,10 +1,9 @@
-function [lengthMinIstmo,lengthMaxAvampiede,lengthMediaIstmo,mediumPressure] = RegionOfInterest(pathImage_bn)
+function [lengthMinIstmo,lengthMaxAvampiede,lengthMediaIstmo,indicePatologia,mediumPressure] = RegionOfInterest(pathImage_bn)
 
 
 piedeValue= im2double(imread(pathImage_bn));
 
 [num_rows,num_cols] = size(piedeValue);
-
 metaPiede=idivide(int32(num_rows),2,'round');
 
 [maxPressureTallone, rectangleTallone] = findCentreOfMaxPressure(piedeValue, true);
@@ -14,16 +13,19 @@ metaPiede=idivide(int32(num_rows),2,'round');
 positionMaxPressureAvampiede=rectangleAvampiede(1,1);
 positionMaxPressureTallone=rectangleTallone(1,1);
 
-%calcoliamo la lunghezza media delle righe dell'istmo
+%calcoliamo la length media delle righe dell'istmo
 [left_bound, right_bound, upper_bound, lower_bound] = findFootBoundaries(piedeValue);
-lunghezzaMediaIstmo=0;
+
+
+
+lengthMediaIstmo=0;
 
 for i=positionMaxPressureAvampiede:positionMaxPressureTallone
-    lengthMediaIstmo=lunghezzaMediaIstmo+sum(piedeValue(i,left_bound:right_bound)>0);
+    lengthMediaIstmo=lengthMediaIstmo+sum(piedeValue(i,left_bound:right_bound)>0);
 end
 
-lunghezzaMediaIstmo=lengthMediaIstmo/(positionMaxPressureTallone-positionMaxPressureAvampiede+1);
-lunghezzaMediaIstmo;
+lengthMediaIstmo=lengthMediaIstmo/(positionMaxPressureTallone-positionMaxPressureAvampiede+1);
+lengthMediaIstmo;
 
 
 maxIstmoAvampiede=metaPiede;
@@ -70,11 +72,16 @@ lengthMaxIstmo=sum(piedeValue(maxIstmo,left_bound:right_bound)>0);
 lengthMinIstmo=sum(piedeValue(minIstmo,left_bound:right_bound)>0);
 
 lengthMaxAvampiede=0;
+%rectangleAvampiede
+%rectangleTallone
 for i=rectangleAvampiede(3,1):rectangleAvampiede(1,1)
    if sum(piedeValue(i,left_bound:right_bound)>0) > lengthMaxAvampiede
       lengthMaxAvampiede=sum(piedeValue(i,left_bound:right_bound)>0);
     end
 end
+
+indicePatologia=lengthMaxAvampiede/lengthMediaIstmo;
+
 somma=0;
 count=0;
 for i=1:num_rows
