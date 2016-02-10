@@ -1,5 +1,6 @@
 function [lengthMinIstmo,lengthMaxAvampiede,lengthMediaIstmo,mediumPressure] = RegionOfInterest(pathImage_bn)
 
+
 piedeValue= im2double(imread(pathImage_bn));
 
 [num_rows,num_cols] = size(piedeValue);
