@@ -1,4 +1,4 @@
-function [lengthMinIstmo,lengthMaxAvampiede,lunghezzaMediaIstmo] = RegionOfInterest(pathImage_bn)
+function [lengthMinIstmo,lengthMaxAvampiede,lengthMediaIstmo,mediumPressure] = RegionOfInterest(pathImage_bn)
 
 piedeValue= im2double(imread(pathImage_bn));
 
@@ -18,10 +18,10 @@ positionMaxPressureTallone=rectangleTallone(1,1);
 lunghezzaMediaIstmo=0;
 
 for i=positionMaxPressureAvampiede:positionMaxPressureTallone
-    lunghezzaMediaIstmo=lunghezzaMediaIstmo+sum(piedeValue(i,left_bound:right_bound)>0);
+    lengthMediaIstmo=lunghezzaMediaIstmo+sum(piedeValue(i,left_bound:right_bound)>0);
 end
 
-lunghezzaMediaIstmo=lunghezzaMediaIstmo/(positionMaxPressureTallone-positionMaxPressureAvampiede+1);
+lunghezzaMediaIstmo=lengthMediaIstmo/(positionMaxPressureTallone-positionMaxPressureAvampiede+1);
 lunghezzaMediaIstmo;
 
 
@@ -74,11 +74,16 @@ for i=rectangleAvampiede(3,1):rectangleAvampiede(1,1)
       lengthMaxAvampiede=sum(piedeValue(i,left_bound:right_bound)>0);
     end
 end
+somma=0;
+count=0;
+for i=1:num_rows
+    somma=somma+sum(piedeValue(i,1:num_cols));
+    count=count+sum(piedeValue(i,1:num_cols)>0);
+end
+mediumPressure=somma/count;
 
-
-piedeValue(maxIstmo,left_bound:right_bound)=1;
-piedeValue(minIstmo,left_bound:right_bound)=1;
-
+%piedeValue(maxIstmo,left_bound:right_bound)=1;
+%piedeValue(minIstmo,left_bound:right_bound)=1;
 %figure(1)
 %imshow(piedeValue);
 

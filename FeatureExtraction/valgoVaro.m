@@ -1,5 +1,5 @@
-%isLeft: true se il piede è sinistro, false se è destro
-function [puntoMaxPressione,centroTallone] = valgoVaro (pathImage,isLeft)
+%isLeft: true se il piede ï¿½ sinistro, false se ï¿½ destro
+function [puntoMaxPressione,centroTallone,isLeft] = valgoVaro (pathImage,isLeft)
 
 piedeValue= im2double(imread(pathImage));
 
@@ -8,6 +8,7 @@ piedeValue= im2double(imread(pathImage));
 
 inizioTallone=1; fineTallone=1;
 first=false;
+%pre prendere inizio e fine tallone, in modo da calcolare il centro
 for i=1:right_bound
     if(first==false && piedeValue(pointTallone(1),i)~=0)
         first=true;
@@ -16,8 +17,7 @@ for i=1:right_bound
         if(first==true &&  piedeValue(pointTallone(1),i)==0)
            fineTallone=i;
            break;
-        end
-            
+        end         
 end
 
 centroTallone=idivide(int32(fineTallone+inizioTallone),2,'round');
