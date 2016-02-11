@@ -15,6 +15,8 @@ for i=startImage:endImage
      matrix(indexMatrix,4)=indicePatologia;
      matrix(indexMatrix,5)=mediumPressure;
      indexMatrix = indexMatrix + 1;
+  else
+      disp(strcat(fullPath, ' non esiste'));
   end
   fullPath=strcat(path,num2str(i),'_cleared_bn_right_rotated.png');
   if exist(fullPath, 'file') == 2
@@ -25,6 +27,8 @@ for i=startImage:endImage
      matrix(indexMatrix,4)=indicePatologia;
      matrix(indexMatrix,5)=mediumPressure;
      indexMatrix = indexMatrix + 1;
+  else
+      disp(strcat(fullPath, ' non esiste'));
   end
 end
 

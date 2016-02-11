@@ -88,7 +88,11 @@ for i=rectangleAvampiede(3,1):rectangleAvampiede(1,1)
     end
 end
 
-indicePatologia=lengthMaxAvampiede/lengthMediaIstmo;
+if lengthMinIstmo ~= 0
+    indicePatologia=lengthMaxAvampiede/lengthMinIstmo;
+else
+    indicePatologia=40;
+end
 
 somma=0;
 count=0;
