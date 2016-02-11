@@ -1,35 +1,36 @@
 % restituisce la matrice contenente tutte le feature delle immagini (primo classificatore)
-function matrix = FeaturesFirstClassifier (startImage, endImage)
-numImage=int32(range(startImage:endImage));
+function matrix = FeaturesFirstClassifier (labelsPath, imagesPath)
+labelsMatrix = csvread(labelsPath);
+labelsMatrix = simplifyMatrix(labelsMatrix);
+[numImage, num_labels] = size(labelsMatrix);
 %For every image there is left feet and right feet
-matrix=zeros(numImage*2,5,'double');
-path='/home/marco/DatiPreprocessed/';
+num_features=5;
+matrix=zeros(numImage*2,3+num_features,'double');
 indexMatrix = 1;
-for i=startImage:endImage
-  fullPath=strcat(path,num2str(i),'_cleared_bn_left_rotated.png');
-  if exist(fullPath, 'file') == 2
-     [lengthMinIstmo,lengthMaxAvampiede,lengthMediaIstmo,indicePatologia,mediumPressure] = RegionOfInterest(fullPath);
-     matrix(indexMatrix,1)=lengthMinIstmo;
-     matrix(indexMatrix,2)=lengthMaxAvampiede;
-     matrix(indexMatrix,3)=lengthMediaIstmo;
-     matrix(indexMatrix,4)=indicePatologia;
-     matrix(indexMatrix,5)=mediumPressure;
-     indexMatrix = indexMatrix + 1;
-  else
-      disp(strcat(fullPath, ' non esiste'));
-  end
-  fullPath=strcat(path,num2str(i),'_cleared_bn_right_rotated.png');
-  if exist(fullPath, 'file') == 2
-     [lengthMinIstmo,lengthMaxAvampiede,lengthMediaIstmo,indicePatologia,mediumPressure] = RegionOfInterest(fullPath);
-     matrix(indexMatrix,1)=lengthMinIstmo;
-     matrix(indexMatrix,2)=lengthMaxAvampiede;
-     matrix(indexMatrix,3)=lengthMediaIstmo;
-     matrix(indexMatrix,4)=indicePatologia;
-     matrix(indexMatrix,5)=mediumPressure;
-     indexMatrix = indexMatrix + 1;
-  else
-      disp(strcat(fullPath, ' non esiste'));
-  end
+for i=1:numImage
+	fullPath=strcat(imagesPath,int2str(labelsMatrix(i,1)),'_cleared_bn_left_rotated.png');
+	[lengthMinIstmo,lengthMaxAvampiede,lengthMediaIstmo,indicePatologia,mediumPressure] = RegionOfInterest(fullPath);
+	matrix(indexMatrix,1)=labelsMatrix(i,1);
+    %0 for left, 1 for right
+	matrix(indexMatrix,2)=0;
+	matrix(indexMatrix,3)=lengthMinIstmo;
+	matrix(indexMatrix,4)=lengthMaxAvampiede;
+	matrix(indexMatrix,5)=lengthMediaIstmo;
+	matrix(indexMatrix,6)=indicePatologia;
+	matrix(indexMatrix,7)=mediumPressure;
+	matrix(indexMatrix,8)=convert_label(labelsMatrix(i,:), true,false);
+	indexMatrix = indexMatrix + 1;
+	fullPath=strcat(imagesPath,int2str(labelsMatrix(i,1)),'_cleared_bn_right_rotated.png');
+	[lengthMinIstmo,lengthMaxAvampiede,lengthMediaIstmo,indicePatologia,mediumPressure] = RegionOfInterest(fullPath);
+	matrix(indexMatrix,1)=labelsMatrix(i,1);
+	matrix(indexMatrix,2)=1;
+	matrix(indexMatrix,3)=lengthMinIstmo;
+	matrix(indexMatrix,4)=lengthMaxAvampiede;
+	matrix(indexMatrix,5)=lengthMediaIstmo;
+	matrix(indexMatrix,6)=indicePatologia;
+	matrix(indexMatrix,7)=mediumPressure;
+	matrix(indexMatrix,8)=convert_label(labelsMatrix(i,:),false,false);
+	indexMatrix = indexMatrix + 1;
 end
 
 end
