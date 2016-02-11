@@ -1,4 +1,4 @@
-%isLeft: true se il piede � sinistro, false se � destro
+%isLeft: true se il piede e' sinistro, false se e' destro
 function [diffPosition] = valgoVaro (pathImage)
 
 piedeValue= im2double(imread(pathImage));
