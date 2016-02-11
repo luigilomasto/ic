@@ -3,8 +3,10 @@ function [max_value, rectangle] = findCentreOfMaxPressure(piedeValue, down)
 point = zeros(1, 2);
 [x,y] = size(piedeValue);
 
-[left_bound, right_bound, upper_bound, lower_bound] = findFootBoundaries(piedeValue);
-
+left_bound = 1;
+right_bound = y;
+upper_bound = 1;
+lower_bound = x;
 
 inizio = upper_bound;
 fine = lower_bound;

@@ -20,8 +20,10 @@ positionMaxPressureAvampiede=rectangleAvampiede(1,1);
 positionMaxPressureTallone=rectangleTallone(1,1);
 
 %calcoliamo la length media delle righe dell'istmo
-[left_bound, right_bound, upper_bound, lower_bound] = findFootBoundaries(piedeValue);
-
+left_bound = 1;
+right_bound = num_cols;
+upper_bound = 1;
+lower_bound = num_rows;
 
 
 lengthMediaIstmo=0;
