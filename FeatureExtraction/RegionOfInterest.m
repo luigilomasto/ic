@@ -1,6 +1,12 @@
 function [lengthMinIstmo,lengthMaxAvampiede,lengthMediaIstmo,indicePatologia,mediumPressure] = RegionOfInterest(pathImage_bn)
 
 
+isOctave = exist('OCTAVE_VERSION', 'builtin') ~= 0;
+if isOctave
+	pkg load image;
+end
+
+
 piedeValue= im2double(imread(pathImage_bn));
 
 [num_rows,num_cols] = size(piedeValue);

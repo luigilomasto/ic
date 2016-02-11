@@ -1,6 +1,12 @@
 %isLeft: true se il piede e' sinistro, false se e' destro
 function [diffPosition] = valgoVaro (pathImage)
 
+isOctave = exist('OCTAVE_VERSION', 'builtin') ~= 0;
+if isOctave
+	pkg load image
+end
+
+
 piedeValue= im2double(imread(pathImage));
 
 [pointTallone, pointAvampiede] = centreOfMaxPressure(piedeValue);

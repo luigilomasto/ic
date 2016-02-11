@@ -3,7 +3,7 @@ function matrix = FeaturesFirstClassifier (startImage, endImage)
 numImage=int32(range(startImage, endImage));
 %For every image there is left feet and right feet
 matrix=zeros(numImage*2,5,'double');
-path='../DatiPreprocessed/';
+path='/home/marco/DatiPreprocessed/';
 indexMatrix = 1;
 for i=startImage:endImage
   fullPath=strcat(path,num2str(i),'_cleared_bn_left_rotated.png');
