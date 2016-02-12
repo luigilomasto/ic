@@ -10,13 +10,17 @@ addpath(genpath('..'));
 
 numRip=10;
 numFold=2;
-fullMatrix = FeaturesFirstClassifier(labelsPath, dataPath);
+
+%fullMatrix = FeaturesFirstClassifier(labelsPath, dataPath);
+fullMatrix = FeaturesSecondClassifier(labelsPath, dataPath);
 %FeaturesRange can be changed with RFE
-featuresRange = 3:7;
-label_column = 8;
+% featuresRange = 3:7;
+featuresRange = 2:3;
+% label_column = 8;
+label_column = 4;
 total_accuracy = 0;
-num_classes = unique(fullMatrix(:,label_column));
-class_accuracy = zeros(length(num_classes));
+num_classes = length(unique(fullMatrix(:,label_column)));
+class_accuracy = zeros(num_classes, 1);
 
 for i=1:numRip
     c = cvpartition(fullMatrix(:,label_column),'KFold',2);
@@ -38,7 +42,7 @@ for i=1:numRip
     end
     clear test train c;
 end
-perc_totale_good = perc_totale_good/numRip;
+total_accuracy = total_accuracy/numRip;
 for j=1:num_classes
     class_accuracy(j) = class_accuracy(j)/numRip;
 end
