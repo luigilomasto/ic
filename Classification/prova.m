@@ -1,19 +1,23 @@
+function [results, perc_good_classified] = ClassificationPiattoVsCavoVsNormale(labelsPath, dataPath)
+
 isOctave = exist('OCTAVE_VERSION', 'builtin') ~= 0;
 if isOctave
 	pkg load statistics;
 end
 
-fullMatrix = FeaturesFirstClassifier('/home/marco/labels.csv', '/home/marco/DatiPreprocessedFixed/');
+addPath('..');
+
+fullMatrix = FeaturesFirstClassifier(labelsPath, dataPath);
 trainingSetRange = 1:40;
 trainingPatients = fullMatrix(trainingSetRange, 1);
-training = fullMatrix(trainingSetRange, 3:7);
-%SVMStruct = svmtrain(training,label');
+trainingSet = fullMatrix(trainingSetRange, 3:7);
 testSetRange=41:100;
 testPatients = fullMatrix(testSetRange, 1);
-test=fullMatrix(testSetRange, 3:7);
-%Group = svmclassify(SVMStruct,test);
+testSet=fullMatrix(testSetRange, 3:7);
 label = fullMatrix(trainingSetRange, 8);
-results = multisvm(training, label', test);
+results = multisvm(trainingSet, label', testSet);
 real_results = fullMatrix(testSetRange, 8);
 good_classified = (results == real_results);
 perc_good_classified = sum(good_classified)/length(good_classified);
+
+end

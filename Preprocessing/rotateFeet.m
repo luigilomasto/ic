@@ -7,6 +7,8 @@ end
 img = im2double(imread(imagePath));
 [num_rows, num_cols] = size(img);
 
+addPath('..');
+
 [left_bound, right_bound, upper_bound, lower_bound] = findFootBoundaries(img);
 
 row_start_piede = lower_bound;
