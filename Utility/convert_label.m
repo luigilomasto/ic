@@ -22,11 +22,11 @@ if ~varo
     end
 else
 	if row(col_to_check_valgo) == 1
-		label = 4;
+		label = 1;
     elseif row(col_to_check_varo) == 1
-		label = 5;
+		label = 3;
     else
-        label = 3;
+        label = 2;
     end
 end
 
