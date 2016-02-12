@@ -6,7 +6,7 @@ if isOctave
 	pkg load image;
 end
 
-addPath('..');
+addpath(genpath('..'));
 
 
 piedeValue= im2double(imread(pathImage_bn));

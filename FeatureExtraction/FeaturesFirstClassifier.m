@@ -1,5 +1,7 @@
 % restituisce la matrice contenente tutte le feature delle immagini (primo classificatore)
 function matrix = FeaturesFirstClassifier (labelsPath, imagesPath)
+
+addpath('../Utility');
 labelsMatrix = csvread(labelsPath);
 labelsMatrix = simplifyMatrix(labelsMatrix);
 [numImage, num_labels] = size(labelsMatrix);

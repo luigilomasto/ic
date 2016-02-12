@@ -7,7 +7,7 @@ end
 img = im2double(imread(imagePath));
 [num_rows, num_cols] = size(img);
 
-addPath('..');
+addpath(genpath('..'));
 
 [left_bound, right_bound, upper_bound, lower_bound] = findFootBoundaries(img);
 

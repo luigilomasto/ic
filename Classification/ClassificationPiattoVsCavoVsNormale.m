@@ -5,7 +5,7 @@ if isOctave
 	pkg load statistics;
 end
 
-addPath('..');
+addpath(genpath('..'));
 
 fullMatrix = FeaturesFirstClassifier(labelsPath, dataPath);
 trainingSetRange = 1:40;
