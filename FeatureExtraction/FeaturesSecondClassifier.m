@@ -1,4 +1,4 @@
-% restituisce la matrice contenente tutte le feature delle immagini (primo classificatore)
+% restituisce la matrice contenente tutte le feature delle immagini (secondo classificatore)
 function matrix = FeaturesSecondClassifier (labelsPath, imagesPath)
 
 addpath('../Utility');
@@ -27,6 +27,9 @@ for i=1:numImage
 	indexMatrix = indexMatrix + 1;
 end
 
+firstFeatureIndex = 3;
+lastFeatureIndex = 3 + num_features;
+
+matrix(:, firstFeatureIndex:lastFeatureIndex) = StatisticalNormaliz(matrix(:, firstFeatureIndex, lastFeatureIndex), 'standard');
+
 end
-
-
