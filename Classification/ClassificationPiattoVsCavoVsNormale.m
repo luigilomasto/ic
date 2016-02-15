@@ -1,5 +1,5 @@
 
-function [total_accuracy,results,real_results,resultROC,result_realROC] = ClassificationPiattoVsCavoVsNormale (classificationType)
+function [total_accuracy,results,real_results,resultROC,result_realROC,ROC] = ClassificationPiattoVsCavoVsNormale (classificationType)
 
 
 
@@ -47,6 +47,7 @@ class_accuracy = zeros(num_classes, 1);
  
  resultROC=zeros(length(testSetRange),numRip);
  result_realROC=zeros(length(testSetRange),numRip);
+ ROC=zeros(2,numRip);
  clear test train c;
  
 for i=1:numRip
@@ -69,22 +70,22 @@ for i=1:numRip
     
     resultROC(:,i)=results;
     result_realROC(:,i)=real_results;
-   
-   
+    
+    
+    for k=1:length(testSetRange)
+        veriPositivi=0;
+        falsiPositivi=0;
+        for j=1:numRip
+            if resultROC(k,j)==result_realROC(k,j)
+                veriPositivi=veriPositivi+1;
+            else
+                falsiPositivi=falsiPositivi+1;
+            end
+        end
+    end
+    ROC(1,i)=veriPositivi;
+    ROC(2,i)=falsiPositivi;
     total_accuracy = total_accuracy + accuracy(1);
-    
-   
-    
-    
-    
-% %     tab = crosstab(real_results, results);
-% %     [x, y] = size(tab);
-% %     if x == 2 && y == 3
-% %         tab(3,:)=[0,0,0];
-% % %     end
-% %     for j=1:num_classes
-% %         class_accuracy(j) = class_accuracy(j) + tab(j,j)/sum(tab(:,j));
-% %     end
     clear test train c;
 end
 
