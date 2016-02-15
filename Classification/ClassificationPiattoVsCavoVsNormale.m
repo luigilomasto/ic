@@ -1,5 +1,5 @@
 
-function [total_accuracy,class_accuracy] = ClassificationPiattoVsCavoVsNormale (classificationType)
+function [total_accuracy,class_accuracy,results, real_results] = ClassificationPiattoVsCavoVsNormale (classificationType)
 
 
 
@@ -13,7 +13,7 @@ end
 
 addpath(genpath('..'));
 
-numRip=10;
+numRip=20;
 numFold=2;
 
 
@@ -29,13 +29,7 @@ elseif strcmp(classificationType,'second')==1
     label_column = 4;
 end
 
-%fullMatrix = FeaturesFirstClassifier(labelsPath, dataPath);
-%fullMatrix = FeaturesSecondClassifier(labelsPath, dataPath);
-%FeaturesRange can be changed with RFE
-%featuresRange = 3:7;
-%featuresRange = 2:3;
-%label_column = 8;
-%label_column = 4;
+
 total_accuracy = 0;
 num_classes = length(unique(fullMatrix(:,label_column)));
 class_accuracy = zeros(num_classes, 1);
