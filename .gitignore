@@ -12,3 +12,4 @@ development.sh
 *.log
 *.pdf
 DatiPreprocessed/
+*.mexw64
