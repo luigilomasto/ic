@@ -1,5 +1,5 @@
 
-function [total_accuracy,class_accuracy,results, real_results] = ClassificationPiattoVsCavoVsNormale (classificationType)
+function [total_accuracy] = ClassificationPiattoVsCavoVsNormale (classificationType)
 
 
 
@@ -19,7 +19,8 @@ numFold=2;
 
 if  strcmp(classificationType,'first')==1
     fullMatrix = FeaturesFirstClassifier(labelsPath, dataPath);
-    featuresRange= 3:7;
+%     featuresRange= 3:7;
+    featuresRange = [5 6];
     label_column = 8;
 
 
@@ -44,20 +45,30 @@ for i=1:numRip
 
     trainingSet = fullMatrix(trainingSetRange, featuresRange);
     testSet=fullMatrix(testSetRange, featuresRange);
-    label = fullMatrix(trainingSetRange, label_column);
-    results = multisvm(trainingSet, label', testSet);
+    trainLabel = fullMatrix(trainingSetRange, label_column);
+    
+    %results = multisvm(trainingSet, label', testSet);
+    
+    model = svmtrain(trainLabel,trainingSet);
     real_results = fullMatrix(testSetRange, label_column);
-    total_accuracy = total_accuracy + sum(results == real_results)/length(results);
-    tab = crosstab(results, real_results);
-    for j=1:num_classes
-        class_accuracy(j) = class_accuracy(j) + tab(j,j)/sum(tab(:,j));
-    end
+    [results, accuracy, decision_values] = svmpredict(real_results,testSet,model); 
+    
+   
+    total_accuracy = total_accuracy + accuracy(1);
+%     tab = crosstab(real_results, results);
+%     [x, y] = size(tab);
+%     if x == 2 && y == 3
+%         tab(3,:)=[0,0,0];
+% %     end
+%     for j=1:num_classes
+%         class_accuracy(j) = class_accuracy(j) + tab(j,j)/sum(tab(:,j));
+%     end
     clear test train c;
 end
 total_accuracy = total_accuracy/numRip;
-for j=1:num_classes
-    class_accuracy(j) = class_accuracy(j)/numRip;
-end
+% for j=1:num_classes
+%     class_accuracy(j) = class_accuracy(j)/numRip;
+% end
 
 
 end
