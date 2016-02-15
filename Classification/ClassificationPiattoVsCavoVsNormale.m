@@ -1,3 +1,8 @@
+
+function [total_accuracy,class_accuracy] = ClassificationPiattoVsCavoVsNormale (classificationType)
+
+
+
 labelsPath = '../labels.csv';
 dataPath = '../DatiPreprocessed/';
 
@@ -11,24 +16,37 @@ addpath(genpath('..'));
 numRip=10;
 numFold=2;
 
+
+if  strcmp(classificationType,'first')==1
+    fullMatrix = FeaturesFirstClassifier(labelsPath, dataPath);
+    featuresRange= 3:7;
+    label_column = 8;
+
+
+elseif strcmp(classificationType,'second')==1
+    fullMatrix = FeaturesSecondClassifier(labelsPath, dataPath);
+    featuresRange = 2:3;
+    label_column = 4;
+end
+
 %fullMatrix = FeaturesFirstClassifier(labelsPath, dataPath);
-fullMatrix = FeaturesSecondClassifier(labelsPath, dataPath);
+%fullMatrix = FeaturesSecondClassifier(labelsPath, dataPath);
 %FeaturesRange can be changed with RFE
-% featuresRange = 3:7;
-featuresRange = 2:3;
-% label_column = 8;
-label_column = 4;
+%featuresRange = 3:7;
+%featuresRange = 2:3;
+%label_column = 8;
+%label_column = 4;
 total_accuracy = 0;
 num_classes = length(unique(fullMatrix(:,label_column)));
 class_accuracy = zeros(num_classes, 1);
 
 for i=1:numRip
     c = cvpartition(fullMatrix(:,label_column),'KFold',2);
-    train=training(c,1);
-    test=test(c,1);
+    trainBinary=training(c,1);
+    testBinary=test(c,1);
     
-    trainingSetRange = find(train)';
-    testSetRange=find(test)';
+    trainingSetRange = find(trainBinary)';
+    testSetRange=find(testBinary)';
 
     trainingSet = fullMatrix(trainingSetRange, featuresRange);
     testSet=fullMatrix(testSetRange, featuresRange);
@@ -45,4 +63,7 @@ end
 total_accuracy = total_accuracy/numRip;
 for j=1:num_classes
     class_accuracy(j) = class_accuracy(j)/numRip;
+end
+
+
 end
