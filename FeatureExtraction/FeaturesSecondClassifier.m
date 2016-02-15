@@ -27,9 +27,9 @@ for i=1:numImage
 	indexMatrix = indexMatrix + 1;
 end
 
-firstFeatureIndex = 3;
-lastFeatureIndex = 3 + num_features;
+firstFeatureIndex = 2;
+lastFeatureIndex = 3;
 
-matrix(:, firstFeatureIndex:lastFeatureIndex) = StatisticalNormaliz(matrix(:, firstFeatureIndex, lastFeatureIndex), 'standard');
+matrix(:, firstFeatureIndex:lastFeatureIndex) = StatisticalNormaliz(matrix(:, firstFeatureIndex:lastFeatureIndex), 'standard');
 
 end
