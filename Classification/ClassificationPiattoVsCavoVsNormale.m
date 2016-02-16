@@ -18,8 +18,8 @@ numFold=2;
 
 if  strcmp(classificationType,'first')==1
     fullMatrix = FeaturesFirstClassifier(labelsPath, dataPath);
-   featuresRange= 3:7;
-    %featuresRange = [6 5 3];
+   %featuresRange= 3:7;
+    featuresRange = [6 5 3];
     label_column = 8;
 
 
