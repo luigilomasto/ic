@@ -11,19 +11,25 @@ matrix=zeros(numImage*2,3+num_features,'double');
 indexMatrix = 1;
 for i=1:numImage
 	fullPath=strcat(imagesPath,int2str(labelsMatrix(i,1)),'_cleared_bn_left_rotated.png');
-	[diffPosition] = valgoVaro (fullPath);
+	[diffPosition,approssimated,leftDistance,rightDistance] = valgoVaro (fullPath);
 	matrix(indexMatrix,1)=labelsMatrix(i,1);
     %0 for left, 1 for right
 	matrix(indexMatrix,2)=0;
 	matrix(indexMatrix,3)=diffPosition;
-	matrix(indexMatrix,4)=convert_label(labelsMatrix(i,:), true,true);
+    matrix(indexMatrix,4)=approssimated;
+    matrix(indexMatrix,5)=leftDistance;
+    matrix(indexMatrix,6)=rightDistance;
+	matrix(indexMatrix,7)=convert_label(labelsMatrix(i,:), true,true);
 	indexMatrix = indexMatrix + 1;
 	fullPath=strcat(imagesPath,int2str(labelsMatrix(i,1)),'_cleared_bn_right_rotated.png');
 	[diffPosition] = valgoVaro (fullPath);
 	matrix(indexMatrix,1)=labelsMatrix(i,1);
 	matrix(indexMatrix,2)=1;
 	matrix(indexMatrix,3)=diffPosition;
-	matrix(indexMatrix,4)=convert_label(labelsMatrix(i,:),false,true);
+    matrix(indexMatrix,4)=approssimated;
+	matrix(indexMatrix,5)=leftDistance;
+    matrix(indexMatrix,6)=rightDistance;
+	matrix(indexMatrix,7)=convert_label(labelsMatrix(i,:), false,true);
 	indexMatrix = indexMatrix + 1;
 end
 

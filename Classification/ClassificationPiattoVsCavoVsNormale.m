@@ -1,8 +1,6 @@
 
 function [total_accuracy,results,real_results,resultROC,result_realROC,ROC] = ClassificationPiattoVsCavoVsNormale (classificationType)
 
-
-
 labelsPath = '../labels.csv';
 dataPath = '../DatiPreprocessed/';
 
@@ -13,7 +11,7 @@ end
 
 addpath(genpath('..'));
 
-numRip=10;
+numRip=20;
 numFold=2;
 
 
@@ -28,9 +26,9 @@ if  strcmp(classificationType,'first')==1
 elseif strcmp(classificationType,'second')==1
     fullMatrix = FeaturesSecondClassifier(labelsPath, dataPath);
     
-    %featuresRange = 2:3;
-    featuresRange = [3];
-    label_column = 4;
+    %featuresRange = 2:6;
+    featuresRange = [6 5 4];
+    label_column = 7;
 end
 
 
@@ -91,13 +89,5 @@ for i=1:numRip
     clear test train c;
 end
 
-
 total_accuracy = total_accuracy/numRip;
-% for j=1:num_classes
-%     class_accuracy(j) = class_accuracy(j)/numRip;
-% end
-
-
-
-
 end
