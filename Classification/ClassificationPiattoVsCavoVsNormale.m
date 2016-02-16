@@ -45,7 +45,7 @@ class_accuracy = zeros(num_classes, 1);
  
  resultROC=zeros(length(testSetRange),numRip);
  result_realROC=zeros(length(testSetRange),numRip);
- ROC=zeros(2,numRip);
+ ROC=zeros(3,numRip);
  clear test train c;
  
 for i=1:numRip
@@ -82,6 +82,7 @@ for i=1:numRip
         end
     ROC(1,j)=veriPositivi;
     ROC(2,j)=falsiPositivi;
+    ROC(3,j)=(veriPositivi/(veriPositivi+falsiPositivi))*100;
     end
     
     
