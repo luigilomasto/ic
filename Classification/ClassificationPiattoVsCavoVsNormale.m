@@ -72,10 +72,10 @@ for i=1:numRip
     result_realROC(:,i)=real_results;
     
     
-    for k=1:length(testSetRange)
+    for j=1:numRip
         veriPositivi=0;
         falsiPositivi=0;
-        for j=1:numRip
+        for k=1:length(testSetRange)
             if resultROC(k,j)==result_realROC(k,j)
                 veriPositivi=veriPositivi+1;
             else
