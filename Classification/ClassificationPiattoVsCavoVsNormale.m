@@ -11,26 +11,33 @@ end
 
 addpath(genpath('..'));
 
-numRip=20;
+numRip=5;
 numFold=2;
 
 
 
 if  strcmp(classificationType,'first')==1
-    fullMatrix = FeaturesFirstClassifier(labelsPath, dataPath);
+    load 'fullMatrix1.mat' fullMatrix;
+    %fullMatrix = FeaturesFirstClassifier(labelsPath, dataPath);
    %featuresRange= 3:7;
     featuresRange = [6 5 3];
     label_column = 8;
 
 
 elseif strcmp(classificationType,'second')==1
-    fullMatrix = FeaturesSecondClassifier(labelsPath, dataPath);
-    
+    %fullMatrix = FeaturesSecondClassifier(labelsPath, dataPath);
+    load 'fullMatrix2.mat' fullMatrix;
     %featuresRange = 2:6;
     featuresRange = [6 5 4];
     label_column = 7;
 end
 
+% figure
+% app=find(fullMatrix(:,7)==1);
+% plot(fullMatrix(app,5),fullMatrix(app,6),'or');
+% hold on
+% app2=find(fullMatrix(:,7)==2);
+% plot(fullMatrix(app2,5),fullMatrix(app2,6),'og');
 
 total_accuracy = 0;
 num_classes = length(unique(fullMatrix(:,label_column)));
@@ -66,8 +73,10 @@ for i=1:numRip
     real_results = fullMatrix(testSetRange, label_column);
     [results, accuracy, decision_values] = svmpredict(real_results,testSet,model); 
     
+    
     resultROC(:,i)=results;
     result_realROC(:,i)=real_results;
+    
     
     
     for j=1:numRip
