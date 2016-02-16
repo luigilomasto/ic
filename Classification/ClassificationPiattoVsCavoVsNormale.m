@@ -20,8 +20,8 @@ numFold=2;
 
 if  strcmp(classificationType,'first')==1
     fullMatrix = FeaturesFirstClassifier(labelsPath, dataPath);
-   %featuresRange= 3:7;
-    featuresRange = [6 5 3];
+   featuresRange= 3:7;
+    %featuresRange = [6 5 3];
     label_column = 8;
 
 
@@ -82,9 +82,11 @@ for i=1:numRip
                 falsiPositivi=falsiPositivi+1;
             end
         end
+    ROC(1,j)=veriPositivi;
+    ROC(2,j)=falsiPositivi;
     end
-    ROC(1,i)=veriPositivi;
-    ROC(2,i)=falsiPositivi;
+    
+    
     total_accuracy = total_accuracy + accuracy(1);
     clear test train c;
 end
