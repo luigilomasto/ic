@@ -12,13 +12,13 @@ end
 addpath(genpath('..'));
 
 numRip=5;
-numFold=2;
+numFold=4;
 
 
 
 if  strcmp(classificationType,'first')==1
-    load 'fullMatrix1.mat' fullMatrix;
-    %fullMatrix = FeaturesFirstClassifier(labelsPath, dataPath);
+   load 'fullMatrix1.mat' fullMatrix;
+   %fullMatrix = FeaturesFirstClassifier(labelsPath, dataPath);
    %featuresRange= 3:7;
     featuresRange = [6 5 3];
     label_column = 8;
@@ -32,19 +32,20 @@ elseif strcmp(classificationType,'second')==1
     label_column = 7;
 end
 
-% figure
-% app=find(fullMatrix(:,7)==1);
-% plot(fullMatrix(app,5),fullMatrix(app,6),'or');
-% hold on
-% app2=find(fullMatrix(:,7)==2);
-% plot(fullMatrix(app2,5),fullMatrix(app2,6),'og');
+figure
+
+app=find(fullMatrix(:, label_column)==1);
+plot(fullMatrix(app,5),fullMatrix(app,6),'or');
+hold on
+app2=find(fullMatrix(:, label_column)==2);
+plot(fullMatrix(app2,5),fullMatrix(app2,6),'og');
 
 total_accuracy = 0;
 num_classes = length(unique(fullMatrix(:,label_column)));
 class_accuracy = zeros(num_classes, 1);
 
 
- c = cvpartition(fullMatrix(:,label_column),'KFold',2);
+ c = cvpartition(fullMatrix(:,label_column),'KFold',4);
  trainBinary=training(c,1);
  testBinary=test(c,1);   
  trainingSetRange = find(trainBinary)';
@@ -56,7 +57,7 @@ class_accuracy = zeros(num_classes, 1);
  clear test train c;
  
 for i=1:numRip
-    c = cvpartition(fullMatrix(:,label_column),'KFold',2);
+    c = cvpartition(fullMatrix(:,label_column),'KFold',4);
     trainBinary=training(c,1);
     testBinary=test(c,1);
     
