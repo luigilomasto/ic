@@ -1,5 +1,5 @@
 
-function [total_accuracy,results,real_results,resultROC,result_realROC,ROC] = ClassificationPiattoVsCavoVsNormale (classificationType)
+function [total_accuracy,results,real_results,resultROC,result_realROC,ROC] = ClassificationPiattoVsCavoVsNormale (classificationType,typeNormalization)
 
 labelsPath = '../labels.csv';
 dataPath = '../DatiPreprocessed/';
@@ -11,22 +11,30 @@ end
 
 addpath(genpath('..'));
 
-numRip=5;
-numFold=4;
+numRip=100;
+numFold=3;
 
 
 
 if  strcmp(classificationType,'first')==1
-   load 'fullMatrix1.mat' fullMatrix;
+   if strcmp(typeNormalization,'standard')==1
+   load 'fullMatrix1standard.mat' fullMatrix;
+   else
+   load 'fullMatrix1scaling.mat' fullMatrix;
+   end
    %fullMatrix = FeaturesFirstClassifier(labelsPath, dataPath);
    %featuresRange= 3:7;
-    featuresRange = [6 5 3];
-    label_column = 8;
+   featuresRange = [6 5 3];
+   label_column = 8;
 
 
 elseif strcmp(classificationType,'second')==1
+   if strcmp(typeNormalization,'scaling')==1
+   load 'fullMatrix2standard.mat' fullMatrix;
+   else
+   load 'fullMatrix2scaling.mat' fullMatrix;
+   end
     %fullMatrix = FeaturesSecondClassifier(labelsPath, dataPath);
-    load 'fullMatrix2.mat' fullMatrix;
     %featuresRange = 2:6;
     featuresRange = [6 5 4];
     label_column = 7;
@@ -45,7 +53,7 @@ num_classes = length(unique(fullMatrix(:,label_column)));
 class_accuracy = zeros(num_classes, 1);
 
 
- c = cvpartition(fullMatrix(:,label_column),'KFold',4);
+ c = cvpartition(fullMatrix(:,label_column),'KFold',numFold);
  trainBinary=training(c,1);
  testBinary=test(c,1);   
  trainingSetRange = find(trainBinary)';
@@ -57,7 +65,7 @@ class_accuracy = zeros(num_classes, 1);
  clear test train c;
  
 for i=1:numRip
-    c = cvpartition(fullMatrix(:,label_column),'KFold',4);
+    c = cvpartition(fullMatrix(:,label_column),'KFold',numFold);
     trainBinary=training(c,1);
     testBinary=test(c,1);
     

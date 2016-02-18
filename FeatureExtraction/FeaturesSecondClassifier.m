@@ -36,6 +36,6 @@ end
 firstFeatureIndex = 2;
 lastFeatureIndex = 3;
 
-matrix(:, firstFeatureIndex:lastFeatureIndex) = StatisticalNormaliz(matrix(:, firstFeatureIndex:lastFeatureIndex), 'standard');
+matrix(:, firstFeatureIndex:lastFeatureIndex) = StatisticalNormaliz(matrix(:, firstFeatureIndex:lastFeatureIndex), 'scaling');
 
 end
