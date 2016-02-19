@@ -1,7 +1,5 @@
 
-function [total_accuracy,results,real_results,resultROC,result_realROC,ROC] = ClassificationPiattoVsCavoVsNormale (classificationType)
-
-
+function [total_accuracy,results,real_results,resultROC,result_realROC,ROC] = ClassificationPiattoVsCavoVsNormale (classificationType,typeNormalization)
 
 labelsPath = '../labels.csv';
 dataPath = '../DatiPreprocessed/';
@@ -13,33 +11,49 @@ end
 
 addpath(genpath('..'));
 
-numRip=10;
-numFold=2;
+numRip=100;
+numFold=3;
 
 
 
 if  strcmp(classificationType,'first')==1
-    fullMatrix = FeaturesFirstClassifier(labelsPath, dataPath);
-   featuresRange= 3:7;
-    %featuresRange = [6 5 3];
-    label_column = 8;
+   if strcmp(typeNormalization,'standard')==1
+   load 'fullMatrix1standard.mat' fullMatrix;
+   else
+   load 'fullMatrix1scaling.mat' fullMatrix;
+   end
+   %fullMatrix = FeaturesFirstClassifier(labelsPath, dataPath);
+   %featuresRange= 3:7;
+   featuresRange = [6 5 3];
+   label_column = 8;
 
 
 elseif strcmp(classificationType,'second')==1
-    fullMatrix = FeaturesSecondClassifier(labelsPath, dataPath);
-    
-    %featuresRange = 2:3;
-    featuresRange = [3];
-    label_column = 4;
+   if strcmp(typeNormalization,'scaling')==1
+   load 'fullMatrix2standard.mat' fullMatrix;
+   else
+   load 'fullMatrix2scaling.mat' fullMatrix;
+   end
+    %fullMatrix = FeaturesSecondClassifier(labelsPath, dataPath);
+    %featuresRange = 2:6;
+    featuresRange = [6 5 4];
+    label_column = 7;
 end
 
+figure
+
+app=find(fullMatrix(:, label_column)==1);
+plot(fullMatrix(app,5),fullMatrix(app,6),'or');
+hold on
+app2=find(fullMatrix(:, label_column)==2);
+plot(fullMatrix(app2,5),fullMatrix(app2,6),'og');
 
 total_accuracy = 0;
 num_classes = length(unique(fullMatrix(:,label_column)));
 class_accuracy = zeros(num_classes, 1);
 
 
- c = cvpartition(fullMatrix(:,label_column),'KFold',2);
+ c = cvpartition(fullMatrix(:,label_column),'KFold',numFold);
  trainBinary=training(c,1);
  testBinary=test(c,1);   
  trainingSetRange = find(trainBinary)';
@@ -47,11 +61,11 @@ class_accuracy = zeros(num_classes, 1);
  
  resultROC=zeros(length(testSetRange),numRip);
  result_realROC=zeros(length(testSetRange),numRip);
- ROC=zeros(2,numRip);
+ ROC=zeros(3,numRip);
  clear test train c;
  
 for i=1:numRip
-    c = cvpartition(fullMatrix(:,label_column),'KFold',2);
+    c = cvpartition(fullMatrix(:,label_column),'KFold',numFold);
     trainBinary=training(c,1);
     testBinary=test(c,1);
     
@@ -68,8 +82,10 @@ for i=1:numRip
     real_results = fullMatrix(testSetRange, label_column);
     [results, accuracy, decision_values] = svmpredict(real_results,testSet,model); 
     
+    
     resultROC(:,i)=results;
     result_realROC(:,i)=real_results;
+    
     
     
     for j=1:numRip
@@ -84,6 +100,7 @@ for i=1:numRip
         end
     ROC(1,j)=veriPositivi;
     ROC(2,j)=falsiPositivi;
+    ROC(3,j)=(veriPositivi/(veriPositivi+falsiPositivi))*100;
     end
     
     
@@ -91,13 +108,5 @@ for i=1:numRip
     clear test train c;
 end
 
-
 total_accuracy = total_accuracy/numRip;
-% for j=1:num_classes
-%     class_accuracy(j) = class_accuracy(j)/numRip;
-% end
-
-
-
-
 end
