@@ -10,9 +10,8 @@ if isOctave
 end
 
 addpath(genpath('..'));
-
 numRip=100;
-numFold=3;
+numFold=5;
 
 
 
@@ -23,9 +22,13 @@ if  strcmp(classificationType,'first')==1
    load 'fullMatrix1scaling.mat' fullMatrix;
    end
    %fullMatrix = FeaturesFirstClassifier(labelsPath, dataPath);
-   %featuresRange= 3:7;
-   featuresRange = [6 5 3];
+   featuresRange= 3:7;
+   %featuresRange = [6 5 3];
    label_column = 8;
+   ConfusionMatrix=zeros(3,3,'double');
+   cavi=find(fullMatrix(:, label_column)==1);
+   piatti=find(fullMatrix(:, label_column)==2);
+   normali=find(fullMatrix(:, label_column)==3);
 
 
 elseif strcmp(classificationType,'second')==1
@@ -35,18 +38,24 @@ elseif strcmp(classificationType,'second')==1
    load 'fullMatrix2scaling.mat' fullMatrix;
    end
     %fullMatrix = FeaturesSecondClassifier(labelsPath, dataPath);
-    %featuresRange = 2:6;
-    featuresRange = [6 5 4];
+    %featuresRange = 3:6;
+    featuresRange = [5 6];
     label_column = 7;
+    ConfusionMatrix=zeros(2,2,'double');
+    valgo=find(fullMatrix(:, label_column)==1);
+    normali=find(fullMatrix(:, label_column)==2);
 end
 
-figure
-
-app=find(fullMatrix(:, label_column)==1);
-plot(fullMatrix(app,5),fullMatrix(app,6),'or');
-hold on
-app2=find(fullMatrix(:, label_column)==2);
-plot(fullMatrix(app2,5),fullMatrix(app2,6),'og');
+% figure
+% 
+% app=find(fullMatrix(:, label_column)==1);
+% plot(fullMatrix(app,5),fullMatrix(app,6),'or');
+% hold on
+% app2=find(fullMatrix(:, label_column)==2);
+% plot(fullMatrix(app2,5),fullMatrix(app2,6),'og');
+% 
+% app2=find(fullMatrix(:, label_column)==3);
+% plot(fullMatrix(app2,5),fullMatrix(app2,6),'ob');
 
 total_accuracy = 0;
 num_classes = length(unique(fullMatrix(:,label_column)));
@@ -56,7 +65,10 @@ class_accuracy = zeros(num_classes, 1);
  c = cvpartition(fullMatrix(:,label_column),'KFold',numFold);
  trainBinary=training(c,1);
  testBinary=test(c,1);   
+ 
+ 
  trainingSetRange = find(trainBinary)';
+ %%%
  testSetRange=find(testBinary)';
  
  resultROC=zeros(length(testSetRange),numRip);
@@ -70,6 +82,7 @@ for i=1:numRip
     testBinary=test(c,1);
     
     trainingSetRange = find(trainBinary)';
+    %%%
     testSetRange=find(testBinary)';
 
     trainingSet = fullMatrix(trainingSetRange, featuresRange);
@@ -80,6 +93,7 @@ for i=1:numRip
     
     model = svmtrain(trainLabel,trainingSet);
     real_results = fullMatrix(testSetRange, label_column);
+    %%%
     [results, accuracy, decision_values] = svmpredict(real_results,testSet,model); 
     
     
@@ -106,7 +120,10 @@ for i=1:numRip
     
     total_accuracy = total_accuracy + accuracy(1);
     clear test train c;
+    confusionmat(results,real_results)
+    ConfusionMatrix = ConfusionMatrix+confusionmat(results,real_results);
 end
 
+ConfusionMatrix=idivide(int32(ConfusionMatrix),int32(numRip))
 total_accuracy = total_accuracy/numRip;
 end
