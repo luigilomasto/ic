@@ -10,7 +10,6 @@ if isOctave
 end
 
 addpath(genpath('..'));
-numRip=100;
 
 if  strcmp(classificationType,'first')==1
     if strcmp(typeNormalization,'standard')==1
@@ -81,6 +80,7 @@ for i=-10:10
         confusionmat(results,real_results)
         vectorAccuracy(j+2,i+11)=accuracy(1);
     end
+    
     avarage_accuracy=avarage_accuracy/numFold;
     total_accuracy = total_accuracy + accuracy(1);
     vectorAccuracy(1,i+11)=i;
@@ -90,12 +90,32 @@ for i=-10:10
     ConfusionMatrix = ConfusionMatrix+confusionmat(results,real_results);
 end
 
-
+for i=1:21
+    x = vectorAccuracy(3:numFold+2,i);
+    s=var(x);
+    y = gaussmf(x, [s vectorAccuracy(2,i)]); 
+    plot(x,y);
+    hold on
+end
 
 %FASE DI TEST
-[M,I] = max(vectorAccuracy(2,:));
-c_coefficient=vectorAccuracy(1,I);
-c_coefficient=10^c_coefficient;
+actualP=1;
+actualC=1;
+for i=1:20
+    x = vectorAccuracy(3:numFold+2,i);
+    y = vectorAccuracy(3:numFold+2,i+1);
+    [h,p] = ttest2(x,y);
+    if(p<actualP)
+        actualP=p;
+        if(vectorAccuracy(2:i)>vectorAccuracy(2,i+1))
+            actualC=vectorAccuracy(1,i);
+        else
+            actualC=vectorAccuracy(1,i+1);
+        end
+    end
+end
+
+c_coefficient=10^actualC;
 setup=sprintf('-c %d', c_coefficient);
 
 trainingSet = fullMatrix(firstTrainingSetRange, featuresRange);
