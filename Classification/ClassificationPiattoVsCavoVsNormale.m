@@ -1,5 +1,5 @@
 
-function [total_accuracy,results,real_results,resultROC,result_realROC,ROC] = ClassificationPiattoVsCavoVsNormale (classificationType,typeNormalization)
+function [total_accuracy,results,real_results,resultROC,result_realROC,ROC,vectorAccuracy] = ClassificationPiattoVsCavoVsNormale (classificationType,typeNormalization)
 
 labelsPath = '../labels.csv';
 dataPath = '../DatiPreprocessed/';
@@ -11,9 +11,6 @@ end
 
 addpath(genpath('..'));
 numRip=100;
-numFold=5;
-
-
 
 if  strcmp(classificationType,'first')==1
    if strcmp(typeNormalization,'standard')==1
@@ -29,7 +26,7 @@ if  strcmp(classificationType,'first')==1
    cavi=find(fullMatrix(:, label_column)==1);
    piatti=find(fullMatrix(:, label_column)==2);
    normali=find(fullMatrix(:, label_column)==3);
-
+    numFold=5;
 
 elseif strcmp(classificationType,'second')==1
    if strcmp(typeNormalization,'scaling')==1
@@ -44,6 +41,7 @@ elseif strcmp(classificationType,'second')==1
     ConfusionMatrix=zeros(2,2,'double');
     valgo=find(fullMatrix(:, label_column)==1);
     normali=find(fullMatrix(:, label_column)==2);
+    numFold=10;
 end
 
 % figure
@@ -75,6 +73,7 @@ class_accuracy = zeros(num_classes, 1);
  result_realROC=zeros(length(testSetRange),numRip);
  ROC=zeros(3,numRip);
  clear test train c;
+ vectorAccuracy=zeros(1,numRip);
  
 for i=1:numRip
     c = cvpartition(fullMatrix(:,label_column),'KFold',numFold);
@@ -119,6 +118,7 @@ for i=1:numRip
     
     
     total_accuracy = total_accuracy + accuracy(1);
+    vectorAccuracy(1,i)=accuracy(1);
     clear test train c;
     confusionmat(results,real_results)
     ConfusionMatrix = ConfusionMatrix+confusionmat(results,real_results);

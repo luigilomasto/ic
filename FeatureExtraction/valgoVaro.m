@@ -39,7 +39,7 @@ distanceBoundRight = right_bound-puntoMaxPressione;
 approssimated=abs(centroTallone-puntoMaxPressione);
 diffPosition=centroTallone-puntoMaxPressione;
 
-if(abs(centroTallone-puntoMaxPressione)<8)
+if(abs(centroTallone-puntoMaxPressione)<10)
     approssimated=0;
 
 end
