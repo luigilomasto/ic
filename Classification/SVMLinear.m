@@ -1,5 +1,5 @@
 
-function [total_accuracy,results,real_results,vectorAccuracy,c_coefficient] = FirstClassifier (classificationType,typeNormalization)
+function [total_accuracy,results,real_results,vectorAccuracy,c_coefficient] = SVMLinear (classificationType,typeNormalization)
 
 labelsPath = '../labels.csv';
 dataPath = '../DatiPreprocessed/';
@@ -18,11 +18,11 @@ if  strcmp(classificationType,'first')==1
         load 'fullMatrix1scaling.mat' fullMatrix;
     end
     %fullMatrix = FeaturesFirstClassifier(labelsPath, dataPath);
-    featuresRange= 3:7;
-    %featuresRange = [6 5 3];
+    %featuresRange= 3:7;
+    %featuresRange = [3 5];
     label_column = 8;
     ConfusionMatrix=zeros(3,3,'double');
-    numFold=5;
+    numFold=2;
     
     
 elseif strcmp(classificationType,'second')==1
@@ -32,8 +32,8 @@ elseif strcmp(classificationType,'second')==1
         load 'fullMatrix2scaling.mat' fullMatrix;
     end
     %fullMatrix = FeaturesSecondClassifier(labelsPath, dataPath);
-    featuresRange = 3:6;
-    %featuresRange = [5 6];
+    %featuresRange = 3:6;
+    featuresRange = [3 4];
     label_column = 7;
     ConfusionMatrix=zeros(2,2,'double');
     numFold=10;
@@ -90,13 +90,6 @@ for i=-10:10
     ConfusionMatrix = ConfusionMatrix+confusionmat(results,real_results);
 end
 
-for i=1:21
-    x = vectorAccuracy(3:numFold+2,i);
-    s=var(x);
-    y = gaussmf(x, [s vectorAccuracy(2,i)]); 
-    plot(x,y);
-    hold on
-end
 
 %FASE DI TEST
 actualP=1;
@@ -116,7 +109,7 @@ for i=1:20
 end
 
 c_coefficient=10^actualC;
-setup=sprintf('-c %d', c_coefficient);
+setup=sprintf('-c %d', 10);
 
 trainingSet = fullMatrix(firstTrainingSetRange, featuresRange);
 testSet=fullMatrix(firstTestSetRange, featuresRange);
