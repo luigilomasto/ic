@@ -13,14 +13,14 @@ addpath(genpath('..'));
 
 if  strcmp(classificationType,'first')==1
     if strcmp(typeNormalization,'standard')==1
-        load 'fullMatrix1standard.mat' fullMatrix;
+        load 'fullMatrix1standard_new.mat' fullMatrix;
     else
-        load 'fullMatrix1scaling.mat' fullMatrix;
+        load 'fullMatrix1scaling_new.mat' fullMatrix;
     end
     %fullMatrix = FeaturesFirstClassifier(labelsPath, dataPath);
-    %featuresRange= 3:7;
+    featuresRange= 3:8;
     %featuresRange = [3 5];
-    label_column = 8;
+    label_column = 9;
     ConfusionMatrix=zeros(3,3,'double');
     numFold=5;
     
@@ -56,7 +56,7 @@ trainMatrix = fullMatrix(firstTrainingSetRange, :);
 clear test train c;
 vectorAccuracy=zeros(2+numFold,21); % la prima riga avrà l'esponente, la seconda la media, e le restanti avranno le accuratezze
 
-for i=-10:10
+for i=-3:3
     c_coefficient=10^i;
     setup=sprintf('-c %d', c_coefficient);
     
@@ -94,21 +94,24 @@ end
 %FASE DI TEST
 
 actualC=1;
+actualAccuracy=1;
 for i=1:20
     x = vectorAccuracy(3:numFold+2,i);
     y = vectorAccuracy(3:numFold+2,i+1);
     [h] = ttest2(x,y);
     if(h==1)
-        if(vectorAccuracy(2:i)>vectorAccuracy(2,i+1) & vectorAccuracy(2:i)>actualC)
+        if(vectorAccuracy(2,i)>vectorAccuracy(2,i+1) & vectorAccuracy(2,i)>actualAccuracy)
             actualC=vectorAccuracy(1,i);
-        elseif(vectorAccuracy(2:i+1)>vectorAccuracy(2,i) & vectorAccuracy(2:i+1)>actualC)
+            actualAccuracy=vectorAccuracy(2,i);
+        elseif(vectorAccuracy(2,i+1)>vectorAccuracy(2,i) & vectorAccuracy(2,i+1)>actualAccuracy)
             actualC=vectorAccuracy(1,i+1);
+            actualAccuracy=vectorAccuracy(2,i+1);
         end
     end
 end
 
 c_coefficient=10^actualC;
-setup=sprintf('-c %d', 10);
+setup=sprintf('-c %f', c_coefficient);
 
 trainingSet = fullMatrix(firstTrainingSetRange, featuresRange);
 testSet=fullMatrix(firstTestSetRange, featuresRange);
@@ -120,7 +123,7 @@ real_results = fullMatrix(firstTestSetRange, label_column);
 
 total_accuracy = accuracy(1);
 
-confusionmat(results,real_results);
+confusionmat(results,real_results)
 
 end
 

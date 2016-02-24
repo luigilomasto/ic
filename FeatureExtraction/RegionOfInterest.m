@@ -1,4 +1,4 @@
-function [lengthMinIstmo,lengthMaxAvampiede,lengthMediaIstmo,indicePatologia,mediumPressure] = RegionOfInterest(pathImage_bn)
+function [lengthMinIstmo,lengthMaxAvampiede,lengthMediaIstmo,indicePatologia,mediumPressure,indexPressure] = RegionOfInterest(pathImage_bn)
 
 
 isOctave = exist('OCTAVE_VERSION', 'builtin') ~= 0;
@@ -12,6 +12,16 @@ addpath(genpath('..'));
 piedeValue= im2double(imread(pathImage_bn));
 
 [num_rows,num_cols] = size(piedeValue);
+
+numberOfTotalPixel=num_rows*num_cols;
+numberOfPixelPressed=0;
+
+for i=1:num_rows
+    numberOfPixelPressed=numberOfPixelPressed+sum(piedeValue(i,1:num_cols)>0);
+end
+
+indexPressure=numberOfPixelPressed/numberOfTotalPixel;
+
 metaPiede=idivide(int32(num_rows),2,'round');
 
 [maxPressureTallone, rectangleTallone] = findCentreOfMaxPressure(piedeValue, true);
