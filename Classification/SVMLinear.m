@@ -1,5 +1,5 @@
 
-function [total_accuracy,results,real_results,vectorAccuracy,c_coefficient] = SVMLinear (classificationType,typeNormalization)
+function [total_accuracy,results,real_results,vectorAccuracy,c_coefficient] = SVMLinear (classificationType,typeNormalization,featuresRange)
 
 labelsPath = '../labels.csv';
 dataPath = '../DatiPreprocessed/';
@@ -22,7 +22,7 @@ if  strcmp(classificationType,'first')==1
     %featuresRange = [3 5];
     label_column = 8;
     ConfusionMatrix=zeros(3,3,'double');
-    numFold=2;
+    numFold=5;
     
     
 elseif strcmp(classificationType,'second')==1
@@ -33,7 +33,7 @@ elseif strcmp(classificationType,'second')==1
     end
     %fullMatrix = FeaturesSecondClassifier(labelsPath, dataPath);
     %featuresRange = 3:6;
-    featuresRange = [3 4];
+    %featuresRange = [3 4];
     label_column = 7;
     ConfusionMatrix=zeros(2,2,'double');
     numFold=10;
@@ -77,7 +77,7 @@ for i=-10:10
         real_results = trainMatrix(testSetRange, label_column);
         [results, accuracy, decision_values] = svmpredict(real_results,testSet,model);
         avarage_accuracy=avarage_accuracy+accuracy(1);
-        confusionmat(results,real_results)
+        confusionmat(results,real_results);
         vectorAccuracy(j+2,i+11)=accuracy(1);
     end
     
@@ -92,17 +92,16 @@ end
 
 
 %FASE DI TEST
-actualP=1;
+
 actualC=1;
 for i=1:20
     x = vectorAccuracy(3:numFold+2,i);
     y = vectorAccuracy(3:numFold+2,i+1);
-    [h,p] = ttest2(x,y);
-    if(p<actualP)
-        actualP=p;
-        if(vectorAccuracy(2:i)>vectorAccuracy(2,i+1))
+    [h] = ttest2(x,y);
+    if(h==1)
+        if(vectorAccuracy(2:i)>vectorAccuracy(2,i+1) & vectorAccuracy(2:i)>actualC)
             actualC=vectorAccuracy(1,i);
-        else
+        elseif(vectorAccuracy(2:i+1)>vectorAccuracy(2,i) & vectorAccuracy(2:i+1)>actualC)
             actualC=vectorAccuracy(1,i+1);
         end
     end
@@ -121,7 +120,7 @@ real_results = fullMatrix(firstTestSetRange, label_column);
 
 total_accuracy = accuracy(1);
 
-confusionmat(results,real_results)
+confusionmat(results,real_results);
 
 end
 
