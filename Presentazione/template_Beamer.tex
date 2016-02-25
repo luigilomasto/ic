@@ -29,8 +29,8 @@
 \section{Introduzione al problema}
 
 \begin{frame}
-	\frametitle{Definizione}
-    Il lavoro svolto ha avuto come obiettivo quello di addestrare un'classificatore in modo da classificare successivamente i piedi in base alle seguenti patologie: 
+	\frametitle{Il problema}
+	Dato un insieme di immagini piedebarometriche, classificare automaticamente le seguenti patologie:
 	\newline
 	 \begin{itemize}
 	\item Cavo
@@ -61,12 +61,13 @@
 		\item 88 Valghi
 		\item 102 Normali
 	\end{itemize}
-	per la seconda classe di patologie. In quest'utlima non sono presenti piedi vari.
+	per la seconda classe di patologie.
 \end{frame}
-\section{Preprocessing del dataset}
+
+\section{Preprocessing}
 \begin{frame}
-	\frametitle{Preprocessing dei dati}
-	Prima di estrarre le features è stata necessaria una fase di preprocessing per memorizzare le immagini in matrici. Di seguito sono elencate le fasi di lavoro svolte per il preprocessing.
+	\frametitle{Panoramica}
+	Nella fase di preprocessing, abbiamo eseguito le seguenti operazioni.
 	\begin{itemize}
 		\item Conversione delle immagini .bmp in .png.
 		\item Pulizia delle immagini (rimozione del baricentro).
@@ -74,9 +75,40 @@
 		\item Rotazione e ritaglio dei piedi.
 	\end{itemize}
 	\centering
-	 \includegraphics[keepaspectratio,height=80px]{immagini/0_cleared.png} 
-	 \includegraphics[keepaspectratio,height=80px]{immagini/sin.png}
-	 \includegraphics[keepaspectratio,height=80px]{immagini/des.png}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Trasformazione delle immagini}
+	\begin{itemize}
+		\item Trasformazione da uno spazio 3D (R,G,B) ad uno spazio 1D.
+		\item Necessaria per valutare la pressione in un pixel dell'immagine.
+		\item Problema: Come associare ad ogni tripla (R,G,B) il valore di intensit\'a corretto?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Prima soluzione}
+	\begin{itemize}
+		\item Clustering sulle immagini.
+		\item Trovati i centroidi, sostituire ogni pixel dell'immagine con il rappresentante del proprio cluster.
+		\item Ordinare i centroidi per intensit\'a crescente e associare valori compresi tra 0 e 1.
+		\item Problemi: Trovare il k adatto, trovare un ordinamento per i cluster.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Soluzione definitiva}
+	\begin{itemize}
+		\item Variante della prima soluzione.
+		\item Possibile grazie alla scala colorata delle pressioni fornita dal medico.
+	\end{itemize}
+	\begin{center}
+		\includegraphics[keepaspectratio,width=300px]{immagini/color.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	
 \end{frame}
 
 \section{Features extraction}
