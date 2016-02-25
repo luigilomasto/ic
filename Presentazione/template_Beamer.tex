@@ -72,10 +72,12 @@
 		\item Conversione delle immagini .bmp in .png.
 		\item Pulizia delle immagini (rimozione del baricentro).
 		\item Trasformazione delle immagini in scala di grigio.
-		\item Rotazione e ritaglio dei piedi.
+		\item Divisione, rotazione e cropping dei piedi.
 	\end{itemize}
 	\centering
 \end{frame}
+
+\subsection{Trasformazione delle immagini}
 
 \begin{frame}
 	\frametitle{Trasformazione delle immagini}
@@ -107,8 +109,23 @@
 	\end{center}
 \end{frame}
 
+\subsection{Divisione, rotazione e cropping delle immagini}
+
 \begin{frame}
-	
+	\frametitle{Rotazione e cropping delle immagini}	
+	\begin{itemize}
+		\item La divisione \'e stata necessaria per separare piede destro da piede sinistro.
+		\item La rotazione non \'e strettamente necessaria.
+		\item Il cropping rimuove la parte di sfondo superflua.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Rotazione del piede}
+	Per ruotare il piede abbiamo utilizzato un algoritmo molto semplice:
+	\begin{enumerate}
+		\item Abbiamo trovato il centro
+	\end{enumerate}
 \end{frame}
 
 \section{Features extraction}
