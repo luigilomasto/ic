@@ -13,14 +13,14 @@ addpath(genpath('..'));
 
 if  strcmp(classificationType,'first')==1
     if strcmp(typeNormalization,'standard')==1
-        load 'fullMatrix1standard.mat' fullMatrix;
+        load 'fullMatrix1standard_new.mat' fullMatrix;
     else
-        load 'fullMatrix1scaling.mat' fullMatrix;
+        load 'fullMatrix1scaling_new.mat' fullMatrix;
     end
     %fullMatrix = FeaturesFirstClassifier(labelsPath, dataPath);
-    %featuresRange= 3:7;
+    %featuresRange= 3:11;
     %featuresRange = [3 5];
-    label_column = 8;
+    label_column = 12;
     ConfusionMatrix=zeros(3,3,'double');
     numFold=5;
     
@@ -47,6 +47,7 @@ class_accuracy = zeros(num_classes, 1);
 %for s=1:100
 %%divido il dataset in training e test
 c = cvpartition(fullMatrix(:,label_column),'KFold',numFold);
+
 firstTrainBinary=training(c,1);
 firstTestBinary=test(c,1);
 firstTrainingSetRange = find(firstTrainBinary)';

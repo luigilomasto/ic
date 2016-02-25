@@ -18,9 +18,9 @@ if  strcmp(classificationType,'first')==1
         load 'fullMatrix1scaling_new.mat' fullMatrix;
     end
     %fullMatrix = FeaturesFirstClassifier(labelsPath, dataPath);
-    featuresRange= 3:8;
+    %featuresRange= 3:11;
     %featuresRange = [3 5];
-    label_column = 9;
+    label_column = 12;
     ConfusionMatrix=zeros(3,3,'double');
     numFold=5;
     
@@ -123,7 +123,13 @@ real_results = fullMatrix(firstTestSetRange, label_column);
 
 total_accuracy = accuracy(1);
 
-confusionmat(results,real_results)
 
+ConfusionMat=zeros(3,3);    
+ConfusionMat=confusionmat(results,real_results)
+
+% if (ConfusionMat(2,2)==2)
+%     featuresRange
+%     
+% end
 end
 

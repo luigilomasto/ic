@@ -1,0 +1,9 @@
+\beamer@endinputifotherversion {3.36pt}
+\select@language {italian}
+\select@language {italian}
+\beamer@sectionintoc {1}{Introduzione al problema}{3}{0}{1}
+\beamer@sectionintoc {2}{Dataset}{5}{0}{2}
+\beamer@sectionintoc {3}{Preprocessing del dataset}{6}{0}{3}
+\beamer@sectionintoc {4}{Features extraction}{7}{0}{4}
+\beamer@subsectionintoc {4}{1}{Features primo classificatore}{8}{0}{4}
+\beamer@subsectionintoc {4}{2}{Features secondo classificatore}{10}{0}{4}

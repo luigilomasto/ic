@@ -1,6 +1,6 @@
 classificationType = 'first';
 typeNormalization = 'standard';
-featuresRange = 3:8;
+featuresRange = [3 5 11];
 labelsPath = '../labels.csv';
 dataPath = '../DatiPreprocessed/';
 
@@ -20,7 +20,7 @@ if  strcmp(classificationType,'first')==1
     %fullMatrix = FeaturesFirstClassifier(labelsPath, dataPath);
     %featuresRange= 3:7;
     %featuresRange = [3 5];
-    label_column = 9;
+    label_column = 12;
     ConfusionMatrix=zeros(3,3,'double');
     numFold=190;
     
@@ -45,20 +45,19 @@ num_classes = length(unique(fullMatrix(:,label_column)));
 class_accuracy = zeros(num_classes, 1);
 
 detected = 0;
-%%divido il dataset in training e test
 result_classes = zeros(numFold,1);
 real_results_classes = zeros(numFold,1);
 index = 1;
-c = cvpartition(fullMatrix(:,label_column),'KFold',numFold);
+c = cvpartition(length(fullMatrix(:,label_column)), 'LeaveOut');
 for j=1:numFold
 firstTrainBinary=training(c,j);
 firstTestBinary=test(c,j);
 firstTrainingSetRange = find(firstTrainBinary)';
 firstTestSetRange=find(firstTestBinary)';
 testMatrix = fullMatrix(firstTestSetRange, :);
-real_result = testMatrix(:,9);
+real_result = testMatrix(:,label_column);
 trainMatrix = fullMatrix(firstTrainingSetRange, :);
-trainLabel = trainMatrix(:,9);
+trainLabel = trainMatrix(:,label_column);
 model = svmtrain(trainLabel,trainMatrix);
 result = svmpredict(real_result,testMatrix,model);
 result_classes(index) = result;

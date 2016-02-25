@@ -1,4 +1,4 @@
-function [lengthMinIstmo,lengthMaxAvampiede,lengthMediaIstmo,indicePatologia,mediumPressure,indexPressure] = RegionOfInterest(pathImage_bn)
+function [lengthMinIstmo,lengthMaxAvampiede,lengthMediaIstmo,indicePatologia,mediumPressure,indexPressure,media_istmo,skew_istmo,var_istmo] = RegionOfInterest(pathImage_bn)
 
 
 isOctave = exist('OCTAVE_VERSION', 'builtin') ~= 0;
@@ -15,10 +15,12 @@ piedeValue= im2double(imread(pathImage_bn));
 
 numberOfTotalPixel=num_rows*num_cols;
 numberOfPixelPressed=0;
+sumPressure=0;
 
 for i=1:num_rows
     numberOfPixelPressed=numberOfPixelPressed+sum(piedeValue(i,1:num_cols)>0);
 end
+
 
 indexPressure=numberOfPixelPressed/numberOfTotalPixel;
 
@@ -54,6 +56,7 @@ maxIstmoTallone=metaPiede;
 minIstmoTallone=metaPiede;
 
 for i=metaPiede:-1:positionMaxPressureAvampiede
+    
     length = sum(piedeValue(i, left_bound:right_bound) > 0);
     
     if sum(piedeValue(minIstmoAvampiede,left_bound:right_bound)>0)>length
@@ -65,7 +68,14 @@ for i=metaPiede:-1:positionMaxPressureAvampiede
     end
 end
 
+pixel_istmo = piedeValue(positionMaxPressureAvampiede:positionMaxPressureTallone, 1:num_cols);
+
+media_istmo = mean(pixel_istmo(:));
+skew_istmo = skewness(pixel_istmo(:));
+var_istmo=var(pixel_istmo(:));
 for i=metaPiede:positionMaxPressureTallone
+    
+    
     length = sum(piedeValue(i, left_bound:right_bound) > 0);
     if sum(piedeValue(minIstmoTallone,left_bound:right_bound)>0)>length
         minIstmoTallone=i;
@@ -75,6 +85,10 @@ for i=metaPiede:positionMaxPressureTallone
         maxIstmoTallone=i;
     end
 end
+
+
+
+
 
 if(sum(piedeValue(minIstmoAvampiede,left_bound:right_bound)>0)>sum(piedeValue(minIstmoTallone,left_bound:right_bound)>0))
     minIstmo=minIstmoTallone;

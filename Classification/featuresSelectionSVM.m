@@ -1,7 +1,7 @@
 function [ featuresMatrix ] = featuresSelectionSVM(classificationType,typeNormalization,classifierType)
 
 if  strcmp(classificationType,'first')==1
-    featuresRange= 3:8;
+    featuresRange= [3 5 11];
     
 elseif strcmp(classificationType,'second')==1
     featuresRange = 3:6;
@@ -31,8 +31,12 @@ for i=1:length(featuresRange)
         end
         
         featuresMatrix(index,length(featuresRange)+1) = total_accuracy;
-        tempVector=combos(j,:)-2;
-        featuresMatrix(index,tempVector)=1;
+        %per scalare le features
+        %tempVector=combos(j,:)-2;
+        for s=1:length(combos(j,:))
+            val=combos(j,s)
+            featuresMatrix(index,find(featuresRange == val))=1;
+        end
         index=index+1;
         
     end
