@@ -1,5 +1,5 @@
 
-function [total_accuracy,results,real_results,vectorAccuracy,c_coefficient, d_coefficient] = SVMPolynomial (classificationType,typeNormalization,featuresRange)
+function [total_accuracy,results,real_results,vectorAccuracy,c_coefficient, d_coefficient, percClass1, percClass2, percClass3] = SVMPolynomial (classificationType,typeNormalization,featuresRange)
 
 labelsPath = '../labels.csv';
 dataPath = '../DatiPreprocessed/';
@@ -137,7 +137,21 @@ real_results = fullMatrix(firstTestSetRange, label_column);
 
 total_accuracy = accuracy(1);
 
-confusionmat(results,real_results)
+percClass1=0;
+percClass2=0;
+percClass3=0;
+if(strcmp(classificationType,'first')==1)
+    ConfusionMat=zeros(3,3);
+    ConfusionMat=confusionmat(results,real_results);
+    percClass1=(ConfusionMat(1,1)/sum(ConfusionMat(:,1)))*100;
+    percClass2=(ConfusionMat(2,2)/sum(ConfusionMat(:,2)))*100;
+    percClass3=(ConfusionMat(3,3)/sum(ConfusionMat(:,3)))*100;
+elseif(strcmp(classificationType,'second')==1)
+    ConfusionMat=zeros(2,2);
+    ConfusionMat=confusionmat(results,real_results);
+    percClass1=(ConfusionMat(1,1)/sum(ConfusionMat(:,1)))*100;
+    percClass2=(ConfusionMat(2,2)/sum(ConfusionMat(:,2)))*100;
+end
 
 end
 

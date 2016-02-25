@@ -33,8 +33,8 @@ for i=1:numImage
 	indexMatrix = indexMatrix + 1;
 end
 
-firstFeatureIndex = 2;
-lastFeatureIndex = 3;
+firstFeatureIndex = 3;
+lastFeatureIndex = 6;
 
 matrix(:, firstFeatureIndex:lastFeatureIndex) = StatisticalNormaliz(matrix(:, firstFeatureIndex:lastFeatureIndex), 'scaling');
 

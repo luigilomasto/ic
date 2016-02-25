@@ -1,5 +1,5 @@
 
-function [total_accuracy,results,real_results,vectorAccuracy,c_coefficient] = SVMLinear (classificationType,typeNormalization,featuresRange)
+function [total_accuracy,results,real_results,vectorAccuracy,c_coefficient,percClass1,percClass2,percClass3] = SVMLinear (classificationType,typeNormalization,featuresRange)
 
 labelsPath = '../labels.csv';
 dataPath = '../DatiPreprocessed/';
@@ -10,6 +10,7 @@ if isOctave
 end
 
 addpath(genpath('..'));
+
 
 if  strcmp(classificationType,'first')==1
     if strcmp(typeNormalization,'standard')==1
@@ -36,7 +37,7 @@ elseif strcmp(classificationType,'second')==1
     %featuresRange = [3 4];
     label_column = 7;
     ConfusionMatrix=zeros(2,2,'double');
-    numFold=10;
+    numFold=5;
     
 end
 
@@ -54,9 +55,10 @@ firstTestSetRange=find(firstTestBinary)';
 trainMatrix = fullMatrix(firstTrainingSetRange, :);
 
 clear test train c;
-vectorAccuracy=zeros(2+numFold,21); % la prima riga avrà l'esponente, la seconda la media, e le restanti avranno le accuratezze
-
-for i=-3:3
+c_coefficient_range = -3:3;
+vectorAccuracy=zeros(2+numFold, length(c_coefficient_range)); % la prima riga avrà l'esponente, la seconda la media, e le restanti avranno le accuratezze
+index = 1;
+for i=c_coefficient_range
     c_coefficient=10^i;
     setup=sprintf('-c %d', c_coefficient);
     
@@ -78,13 +80,15 @@ for i=-3:3
         [results, accuracy, decision_values] = svmpredict(real_results,testSet,model);
         avarage_accuracy=avarage_accuracy+accuracy(1);
         confusionmat(results,real_results);
-        vectorAccuracy(j+2,i+11)=accuracy(1);
+        %j+2 perche' le prime due righe sono occupate
+        vectorAccuracy(j+2,index)=accuracy(1);
     end
     
     avarage_accuracy=avarage_accuracy/numFold;
     total_accuracy = total_accuracy + accuracy(1);
-    vectorAccuracy(1,i+11)=i;
-    vectorAccuracy(2,i+11)=avarage_accuracy;
+    vectorAccuracy(1,index)=i;
+    vectorAccuracy(2,index)=avarage_accuracy;
+    index = index + 1;
     clear test train c;
     confusionmat(results,real_results);
     ConfusionMatrix = ConfusionMatrix+confusionmat(results,real_results);
@@ -95,7 +99,7 @@ end
 
 actualC=1;
 actualAccuracy=1;
-for i=1:20
+for i=1:length(c_coefficient_range)-1
     x = vectorAccuracy(3:numFold+2,i);
     y = vectorAccuracy(3:numFold+2,i+1);
     [h] = ttest2(x,y);
@@ -122,14 +126,23 @@ real_results = fullMatrix(firstTestSetRange, label_column);
 [results, accuracy, decision_values] = svmpredict(real_results,testSet,model);
 
 total_accuracy = accuracy(1);
+percClass1=0;
+percClass2=0;
+percClass3=0;
+if(strcmp(classificationType,'first')==1)
+    ConfusionMat=zeros(3,3);
+    ConfusionMat=confusionmat(results,real_results);
+    percClass1=(ConfusionMat(1,1)/sum(ConfusionMat(:,1)))*100;
+    percClass2=(ConfusionMat(2,2)/sum(ConfusionMat(:,2)))*100;
+    percClass3=(ConfusionMat(3,3)/sum(ConfusionMat(:,3)))*100;
+elseif(strcmp(classificationType,'second')==1)
+    ConfusionMat=zeros(2,2);
+    ConfusionMat=confusionmat(results,real_results);
+    percClass1=(ConfusionMat(1,1)/sum(ConfusionMat(:,1)))*100;
+    percClass2=(ConfusionMat(2,2)/sum(ConfusionMat(:,2)))*100;
+end
 
+ConfusionMat
 
-ConfusionMat=zeros(3,3);    
-ConfusionMat=confusionmat(results,real_results)
-
-% if (ConfusionMat(2,2)==2)
-%     featuresRange
-%     
-% end
 end
 
