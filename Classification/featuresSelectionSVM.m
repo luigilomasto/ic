@@ -1,7 +1,7 @@
 function [ featuresMatrix ] = featuresSelectionSVM(classificationType,typeNormalization,classifierType)
 
 if  strcmp(classificationType,'first')==1
-    featuresRange= [3 5 11];
+    featuresRange= 3:11;
     
 elseif strcmp(classificationType,'second')==1
     featuresRange = 3:6;
