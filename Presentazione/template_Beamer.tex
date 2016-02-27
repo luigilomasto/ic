@@ -194,7 +194,7 @@ immagine
 	\end{itemize}
 	Sottoinsiemi valutati:
 	\begin{itemize}
-		\item 511 per il primo classificatore.
+		\item 31 per il primo classificatore.
 		\item 15 per il secondo classificatore.
 	\end{itemize}
 	
@@ -218,9 +218,29 @@ immagine
 	  	
 	  	Il sottoinsieme scelto è quello con accuratezza totale media  più alta.
 	  
-	
 \end{frame}
 \section{Scelta dei classificatori}
+
+\begin{frame}
+	\frametitle{SVM Gaussiano (Radial-Basis-Function) (1/2)}
+  Classificatore usato: \textbf{SVM Gaussiano (Radial-Basis-Function)}.\newline \newline
+  Scelta dovuta ai seguenti motivi :
+  	\begin{itemize}
+  		\item RBF ben di adatta a problemi di classificazione dove il dataset è significativamente più grande rispetto al numero di dimensioni.
+  		\item Reti Neurali troppo complesse per il problema affrontato.
+  		\item SVM lineare generalmente usato quando si ha alta dimensionalità. 
+  	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{SVM Gaussiano (Radial-Basis-Function) (2/2)}
+	L' RBF è uno dei kernel più popolari. Esso aggiunge un "bump" attorno a ciascun punto di dati. \newline  \newline
+    E' espresso come: $ f(x)= \sum\limits_{i=1}^m \alpha_{i} exp(-\gamma \(|| x_{i} - x ||\)^{2}) + b $ 
+  
+	
+\end{frame}
+	
 
 \section{Risultati}
 \section{Conclusioni}

@@ -11,3 +11,4 @@
 \beamer@subsectionintoc {4}{2}{Features secondo classificatore}{15}{0}{4}
 \beamer@sectionintoc {5}{Features Selection}{17}{0}{5}
 \beamer@sectionintoc {6}{Infrastruttura}{18}{0}{6}
+\beamer@sectionintoc {7}{Scelta dei classificatori}{19}{0}{7}

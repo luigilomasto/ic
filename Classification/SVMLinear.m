@@ -1,5 +1,5 @@
 
-function [avgTotalAccuracy,results,real_results,vectorAccuracy,avgClass1Accuracy,avgClass2Accuracy,avgClass3Accuracy, testMatrix, total_accuracy] = SVMLinear (classificationType,typeNormalization,featuresRange)
+function [avgTotalAccuracy,results,real_results,vectorAccuracy,c_coefficient,avgClass1Accuracy,avgClass2Accuracy,avgClass3Accuracy, testMatrix, total_accuracy] = SVMLinear (classificationType,typeNormalization,featuresRange)
 
 labelsPath = '../labels.csv';
 dataPath = '../DatiPreprocessed/';
