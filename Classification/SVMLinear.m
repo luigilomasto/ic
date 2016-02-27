@@ -1,5 +1,5 @@
 
-function [total_accuracy,results,real_results,vectorAccuracy,c_coefficient,percClass1,percClass2,percClass3] = SVMLinear (classificationType,typeNormalization,featuresRange)
+function [avgTotalAccuracy,results,real_results,vectorAccuracy,avgClass1Accuracy,avgClass2Accuracy,avgClass3Accuracy, testMatrix, total_accuracy] = SVMLinear (classificationType,typeNormalization,featuresRange)
 
 labelsPath = '../labels.csv';
 dataPath = '../DatiPreprocessed/';
@@ -37,15 +37,19 @@ elseif strcmp(classificationType,'second')==1
     %featuresRange = [3 4];
     label_column = 7;
     ConfusionMatrix=zeros(2,2,'double');
-    numFold=5;
+    numFold=10;
     
 end
 
 total_accuracy = 0;
 num_classes = length(unique(fullMatrix(:,label_column)));
 class_accuracy = zeros(num_classes, 1);
-
-
+numRip=1;
+avgTotalAccuracy=0;
+avgClass1Accuracy=0;
+avgClass2Accuracy=0;
+avgClass3Accuracy=0;
+for rip=1:numRip
 %%divido il dataset in training e test
 c = cvpartition(fullMatrix(:,label_column),'KFold',numFold);
 firstTrainBinary=training(c,1);
@@ -53,14 +57,17 @@ firstTestBinary=test(c,1);
 firstTrainingSetRange = find(firstTrainBinary)';
 firstTestSetRange=find(firstTestBinary)';
 trainMatrix = fullMatrix(firstTrainingSetRange, :);
+testMatrix = fullMatrix(firstTestSetRange, :);
 
 clear test train c;
 c_coefficient_range = -3:3;
 vectorAccuracy=zeros(2+numFold, length(c_coefficient_range)); % la prima riga avrà l'esponente, la seconda la media, e le restanti avranno le accuratezze
 index = 1;
+
+
 for i=c_coefficient_range
     c_coefficient=10^i;
-    setup=sprintf('-c %d', c_coefficient);
+    setup=sprintf('-c %f -t %d', c_coefficient,0);
     
     c = cvpartition(trainMatrix(:,label_column),'KFold',numFold);
     avarage_accuracy=0;
@@ -115,7 +122,7 @@ for i=1:length(c_coefficient_range)-1
 end
 
 c_coefficient=10^actualC;
-setup=sprintf('-c %f', c_coefficient);
+setup=sprintf('-c %f -t %d', c_coefficient,0);
 
 trainingSet = fullMatrix(firstTrainingSetRange, featuresRange);
 testSet=fullMatrix(firstTestSetRange, featuresRange);
@@ -142,7 +149,16 @@ elseif(strcmp(classificationType,'second')==1)
     percClass2=(ConfusionMat(2,2)/sum(ConfusionMat(:,2)))*100;
 end
 
-ConfusionMat
+avgTotalAccuracy=avgTotalAccuracy+total_accuracy;
+avgClass1Accuracy=avgClass1Accuracy+percClass1;
+avgClass2Accuracy=avgClass2Accuracy+percClass2;
+avgClass3Accuracy=avgClass3Accuracy+percClass3;
+
+end
+avgTotalAccuracy=avgTotalAccuracy/numRip;
+avgClass1Accuracy=avgClass1Accuracy/numRip;
+avgClass2Accuracy=avgClass2Accuracy/numRip;
+avgClass3Accuracy=avgClass3Accuracy/numRip;
 
 end
 

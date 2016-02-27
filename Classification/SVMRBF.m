@@ -1,5 +1,5 @@
 
-function [total_accuracy,results,real_results,vectorAccuracy,c_coefficient, gamma_coefficient,percClass1,percClass2,percClass3] = SVMRBF (classificationType,typeNormalization,featuresRange)
+function [avgTotalAccuracy,results,real_results,vectorAccuracy,avgClass1Accuracy,avgClass2Accuracy,avgClass3Accuracy] = SVMRBF (classificationType,typeNormalization,featuresRange)
 
 labelsPath = '../labels.csv';
 dataPath = '../DatiPreprocessed/';
@@ -36,7 +36,7 @@ elseif strcmp(classificationType,'second')==1
     %featuresRange = [3 4];
     label_column = 7;
     ConfusionMatrix=zeros(2,2,'double');
-    numFold=10;
+    numFold=5;
     
 end
 
@@ -44,7 +44,12 @@ total_accuracy = 0;
 num_classes = length(unique(fullMatrix(:,label_column)));
 class_accuracy = zeros(num_classes, 1);
 
-%for s=1:100
+avgTotalAccuracy=0;
+avgClass1Accuracy=0;
+avgClass2Accuracy=0;
+avgClass3Accuracy=0;
+numRip=50;
+for rip=1:numRip
 %%divido il dataset in training e test
 c = cvpartition(fullMatrix(:,label_column),'KFold',numFold);
 
@@ -64,7 +69,7 @@ for i=CRange(1):CRange(length(CRange))
     c_coefficient=10^i;
     for k=GammaRange(1):GammaRange(length(GammaRange))
         gamma=10^k;
-        setup=sprintf('-c %f -g %f' , c_coefficient, gamma);
+        setup=sprintf('-c %f -g %f -t %d' , c_coefficient, gamma, 2);
         
         c = cvpartition(trainMatrix(:,label_column),'KFold',numFold);
         avarage_accuracy=0;
@@ -124,7 +129,7 @@ end
 
 c_coefficient=10^actualC;
 gamma_coefficient=10^actualGamma;
-setup=sprintf('-c %f -g %f', c_coefficient,gamma_coefficient);
+setup=sprintf('-c %f -g %f -t %d', c_coefficient,gamma_coefficient,2);
 
 trainingSet = fullMatrix(firstTrainingSetRange, featuresRange);
 testSet=fullMatrix(firstTestSetRange, featuresRange);
@@ -151,7 +156,18 @@ elseif(strcmp(classificationType,'second')==1)
     percClass1=(ConfusionMat(1,1)/sum(ConfusionMat(:,1)))*100;
     percClass2=(ConfusionMat(2,2)/sum(ConfusionMat(:,2)))*100;
 end
-%end
+
+avgTotalAccuracy=avgTotalAccuracy+total_accuracy;
+avgClass1Accuracy=avgClass1Accuracy+percClass1;
+avgClass2Accuracy=avgClass2Accuracy+percClass2;
+avgClass3Accuracy=avgClass3Accuracy+percClass3;
+
+end
+
+avgTotalAccuracy=avgTotalAccuracy/50;
+avgClass1Accuracy=avgClass1Accuracy/numRip;
+avgClass2Accuracy=avgClass2Accuracy/numRip;
+avgClass3Accuracy=avgClass3Accuracy/numRip;
 end
 
 

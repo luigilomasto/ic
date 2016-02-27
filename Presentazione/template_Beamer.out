@@ -1,6 +1,10 @@
 \BOOKMARK [2][]{Outline0.1}{Introduzione al problema}{}% 1
 \BOOKMARK [2][]{Outline0.2}{Dataset}{}% 2
-\BOOKMARK [2][]{Outline0.3}{Preprocessing del dataset}{}% 3
-\BOOKMARK [2][]{Outline0.4}{Features extraction}{}% 4
-\BOOKMARK [3][]{Outline0.4.1.8}{Features primo classificatore}{Outline0.4}% 5
-\BOOKMARK [3][]{Outline0.4.2.10}{Features secondo classificatore}{Outline0.4}% 6
+\BOOKMARK [2][]{Outline0.3}{Preprocessing}{}% 3
+\BOOKMARK [3][]{Outline0.3.1.7}{Trasformazione delle immagini}{Outline0.3}% 4
+\BOOKMARK [3][]{Outline0.3.2.10}{Divisione, rotazione e cropping delle immagini}{Outline0.3}% 5
+\BOOKMARK [2][]{Outline0.4}{Features extraction}{}% 6
+\BOOKMARK [3][]{Outline0.4.1.13}{Features primo classificatore}{Outline0.4}% 7
+\BOOKMARK [3][]{Outline0.4.2.15}{Features secondo classificatore}{Outline0.4}% 8
+\BOOKMARK [2][]{Outline0.5}{Features Selection}{}% 9
+\BOOKMARK [2][]{Outline0.6}{Infrastruttura}{}% 10

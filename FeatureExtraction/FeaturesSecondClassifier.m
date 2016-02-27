@@ -22,7 +22,7 @@ for i=1:numImage
 	matrix(indexMatrix,7)=convert_label(labelsMatrix(i,:), true,true);
 	indexMatrix = indexMatrix + 1;
 	fullPath=strcat(imagesPath,int2str(labelsMatrix(i,1)),'_cleared_bn_right_rotated.png');
-	[diffPosition] = valgoVaro (fullPath);
+	[diffPosition,approssimated,leftDistance,rightDistance] = valgoVaro (fullPath);
 	matrix(indexMatrix,1)=labelsMatrix(i,1);
 	matrix(indexMatrix,2)=1;
 	matrix(indexMatrix,3)=diffPosition;
@@ -36,6 +36,6 @@ end
 firstFeatureIndex = 3;
 lastFeatureIndex = 6;
 
-matrix(:, firstFeatureIndex:lastFeatureIndex) = StatisticalNormaliz(matrix(:, firstFeatureIndex:lastFeatureIndex), 'scaling');
+matrix(:, firstFeatureIndex:lastFeatureIndex) = StatisticalNormaliz(matrix(:, firstFeatureIndex:lastFeatureIndex), 'standard');
 
 end

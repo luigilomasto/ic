@@ -3,7 +3,11 @@
 \select@language {italian}
 \beamer@sectionintoc {1}{Introduzione al problema}{3}{0}{1}
 \beamer@sectionintoc {2}{Dataset}{5}{0}{2}
-\beamer@sectionintoc {3}{Preprocessing del dataset}{6}{0}{3}
-\beamer@sectionintoc {4}{Features extraction}{7}{0}{4}
-\beamer@subsectionintoc {4}{1}{Features primo classificatore}{8}{0}{4}
-\beamer@subsectionintoc {4}{2}{Features secondo classificatore}{10}{0}{4}
+\beamer@sectionintoc {3}{Preprocessing}{6}{0}{3}
+\beamer@subsectionintoc {3}{1}{Trasformazione delle immagini}{7}{0}{3}
+\beamer@subsectionintoc {3}{2}{Divisione, rotazione e cropping delle immagini}{10}{0}{3}
+\beamer@sectionintoc {4}{Features extraction}{12}{0}{4}
+\beamer@subsectionintoc {4}{1}{Features primo classificatore}{13}{0}{4}
+\beamer@subsectionintoc {4}{2}{Features secondo classificatore}{15}{0}{4}
+\beamer@sectionintoc {5}{Features Selection}{17}{0}{5}
+\beamer@sectionintoc {6}{Infrastruttura}{18}{0}{6}

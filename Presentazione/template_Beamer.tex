@@ -17,8 +17,11 @@
 	\begin{frame}
 		\maketitle
 		Prof. Roberto Tagliaferri \newline
+		
+		Dott. Michele Fratello\newline
 		Dott. Paola Galdi \newline
 		Dott. Angela Serra
+		
 	\end{frame}
 	
 \begin{frame}
@@ -163,24 +166,62 @@
 
 \subsection{Features secondo classificatore}
 \begin{frame}
-	\frametitle{Features primo classificatore (1/2)}
+	\frametitle{Features secondo classificatore (1/2)}
 	Le features estratte per le patologie appartenenti alla seconda classe sono le seguenti:
 	\begin{itemize}
-		\item  \textbf{diffPosition:} indica la distanza tra il centro del tallone e il centro della zona di massima pressione.
-		\item  \textbf{approssimated:} Simile alla varaibile precedente. Varia per due motivi: si considera in valore assoluto ed assume valore pari a 0 se la differenza è inferiore a 10 (pixel). 
-		
-		distanceBoundLeft,distanceBoundRight
+		\item juve
+		\item juve
 	\end{itemize}
 	
 \end{frame}
 \begin{frame}
-	\frametitle{Features primo classificatore (2/2)}
-	\centering
-	\includegraphics[keepaspectratio,height=220px]{immagini/Immagine.png}
+	\frametitle{Features secondo classificatore (2/2)}
+immagine
 	
 \end{frame}
-
+\section{Features Selection}
+\begin{frame}
+	\frametitle{Features Selection}
+	La features selection è stata fatta in modo esaustivo. 
+	\newline
+	\newline
+	\newline
+	Motivi:
+	\begin{itemize}
+		\item Basso numero di features usate.
+		\item Si valutano tutti i possibili sottoinsiemi di features.
+		\newline
+	\end{itemize}
+	Sottoinsiemi valutati:
+	\begin{itemize}
+		\item 511 per il primo classificatore.
+		\item 15 per il secondo classificatore.
+	\end{itemize}
+	
+\end{frame}
+\section{Infrastruttura}
+\begin{frame}
+	\frametitle{Infrastruttura}
+	  L'infrastruttura software è la seguente:
+	  	\begin{itemize}
+	  		\item $ \forall $ Sottoinsieme di features
+	  		\begin{itemize}
+	  			\item Per N volte
+	  			\begin{itemize}
+	  				\item Dividiamo il dataset in train e test
+	  				\item Cross Validation sul train per stimare la configurazione migliore.
+	  				\item Calcolo delle accuratezze sul test.
+	  			\end{itemize}
+	  			\item Calcolo delle accuratezze medie.
+	  		\end{itemize}
+	  	\end{itemize}
+	  	
+	  	Il sottoinsieme scelto è quello con accuratezza totale media  più alta.
+	  
+	
+\end{frame}
 \section{Scelta dei classificatori}
+
 \section{Risultati}
 \section{Conclusioni}
 
