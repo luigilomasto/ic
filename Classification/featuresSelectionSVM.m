@@ -16,8 +16,8 @@ for i=1:length(featuresRange)
 end
 
 featuresMatrix=zeros(sizeMatrix,length(featuresRange)+6);
-c_coefficient=50;
-gamma_coefficient=50;
+c_coefficient=0;
+gamma_coefficient=0;
 index=1;
 
 for i=1:length(featuresRange)
