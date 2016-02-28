@@ -332,6 +332,7 @@ immagine
 \end{frame}
 \begin{frame}
 	\frametitle{Risultati SVM lineare  sottoinsieme migliore}
+	\textbf{PRIMO CLASSIFICATORE} \newline \newline
 	
 	\textbf{Features:} lengthMediaIstmo, indicePatologia, mediumPressure \newline
 	\textbf{Numero fold:} 5 \newline
@@ -342,7 +343,7 @@ immagine
 		\item \textbf{Accuratezza prima classe:} 99.33\%
 		\item \textbf{Accuratezza seconda classe:} 2\% 
 		\item \textbf{Accuratezza terza classe:} 86.50\%
-		\item \textbf{Configurazione:} C=0.01 
+		\item \textbf{C:}0.01 
 	\end{itemize}
 \end{frame}
 \begin{frame}
@@ -365,7 +366,7 @@ immagine
 		\item \textbf{Accuratezza prima classe:} 91,5
 		\item \textbf{Accuratezza seconda classe:} 	0 
 		\item \textbf{Accuratezza terza classe:} 17,83
-		\item \textbf{Configurazione:} C=1
+		\item \textbf{C:}1
 					
 	\end{itemize}
 \end{frame}
@@ -389,7 +390,7 @@ immagine
 		\item \textbf{Accuratezza prima classe:} 99,25\%
 		\item \textbf{Accuratezza seconda classe:}  0\%
 		\item \textbf{Accuratezza terza classe:} 84,5\%
-		\item \textbf{Configurazione:} C=0.01
+		\item \textbf{C:}0.01
 		
 	\end{itemize}
 \end{frame}
@@ -410,8 +411,8 @@ immagine
 		\item \textbf{Accuratezza prima classe:} 100\%
 		\item \textbf{Accuratezza seconda classe:}  0\%
 		\item \textbf{Accuratezza terza classe:} 93,3\%
-		\item \textbf{Configurazione:} C=0.01
-		\item \textbf{Gamma:} C=0.01
+		\item \textbf{C:}0.01
+		\item \textbf{Gamma:}0.01
 		
 	\end{itemize}
 \end{frame}
@@ -431,8 +432,8 @@ immagine
 		\item \textbf{Accuratezza prima classe:} 99.16\%
 		\item \textbf{Accuratezza seconda classe:}  0\%
 		\item \textbf{Accuratezza terza classe:} 85\%
-		\item \textbf{Configurazione:} C=1
-		\item \textbf{Gamma:} C=0.01
+		\item \textbf{C:}1
+		\item \textbf{Gamma:}0.01
 		
 	\end{itemize}
 \end{frame}
@@ -442,7 +443,72 @@ immagine
 \end{frame}
 
 \subsection{Secondo classificatore}
+\begin{frame}
+		\textbf{SECONDO CLASSIFICATORE} \newline \newline
+	\frametitle{Risultati SVM lineare con features migliori}
+	
+	\textbf{Features:} leftDistance, rightDistance \newline
+	\textbf{Numero fold:} 10 \newline
+	\textbf{Numero piedi per fold:} 17 Valghi, 21 Normali \newline
+	
+	\begin{itemize}
+		\item \textbf{Accuratezza totale:} 68.4\%
+		\item \textbf{Accuratezza prima classe:} 37.5\%
+		\item \textbf{Accuratezza seconda classe:} 90.9\%
+		\item \textbf{C:}10
+		
+	\end{itemize}
+\end{frame}
+\begin{frame}
+	\frametitle{Risultati SVM lineare con features migliori}
+	\centering{\includegraphics[keepaspectratio,height=190px]{immagini/plotSecond.jpg}}
+	
+\end{frame}
+\begin{frame}
+	\textbf{SECONDO CLASSIFICATORE} \newline \newline
+	\frametitle{Risultati kernel RBF con features migliori}
+	
+	\textbf{Features:} leftDistance, rightDistance \newline
+	\textbf{Numero fold:} 10 \newline
+	\textbf{Numero piedi per fold:} 17 Valghi, 21 Normali \newline
+	
+	\begin{itemize}
+		\item \textbf{Accuratezza totale:} 94.4\%
+		\item \textbf{Accuratezza prima classe:} 90.5\%
+		\item \textbf{Accuratezza seconda classe:} 97.45\%
+		\item \textbf{C:}100
+		\item \textbf{Gamma:}0.1
+		
+	\end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Risultati kernel RBF con features migliori}
+	\centering{\includegraphics[keepaspectratio,height=190px]{immagini/bestSecondboxplot.jpg}}
+	
+\end{frame}
 
+\begin{frame}
+	\textbf{SECONDO CLASSIFICATORE} \newline \newline
+	\frametitle{Risultati kernel RBF con tutte le features}
+	
+	\textbf{Features:} tutte \newline
+	\textbf{Numero fold:} 10 \newline
+	\textbf{Numero piedi per fold:} 17 Valghi, 21 Normali \newline
+	
+	\begin{itemize}
+		\item \textbf{Accuratezza totale:} 93.05\%
+		\item \textbf{Accuratezza prima classe:} 89.25\%
+		\item \textbf{Accuratezza seconda classe:} 95.81\%
+		\item \textbf{C:}1
+		\item \textbf{Gamma:}1
+		
+	\end{itemize}
+\end{frame}
+\begin{frame}
+	\frametitle{Risultati kernel RBF con tutte le features}
+	\centering{\includegraphics[keepaspectratio,height=190px]{immagini/tuttleSecondoBoxPlot.jpg}}
+	
+\end{frame}
 
 \section{Conclusioni}
 

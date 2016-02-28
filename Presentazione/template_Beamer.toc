@@ -14,3 +14,4 @@
 \beamer@sectionintoc {7}{Infrastruttura}{22}{0}{7}
 \beamer@sectionintoc {8}{Risultati}{24}{0}{8}
 \beamer@subsectionintoc {8}{1}{Primo classificatore}{24}{0}{8}
+\beamer@subsectionintoc {8}{2}{Secondo classificatore}{39}{0}{8}
