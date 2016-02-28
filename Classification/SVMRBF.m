@@ -49,6 +49,7 @@ avgClass1Accuracy=0;
 avgClass2Accuracy=0;
 avgClass3Accuracy=0;
 numRip=50;
+vector_accuracy=zeros(numRip,1);
 for rip=1:numRip
 %%divido il dataset in training e test
 c = cvpartition(fullMatrix(:,label_column),'KFold',numFold);
@@ -161,10 +162,11 @@ avgTotalAccuracy=avgTotalAccuracy+total_accuracy;
 avgClass1Accuracy=avgClass1Accuracy+percClass1;
 avgClass2Accuracy=avgClass2Accuracy+percClass2;
 avgClass3Accuracy=avgClass3Accuracy+percClass3;
+vector_accuracy(rip,1)=total_accuracy;
 
 end
 
-avgTotalAccuracy=avgTotalAccuracy/50;
+avgTotalAccuracy=avgTotalAccuracy/numRip;
 avgClass1Accuracy=avgClass1Accuracy/numRip;
 avgClass2Accuracy=avgClass2Accuracy/numRip;
 avgClass3Accuracy=avgClass3Accuracy/numRip;

@@ -44,7 +44,8 @@ end
 total_accuracy = 0;
 num_classes = length(unique(fullMatrix(:,label_column)));
 class_accuracy = zeros(num_classes, 1);
-numRip=1;
+numRip=50;
+vector_accuracy=zeros(numRip,1);
 avgTotalAccuracy=0;
 avgClass1Accuracy=0;
 avgClass2Accuracy=0;
@@ -138,7 +139,7 @@ percClass2=0;
 percClass3=0;
 if(strcmp(classificationType,'first')==1)
     ConfusionMat=zeros(3,3);
-    ConfusionMat=confusionmat(results,real_results);
+    ConfusionMat=confusionmat(results,real_results)
     percClass1=(ConfusionMat(1,1)/sum(ConfusionMat(:,1)))*100;
     percClass2=(ConfusionMat(2,2)/sum(ConfusionMat(:,2)))*100;
     percClass3=(ConfusionMat(3,3)/sum(ConfusionMat(:,3)))*100;
@@ -153,6 +154,7 @@ avgTotalAccuracy=avgTotalAccuracy+total_accuracy;
 avgClass1Accuracy=avgClass1Accuracy+percClass1;
 avgClass2Accuracy=avgClass2Accuracy+percClass2;
 avgClass3Accuracy=avgClass3Accuracy+percClass3;
+vector_accuracy(rip,1)=total_accuracy;
 
 end
 avgTotalAccuracy=avgTotalAccuracy/numRip;

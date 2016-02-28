@@ -322,6 +322,117 @@ immagine
 	
 	
 \end{frame}
+\begin{frame}
+	\frametitle{Risultati SVM lineare  sottoinsieme migliore}
+	
+	\textbf{Features:} lengthMediaIstmo, indicePatologia, mediumPressure \newline
+	\textbf{Numero fold:} 5 \newline
+	\textbf{Numero piedi per fold:} 24 cavi, 2 piatti, 12 normali. \newline
+	
+	\begin{itemize}
+		\item \textbf{Accuratezza totale:} 92.14\% 
+		\item \textbf{Accuratezza prima classe:} 99.33\%
+		\item \textbf{Accuratezza seconda classe:} 2\% 
+		\item \textbf{Accuratezza terza classe:} 86.50\%
+		\item \textbf{Configurazione:} C=0.01 
+	\end{itemize}
+\end{frame}
+\begin{frame}
+	\frametitle{Risultati SVM lineare sottoinsieme migliore}
+   \centering{\includegraphics[keepaspectratio,height=190px]{immagini/3bestFeaturesFirrstLinear.jpg}}
+\end{frame}
+\begin{frame}
+	\frametitle{Risultati SVM lineare sottoinsieme migliore}
+	\centering{\includegraphics[keepaspectratio,height=190px]{immagini/bestFeaturesAccuracyFirstBoxPlot.jpg}}
+\end{frame}
+\begin{frame}
+	\frametitle{Risultati SVM lineare sottoinsieme peggiore}
+	
+	\textbf{Features:} lengthMaxAvampiede, mediumPressure \newline
+	\textbf{Numero fold:} 5 \newline
+	\textbf{Numero piedi per fold:} 24 cavi, 2 piatti, 12 normali. \newline
+	
+	\begin{itemize}
+		\item \textbf{Accuratezza totale:} 63,15
+		\item \textbf{Accuratezza prima classe:} 91,5
+		\item \textbf{Accuratezza seconda classe:} 	0 
+		\item \textbf{Accuratezza terza classe:} 17,83
+		\item \textbf{Configurazione:} C=1
+					
+	\end{itemize}
+\end{frame}
+\begin{frame}
+	\frametitle{Risultati SVM lineare sottoinsieme peggiore}
+	\centering{\includegraphics[keepaspectratio,height=190px]{immagini/2worseFeaturesFirstLinear.jpg}}
+\end{frame}
+\begin{frame}
+	\frametitle{Risultati SVM lineare sottoinsieme peggiore}
+	\centering{\includegraphics[keepaspectratio,height=190px]{immagini/peggiorePrimo.jpg}}
+\end{frame}
+\begin{frame}
+	\frametitle{Risultati SVM lineare con tutte le features}
+	
+	\textbf{Features:} tutte \newline
+	\textbf{Numero fold:} 5 \newline
+	\textbf{Numero piedi per fold:} 24 cavi, 2 piatti, 12 normali. \newline
+	
+	\begin{itemize}
+		\item \textbf{Accuratezza totale:} 89,47\%
+		\item \textbf{Accuratezza prima classe:} 99,25\%
+		\item \textbf{Accuratezza seconda classe:}  0\%
+		\item \textbf{Accuratezza terza classe:} 84,5\%
+		\item \textbf{Configurazione:} C=0.01
+		
+	\end{itemize}
+\end{frame}
+\begin{frame}
+	\frametitle{Risultati SVM lineare con tutte le features}
+	\centering{\includegraphics[keepaspectratio,height=190px]{immagini/tuttePrimoBoxPlot.jpg}}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Risultati kernel RBF con features migliori}
+	
+	\textbf{Features:} lengthMediaIstmo, indicePatologia \newline
+	\textbf{Numero fold:} 5 \newline
+	\textbf{Numero piedi per fold:} 24 cavi, 2 piatti, 12 normali. \newline
+	
+	\begin{itemize}
+		\item \textbf{Accuratezza totale:} 92,63\%
+		\item \textbf{Accuratezza prima classe:} 100\%
+		\item \textbf{Accuratezza seconda classe:}  0\%
+		\item \textbf{Accuratezza terza classe:} 93,3\%
+		\item \textbf{Configurazione:} C=0.01
+		\item \textbf{Gamma:} C=0.01
+		
+	\end{itemize}
+\end{frame}
+\begin{frame}
+	\frametitle{Risultati kernel RBF con features migliori}
+	\centering{\includegraphics[keepaspectratio,height=190px]{immagini/bestRBFFirstBoxPlot.jpg}}
+\end{frame}
+\begin{frame}
+	\frametitle{Risultati kernel RBF con tutte le features}
+	
+	\textbf{Features:} lengthMediaIstmo, indicePatologia \newline
+	\textbf{Numero fold:} 5 \newline
+	\textbf{Numero piedi per fold:} 24 cavi, 2 piatti, 12 normali. \newline
+	
+	\begin{itemize}
+		\item \textbf{Accuratezza totale:} 89.47\%
+		\item \textbf{Accuratezza prima classe:} 99.16\%
+		\item \textbf{Accuratezza seconda classe:}  0\%
+		\item \textbf{Accuratezza terza classe:} 85\%
+		\item \textbf{Configurazione:} C=1
+		\item \textbf{Gamma:} C=0.01
+		
+	\end{itemize}
+\end{frame}
+\begin{frame}
+	\frametitle{Risultati kernel RBF con tutte le features}
+	\centering{\includegraphics[keepaspectratio,height=190px]{immagini/tuttleSecondoBoxPlot.jpg}}
+\end{frame}
+
 \subsection{Secondo classificatore}
 
 
