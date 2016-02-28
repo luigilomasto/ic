@@ -6,10 +6,10 @@
 \beamer@sectionintoc {3}{Preprocessing}{6}{0}{3}
 \beamer@subsectionintoc {3}{1}{Trasformazione delle immagini}{7}{0}{3}
 \beamer@subsectionintoc {3}{2}{Divisione, rotazione e cropping delle immagini}{10}{0}{3}
-\beamer@sectionintoc {4}{Features extraction}{12}{0}{4}
+\beamer@sectionintoc {4}{Feature extraction}{12}{0}{4}
 \beamer@subsectionintoc {4}{1}{Features primo classificatore}{13}{0}{4}
 \beamer@subsectionintoc {4}{2}{Features secondo classificatore}{15}{0}{4}
-\beamer@sectionintoc {5}{Features Selection}{17}{0}{5}
+\beamer@sectionintoc {5}{Feature Selection}{17}{0}{5}
 \beamer@sectionintoc {6}{Scelta dei classificatori}{18}{0}{6}
 \beamer@sectionintoc {7}{Infrastruttura}{22}{0}{7}
 \beamer@sectionintoc {8}{Risultati}{24}{0}{8}
