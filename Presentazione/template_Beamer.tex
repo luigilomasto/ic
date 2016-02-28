@@ -125,24 +125,33 @@
 
 \begin{frame}
 	\frametitle{Rotazione del piede}
-	Per ruotare il piede abbiamo utilizzato un algoritmo molto semplice:
+	Abbiamo utilizzato l'algoritmo classico per la rotazione di una retta, cio\'e:
 	\begin{enumerate}
-		\item Abbiamo trovato il centro
+		\item Trovare il punto dove applicare la rotazione.
+		\item Calcolare il coeffieciente angolare della retta.
+		\item Applicare la rotazione.
 	\end{enumerate}
+
+	Nel nostro caso, abbiamo usato la retta che congiunge i due punti di massima pressione, e l'estremo in basso del tallone.
 \end{frame}
 
-\section{Features extraction}
+\section{Feature extraction}
 \begin{frame}
-	\frametitle{Features extraction}
-	Terminata la fase di preprocessing siamo passati alla fase di features exstraction. Nel nostro caso, le regioni d'interesse di ogni piede differiscono significativamente tra loro. Per questo motivo, è stato necessario implementare algoritmi ad-hoc per l'estrazione delle features. 
+	\frametitle{Feature extraction}
+	\begin{itemize}
+		\item Necessaria per via della natura delle immagini.
+		\item Trasformazione in uno spazio standard non nota in letteratura.
+	\end{itemize}
+
+	Abbiamo implementato algoritmi ad-hoc per l'estrazione delle features. 
 	\newline
-	Dovendo lavorare con due classi di patologie:
+	Dovendo lavorare con due classificatori:
 	\begin{itemize} 
-		\item Cavo, piatto e normale.
-		\item Valgo e normale.
+		\item Cavo vs piatto vs normale.
+		\item Valgo vs varo vs normale.
     \end{itemize} 
    
-   sono stati implementati due algoritmi per l'estrazione delle features.
+   sono stati implementati due algoritmi per estrarre le caratteristiche diverse.
 \end{frame}
 
 \subsection{Features primo classificatore}
@@ -179,10 +188,10 @@
 immagine
 	
 \end{frame}
-\section{Features Selection}
+\section{Feature Selection}
 \begin{frame}
-	\frametitle{Features Selection}
-	La features selection è stata fatta in modo esaustivo. 
+	\frametitle{Feature Selection}
+	La features selection è stata fatta in modo esaustivo, utilizzando le performance del classificatore come metro di giudizio.
 	\newline
 	\newline
 	\newline
@@ -223,18 +232,15 @@ immagine
 
 
 \begin{frame}
-	\frametitle{SVM Lineare  }
+	\frametitle{SVM Lineare}
 	\begin{itemize}
 		\item Un classificatore SVM costruisce un iperpiano (o
 		  insieme di iperpiani) che può essere usato per fare
 		classificazione.
 	   \item Una buona separazione è data dall'iperpiano che
 		  massimizza la distanza dal punto dei dati più vicino
-		  
-		 
 	\end{itemize}
 	\centering{ \includegraphics[keepaspectratio,height=120px]{immagini/lineare.png}}
-	
 \end{frame}
 
 
@@ -278,15 +284,16 @@ immagine
 		\begin{itemize}
 			\item Per N volte
 			\begin{itemize}
-				\item Dividiamo il dataset in train e test
-				\item Cross Validation sul train per stimare la configurazione migliore.
+				\item Dividiamo il dataset in training set e test set.
+				\item Applichiamo cross validation sul training set per stimare la configurazione migliore.
 				\item Calcolo delle accuratezze sul test.
 			\end{itemize}
 			\item Calcolo delle accuratezze medie.
 		\end{itemize}
 	\end{itemize}
-	Il sottoinsieme scelto è quello con accuratezza totale media  più alta.
+	Il sottoinsieme scelto è quello con accuratezza totale media più alta.
 \end{frame}
+
 \begin{frame}
 	\frametitle{Scelta della migliore configurazione: T-test}
      Per valutare la migliore configurazione ci siamo serviti del T-test.
