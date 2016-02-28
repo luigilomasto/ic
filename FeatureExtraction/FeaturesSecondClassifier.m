@@ -6,7 +6,7 @@ labelsMatrix = csvread(labelsPath);
 labelsMatrix = simplifyMatrix(labelsMatrix);
 [numImage, num_labels] = size(labelsMatrix);
 %For every image there is left feet and right feet
-num_features=1;
+num_features=4;
 matrix=zeros(numImage*2,3+num_features,'double');
 indexMatrix = 1;
 for i=1:numImage
@@ -34,7 +34,7 @@ for i=1:numImage
 end
 
 firstFeatureIndex = 3;
-lastFeatureIndex = 6;
+lastFeatureIndex = firstFeatureIndex + num_features - 1;
 
 matrix(:, firstFeatureIndex:lastFeatureIndex) = StatisticalNormaliz(matrix(:, firstFeatureIndex:lastFeatureIndex), 'standard');
 
