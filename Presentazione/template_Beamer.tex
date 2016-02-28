@@ -32,6 +32,19 @@
 \section{Introduzione al problema}
 
 \begin{frame}
+	\frametitle{Analisi posturale statica}
+
+	L'analisi posturale statica \'e un esame in grado di diagnosticare diversi disturbi della postura e non solo.
+
+	\begin{itemize}
+		\item Scoliosi.
+		\item Cifosi.
+		\item Patologie del piede.
+		\item Corpo sbilanciato.
+		\item etc.
+	\end{itemize}
+\end{frame}
+\begin{frame}
 	\frametitle{Il problema}
 	Dato un insieme di immagini piedebarometriche, classificare automaticamente le seguenti patologie:
 	\newline
@@ -50,7 +63,6 @@
 	\includegraphics[keepaspectratio,height=95px]{immagini/2_cleared.png}
 \end{frame}
 
-\section{Dataset}
 \begin{frame}
 	\frametitle{Struttura del dataset}
 	Il dataset è costituito da 190 piedi (95 coppie) di cui:
@@ -73,11 +85,18 @@
 	Nella fase di preprocessing, abbiamo eseguito le seguenti operazioni.
 	\begin{itemize}
 		\item Conversione delle immagini .bmp in .png.
-		\item Pulizia delle immagini (rimozione del baricentro).
+		\item Pulizia delle immagini (rimozione del tracciato del baricentro).
 		\item Trasformazione delle immagini in scala di grigio.
 		\item Divisione, rotazione e cropping dei piedi.
 	\end{itemize}
 	\centering
+\end{frame}
+
+\subsection{Pulizia delle immagini}
+\begin{frame}
+	\begin{center}
+		\includegraphics[keepaspectratio, height=220px]{immagini/0.png}
+	\end{center}
 \end{frame}
 
 \subsection{Trasformazione delle immagini}
@@ -132,7 +151,7 @@
 		\item Applicare la rotazione.
 	\end{enumerate}
 
-	Nel nostro caso, abbiamo usato la retta che congiunge i due punti di massima pressione, e l'estremo in basso del tallone.
+	Nel nostro caso, abbiamo usato la retta che congiunge i due punti di massima pressione, ed il punto pi\'u esterno in basso del tallone.
 \end{frame}
 
 \section{Feature extraction}
@@ -140,10 +159,9 @@
 	\frametitle{Feature extraction}
 	\begin{itemize}
 		\item Necessaria per via della natura delle immagini.
-		\item Trasformazione in uno spazio standard non nota in letteratura.
+		\item Normalizzazione in uno spazio standard non nota in letteratura.
 	\end{itemize}
 
-	Abbiamo implementato algoritmi ad-hoc per l'estrazione delle features. 
 	\newline
 	Dovendo lavorare con due classificatori:
 	\begin{itemize} 
@@ -151,7 +169,7 @@
 		\item Valgo vs varo vs normale.
     \end{itemize} 
    
-   sono stati implementati due algoritmi per estrarre le caratteristiche diverse.
+   sono stati implementati due algoritmi ad hoc per estrarre le caratteristiche diverse.
 \end{frame}
 
 \subsection{Features primo classificatore}
@@ -186,6 +204,7 @@
 \end{frame}
 \begin{frame}
 	\frametitle{Features secondo classificatore (2/2)}
+	\includegraphics[keepaspectratio, height=220px]{immagini/FeatureSecond.png}
 immagine
 	
 \end{frame}
@@ -511,5 +530,23 @@ immagine
 \end{frame}
 
 \section{Conclusioni}
+
+\begin{frame}
+	\frametitle{Conclusioni}
+	Il classificatore ha avuto ottime percentuali di accuratezza in generale.
+
+	Possibili miglioramenti includono:
+	\begin{itemize}
+		\item Normalizzazione del piede e uso delle reti neurali.
+		\item Trovare nuove feature in grado di separare meglio i piedi piatti dai normali(?).
+		\item Includere quanto fatto in un framework omnicomprensivo degli altri tipi di analisi.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		\huge Grazie per l'attenzione!
+	\end{center}
+\end{frame}
 
 \end{document}
