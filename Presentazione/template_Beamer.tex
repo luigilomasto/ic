@@ -178,8 +178,9 @@
 	\frametitle{Features secondo classificatore (1/2)}
 	Le features estratte per le patologie appartenenti alla seconda classe sono le seguenti:
 	\begin{itemize}
-		\item juve
-		\item juve
+		\item \textbf{approssimated:} vale 0 se la differenza tra il punto di massima pressione del tallone ed il centro del tallone \'e $ \leq 10$.
+		\item \textbf{leftDistance:} esprime la distanza del punto di massima pressione del tallone dall'estremo sinistro.
+		\item \textbf{rightDistance:} esprime la distanza del punto di massima pressione del tallone dall'estremo destro.
 	\end{itemize}
 	
 \end{frame}
@@ -278,7 +279,7 @@ immagine
 \section{Infrastruttura}
 \begin{frame}
 	\frametitle{Infrastruttura}
-	L'infrastruttura software è la seguente:
+	L'infrastruttura progettata è la seguente:
 	\begin{itemize}
 		\item $ \forall $ Sottoinsieme di features
 		\begin{itemize}
