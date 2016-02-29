@@ -13,6 +13,14 @@
 \usepackage{listings}
 \usepackage{amsmath}
 
+
+\AtBeginSection[]{
+	\begin{frame}<beamer>
+		\frametitle{Outline}
+		\tableofcontents[currentsection]
+	\end{frame}
+}
+
 \begin{document}
 	\begin{frame}
 		\maketitle
@@ -27,6 +35,7 @@
 	\frametitle{Outline}
 	\tableofcontents
 \end{frame}
+
 
 \section{Introduzione al problema}
 \begin{frame}
@@ -82,7 +91,7 @@
 	Nella fase di preprocessing, abbiamo eseguito le seguenti operazioni.
 	\begin{itemize}
 		\item Conversione delle immagini .bmp in .png.
-		\item Pulizia delle immagini (rimozione del tracciato del baricentro).
+		\item Pulizia delle immagini.
 		\item Trasformazione delle immagini in scala di grigio.
 		\item Divisione, rotazione e cropping dei piedi.
 	\end{itemize}
@@ -91,6 +100,7 @@
 
 \subsection{Pulizia delle immagini}
 \begin{frame}
+	\frametitle{Rimozione del tracciato del baricentro}
 	\begin{center}
 		\includegraphics[keepaspectratio, height=220px]{immagini/0.png}
 	\end{center}
@@ -112,7 +122,7 @@
 	\begin{itemize}
 		\item Clustering sulle immagini.
 		\item Trovati i centroidi, sostituire ogni pixel dell'immagine con il rappresentante del proprio cluster.
-		\item Ordinare i centroidi per intensit\'a crescente e associare valori compresi tra 0 e 1.
+		\item Ordinare i centroidi per intensit\'a crescente ed associare valori compresi tra 0 e 1.
 		\item Problemi: Trovare il k adatto, trovare un ordinamento per i cluster.
 	\end{itemize}
 \end{frame}
@@ -125,6 +135,15 @@
 	\end{itemize}
 	\begin{center}
 		\includegraphics[keepaspectratio,width=300px]{immagini/color.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Effetto della conversione}
+	\begin{center}
+		\includegraphics[keepaspectratio,height=95px]{immagini/0_cleared.png}
+		\hspace{100px}
+		\includegraphics[keepaspectratio,height=95px]{immagini/0_cleared_bn.png}
 	\end{center}
 \end{frame}
 
@@ -142,13 +161,23 @@
 \begin{frame}
 	\frametitle{Rotazione del piede}
 	Abbiamo utilizzato l'algoritmo classico per la rotazione di una retta, cio\'e:
+	\vfill
 	\begin{enumerate}
 		\item Trovare il punto dove applicare la rotazione.
 		\item Calcolare il coeffieciente angolare della retta.
 		\item Applicare la rotazione.
 	\end{enumerate}
-
+	\vfill
 	Nel nostro caso, abbiamo usato la retta che congiunge i due punti di massima pressione, ed il punto pi\'u esterno in basso del tallone.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Effetto della rotazione}
+	\begin{center}
+		\includegraphics[keepaspectratio,height=95px]{immagini/2_cleared_bn_left.png}
+		\hspace{100px}
+		\includegraphics[keepaspectratio,height=95px]{immagini/2_cleared_bn_left_rotated.png}
+	\end{center}
 \end{frame}
 
 \section{Feature extraction}
@@ -223,7 +252,7 @@
 	Sottoinsiemi valutati:
 	\begin{itemize}
 		\item 31 per il primo classificatore.
-		\item 15 per il secondo classificatore.
+		\item 7 per il secondo classificatore.
 	\end{itemize}
 	
 \end{frame}
@@ -235,7 +264,7 @@
   \textbf{SVM Gaussiano (Radial-Basis-Function)}.\newline \newline
   Scelta dovuta ai seguenti motivi :
   	\begin{itemize}
-  		\item RBF ben di adatta a problemi di classificazione dove il dataset è significativamente più grande rispetto al numero di dimensioni.
+  		\item RBF ben si adatta a problemi di classificazione dove il dataset è significativamente più grande rispetto al numero di dimensioni.
   		\item Reti Neurali troppo complesse per il problema affrontato.
   		\item SVM lineare generalmente usato quando si ha alta dimensionalità. 
   		\newline 
@@ -532,6 +561,16 @@
 
 \begin{frame}
 	\frametitle{Conclusioni}
+	\begin{itemize}
+		\item Le feature estratte hanno separato abbastanza bene tutte le tipologie di piedi (tranne i piatti).
+		\item Il kernel RBF generalmente si \'e comportato meglio, in entrambi i problemi.
+		\item Il kernel lineare ha avuto buone percentuali solo sul primo problema.
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sviluppi futuri}
 	Il classificatore ha avuto ottime percentuali di accuratezza in generale.
 
 	Possibili miglioramenti includono:

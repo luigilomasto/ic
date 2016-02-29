@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.11.24)  29 FEB 2016 10:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.11.24)  29 FEB 2016 12:11
 entering extended mode
 **template_Beamer.tex
 (template_Beamer.tex
@@ -833,20 +833,20 @@ File: listings.cfg 2015/06/04 1.6 listings configuration
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
 (template_Beamer.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -897,7 +897,7 @@ LaTeX Font Info:    ... okay on input line 16.
 \everyMPtoPDFconversion=\toks47
 ) ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box57
-Package hyperref Info: Link coloring OFF on input line 16.
+Package hyperref Info: Link coloring OFF on input line 24.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -907,69 +907,69 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count173
 )
-LaTeX Info: Redefining \ref on input line 16.
-LaTeX Info: Redefining \pageref on input line 16.
-LaTeX Info: Redefining \nameref on input line 16.
+LaTeX Info: Redefining \ref on input line 24.
+LaTeX Info: Redefining \pageref on input line 24.
+LaTeX Info: Redefining \nameref on input line 24.
 
 (template_Beamer.out) (template_Beamer.out)
 \@outlinefile=\write5
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 16.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 24.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 16.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 24.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> T1/cmr/m/n on input line 16.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 16.
+(Font)                  OT1/cmss/m/n --> T1/cmr/m/n on input line 24.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 24.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> T1/cmss/bx/n on input line 16.
+(Font)                  OT1/cmr/bx/n --> T1/cmss/bx/n on input line 24.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> T1/cmss/bx/n on input line 16.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 16.
+(Font)                  OT1/cmr/bx/n --> T1/cmss/bx/n on input line 24.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 24.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> T1/cmss/m/n on input line 16.
+(Font)                  OT1/cmss/m/n --> T1/cmss/m/n on input line 24.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> T1/cmss/m/n on input line 16.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 16.
+(Font)                  OT1/cmss/bx/n --> T1/cmss/m/n on input line 24.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 24.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> T1/cmss/m/it on input line 16.
+(Font)                  OT1/cmr/m/it --> T1/cmss/m/it on input line 24.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> T1/cmss/m/it on input line 16.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 16.
+(Font)                  OT1/cmr/bx/it --> T1/cmss/m/it on input line 24.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 24.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 16.
+(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 24.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 16.
+(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 24.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  T1/cmss/m/n --> T1/cmss/bx/n on input line 16.
+(Font)                  T1/cmss/m/n --> T1/cmss/bx/n on input line 24.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  T1/cmss/m/it --> T1/cmss/bx/it on input line 16.
+(Font)                  T1/cmss/m/it --> T1/cmss/bx/it on input line 24.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/bx/n --> T1/cmr/bx/n on input line 16.
+(Font)                  OT1/cmss/bx/n --> T1/cmr/bx/n on input line 24.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  T1/cmss/bx/n --> T1/cmss/bx/n on input line 16.
+(Font)                  T1/cmss/bx/n --> T1/cmss/bx/n on input line 24.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  T1/cmss/m/n --> T1/cmss/bx/n on input line 16.
+(Font)                  T1/cmss/m/n --> T1/cmss/bx/n on input line 24.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  T1/cmss/m/it --> T1/cmss/bx/it on input line 16.
+(Font)                  T1/cmss/m/it --> T1/cmss/bx/it on input line 24.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  T1/cmtt/m/n --> T1/cmtt/bx/n on input line 16.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 16.
+(Font)                  T1/cmtt/m/n --> T1/cmtt/bx/n on input line 24.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 24.
 LaTeX Font Info:    Encoding `T1' has changed to `OT1' for symbol font
-(Font)              `pureletters' in the math version `normal' on input line 16
+(Font)              `pureletters' in the math version `normal' on input line 24
 .
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
-(Font)                  T1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 16
+(Font)                  T1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 24
 .
 LaTeX Font Info:    Encoding `T1' has changed to `OT1' for symbol font
-(Font)              `pureletters' in the math version `bold' on input line 16.
+(Font)              `pureletters' in the math version `bold' on input line 24.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  T1/cmss/bx/it --> OT1/mathkerncmss/m/sl on input line 1
-6.
+(Font)                  T1/cmss/bx/it --> OT1/mathkerncmss/m/sl on input line 2
+4.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on inp
-ut line 16.
+ut line 24.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\beamer\base\translator\dicts\tran
 slator-basic-dictionary\translator-basic-dictionary-English.dict"
@@ -995,334 +995,393 @@ Dictionary: translator-numbers-dictionary, Language: English
 slator-theorem-dictionary\translator-theorem-dictionary-English.dict"
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \includegraphics on input line 16.
-LaTeX Info: Redefining \it@ocap on input line 16.
-LaTeX Info: Redefining \it@ccap on input line 16.
+LaTeX Info: Redefining \includegraphics on input line 24.
+LaTeX Info: Redefining \it@ocap on input line 24.
+LaTeX Info: Redefining \it@ccap on input line 24.
 \c@lstlisting=\count174
 
 (template_Beamer.nav)
 
 LaTeX Font Warning: Font shape `T1/cmss/m/n' in size <4> not available
-(Font)              size <5> substituted on input line 24.
+(Font)              size <5> substituted on input line 32.
 
 [1
 
 {C:/Users/Luigi/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 (template_Beamer.toc) [2
 
-] [3
+] (template_Beamer.toc) [3
 
 ] [4
 
+] [5
+
 ]
-<immagini/0_cleared.png, id=226, 647.41875pt x 579.16376pt>
+<immagini/0_cleared.png, id=273, 647.41875pt x 579.16376pt>
 File: immagini/0_cleared.png Graphic file (type png)
 
 <use immagini/0_cleared.png>
-Package pdftex.def Info: immagini/0_cleared.png used on input line 61.
+Package pdftex.def Info: immagini/0_cleared.png used on input line 70.
 (pdftex.def)             Requested size: 106.59227pt x 95.3566pt.
 
-<immagini/1_cleared.png, id=227, 749.80125pt x 579.16376pt>
+<immagini/1_cleared.png, id=274, 749.80125pt x 579.16376pt>
 File: immagini/1_cleared.png Graphic file (type png)
 
 <use immagini/1_cleared.png>
-Package pdftex.def Info: immagini/1_cleared.png used on input line 61.
+Package pdftex.def Info: immagini/1_cleared.png used on input line 70.
 (pdftex.def)             Requested size: 123.44872pt x 95.3566pt.
 
-<immagini/2_cleared.png, id=228, 715.67375pt x 579.16376pt>
+<immagini/2_cleared.png, id=275, 715.67375pt x 579.16376pt>
 File: immagini/2_cleared.png Graphic file (type png)
 
 <use immagini/2_cleared.png>
-Package pdftex.def Info: immagini/2_cleared.png used on input line 61.
+Package pdftex.def Info: immagini/2_cleared.png used on input line 70.
 (pdftex.def)             Requested size: 117.8299pt x 95.3566pt.
 
-Overfull \hbox (5.57558pt too wide) in paragraph at lines 61--61
+Overfull \hbox (5.57558pt too wide) in paragraph at lines 70--70
 [][][][]  
  []
 
-[5
+[6
 
  <./immagini/0_cleared.png (PNG copy)> <./immagini/1_cleared.png (PNG copy)> <.
-/immagini/2_cleared.png (PNG copy)>] [6
+/immagini/2_cleared.png (PNG copy)>] [7
 
-] [7
+] (template_Beamer.toc) [8
+
+] [9
 
 ]
-<immagini/0.png, id=309, 914.00294pt x 817.64294pt>
+<immagini/0.png, id=398, 914.00294pt x 817.64294pt>
 File: immagini/0.png Graphic file (type png)
  <use immagini/0.png>
-Package pdftex.def Info: immagini/0.png used on input line 97.
+Package pdftex.def Info: immagini/0.png used on input line 107.
 (pdftex.def)             Requested size: 246.83987pt x 220.8258pt.
 
-[8
+Overfull \vbox (15.13538pt too high) detected at line 107
+ []
 
- <./immagini/0.png>] [9
+[10
 
-] [10
+ <./immagini/0.png>] [11
+
+] [12
 
 ]
-<immagini/color.png, id=393, 689.57625pt x 44.41594pt>
+<immagini/color.png, id=483, 689.57625pt x 44.41594pt>
 File: immagini/color.png Graphic file (type png)
 
 <use immagini/color.png>
-Package pdftex.def Info: immagini/color.png used on input line 129.
+Package pdftex.def Info: immagini/color.png used on input line 139.
 (pdftex.def)             Requested size: 301.1261pt x 19.396pt.
- [11
+ [13
 
- <./immagini/color.png>] [12
+ <./immagini/color.png>]
+File: immagini/0_cleared.png Graphic file (type png)
 
-] [13
+<use immagini/0_cleared.png>
+Package pdftex.def Info: immagini/0_cleared.png used on input line 148.
+(pdftex.def)             Requested size: 106.59227pt x 95.3566pt.
 
-] [14
+<immagini/0_cleared_bn.png, id=512, 647.41875pt x 579.16376pt>
+File: immagini/0_cleared_bn.png Graphic file (type png)
+
+<use immagini/0_cleared_bn.png>
+Package pdftex.def Info: immagini/0_cleared_bn.png used on input line 148.
+(pdftex.def)             Requested size: 106.59227pt x 95.3566pt.
+ [14
+
+ <./immagini/0_cleared_bn.png (PNG copy)>]
+[15
+
+] [16
+
+] <immagini/2_cleared_bn_left.png, id=595, 341.275pt x 579.16376pt>
+File: immagini/2_cleared_bn_left.png Graphic file (type png)
+
+<use immagini/2_cleared_bn_left.png>
+Package pdftex.def Info: immagini/2_cleared_bn_left.png used on input line 181.
+
+(pdftex.def)             Requested size: 56.18817pt x 95.3566pt.
+
+<immagini/2_cleared_bn_left_rotated.png, id=596, 243.91125pt x 524.96124pt>
+File: immagini/2_cleared_bn_left_rotated.png Graphic file (type png)
+
+<use immagini/2_cleared_bn_left_rotated.png>
+Package pdftex.def Info: immagini/2_cleared_bn_left_rotated.png used on input l
+ine 181.
+(pdftex.def)             Requested size: 44.30408pt x 95.3566pt.
+ [17
+
+ <./immagini/2_cleared_bn_left.png (PNG copy)> <./immagini/2_cleared_bn_left_ro
+tated.png (PNG copy)>]
+(template_Beamer.toc) [18
+
+] [19
 
 ]
-LaTeX Font Info:    Try loading font information for U+msa on input line 186.
+LaTeX Font Info:    Try loading font information for U+msa on input line 215.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 186.
+LaTeX Font Info:    Try loading font information for U+msb on input line 215.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for OT1+mathkerncmss on input 
-line 186.
+line 215.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\sansmathaccent\ot1mathkerncmss.fd
 "
 File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
-) [15
+) [20
 
-] <immagini/Immagine.png, id=533, 496.85625pt x 428.35031pt>
+] <immagini/Immagine.png, id=724, 496.85625pt x 428.35031pt>
 File: immagini/Immagine.png Graphic file (type png)
 
 <use immagini/Immagine.png>
-Package pdftex.def Info: immagini/Immagine.png used on input line 191.
+Package pdftex.def Info: immagini/Immagine.png used on input line 220.
 (pdftex.def)             Requested size: 256.14537pt x 220.8258pt.
 
-Overfull \vbox (3.13538pt too high) detected at line 191
+Overfull \vbox (3.13538pt too high) detected at line 220
  []
 
-[16
+[21
 
- <./immagini/Immagine.png>] [17
+ <./immagini/Immagine.png>] [22
 
 ]
-<immagini/FeatureSecond.png, id=589, 647.41875pt x 579.16376pt>
+<immagini/FeatureSecond.png, id=780, 647.41875pt x 579.16376pt>
 File: immagini/FeatureSecond.png Graphic file (type png)
 
 <use immagini/FeatureSecond.png>
-Package pdftex.def Info: immagini/FeatureSecond.png used on input line 209.
+Package pdftex.def Info: immagini/FeatureSecond.png used on input line 238.
 (pdftex.def)             Requested size: 246.85149pt x 220.8258pt.
 
-Overfull \vbox (3.13538pt too high) detected at line 209
+Overfull \vbox (3.13538pt too high) detected at line 238
  []
 
-[18
+[23
 
- <./immagini/FeatureSecond.png>] [19
-
-] [20
-
-]
-<immagini/lineare.png, id=674, 1488.56125pt x 1421.31pt>
-File: immagini/lineare.png Graphic file (type png)
-
-<use immagini/lineare.png>
-Package pdftex.def Info: immagini/lineare.png used on input line 263.
-(pdftex.def)             Requested size: 126.12854pt x 120.45044pt.
- [21
-
- <./immagini/lineare.png>]
-<immagini/nonSepara.png, id=703, 124.96687pt x 114.4275pt>
-File: immagini/nonSepara.png Graphic file (type png)
-
-<use immagini/nonSepara.png>
-Package pdftex.def Info: immagini/nonSepara.png used on input line 283.
-(pdftex.def)             Requested size: 131.54897pt x 120.45044pt.
- [22
-
- <./immagini/nonSepara.png>] [23
-
-] [24
+ <./immagini/FeatureSecond.png>] (template_Beamer.toc) [24
 
 ] [25
 
 ]
-<immagini/BPcavi.jpg, id=819, 827.09pt x 451.6875pt>
+(template_Beamer.toc) [26
+
+] [27
+
+]
+<immagini/lineare.png, id=949, 1488.56125pt x 1421.31pt>
+File: immagini/lineare.png Graphic file (type png)
+
+<use immagini/lineare.png>
+Package pdftex.def Info: immagini/lineare.png used on input line 292.
+(pdftex.def)             Requested size: 126.12854pt x 120.45044pt.
+ [28
+
+ <./immagini/lineare.png>]
+<immagini/nonSepara.png, id=978, 124.96687pt x 114.4275pt>
+File: immagini/nonSepara.png Graphic file (type png)
+
+<use immagini/nonSepara.png>
+Package pdftex.def Info: immagini/nonSepara.png used on input line 312.
+(pdftex.def)             Requested size: 131.54897pt x 120.45044pt.
+ [29
+
+ <./immagini/nonSepara.png>] [30
+
+]
+(template_Beamer.toc) [31
+
+] [32
+
+] [33
+
+] (template_Beamer.toc) [34
+
+]
+<immagini/BPcavi.jpg, id=1178, 827.09pt x 451.6875pt>
 File: immagini/BPcavi.jpg Graphic file (type jpg)
- <use immagini/BPcavi.jpg>
-Package pdftex.def Info: immagini/BPcavi.jpg used on input line 336.
+
+<use immagini/BPcavi.jpg>
+Package pdftex.def Info: immagini/BPcavi.jpg used on input line 365.
 (pdftex.def)             Requested size: 349.218pt x 190.7132pt.
 
-Overfull \hbox (6.9227pt too wide) in paragraph at lines 336--336
+Overfull \hbox (6.9227pt too wide) in paragraph at lines 365--365
  [][] 
  []
 
-[26
+[35
 
  <./immagini/BPcavi.jpg>]
-<immagini/BPpiatti.jpg, id=850, 922.44624pt x 525.965pt>
+<immagini/BPpiatti.jpg, id=1208, 922.44624pt x 525.965pt>
 File: immagini/BPpiatti.jpg Graphic file (type jpg)
 
 <use immagini/BPpiatti.jpg>
-Package pdftex.def Info: immagini/BPpiatti.jpg used on input line 343.
+Package pdftex.def Info: immagini/BPpiatti.jpg used on input line 372.
 (pdftex.def)             Requested size: 334.4732pt x 190.7132pt.
- [27
+ [36
 
  <./immagini/BPpiatti.jpg>]
-<immagini/BPnormali.jpg, id=879, 867.24pt x 523.9575pt>
+<immagini/BPnormali.jpg, id=1237, 867.24pt x 523.9575pt>
 File: immagini/BPnormali.jpg Graphic file (type jpg)
 
 <use immagini/BPnormali.jpg>
-Package pdftex.def Info: immagini/BPnormali.jpg used on input line 350.
+Package pdftex.def Info: immagini/BPnormali.jpg used on input line 379.
 (pdftex.def)             Requested size: 315.65997pt x 190.7132pt.
- [28
+ [37
 
- <./immagini/BPnormali.jpg>] [29
+ <./immagini/BPnormali.jpg>] [38
 
 ]
-<immagini/3bestFeaturesFirrstLinear.jpg, id=936, 562.1pt x 421.575pt>
+<immagini/3bestFeaturesFirrstLinear.jpg, id=1295, 562.1pt x 421.575pt>
 File: immagini/3bestFeaturesFirrstLinear.jpg Graphic file (type jpg)
 
 <use immagini/3bestFeaturesFirrstLinear.jpg>
 Package pdftex.def Info: immagini/3bestFeaturesFirrstLinear.jpg used on input l
-ine 370.
+ine 399.
 (pdftex.def)             Requested size: 254.28925pt x 190.7132pt.
- [30
+ [39
 
  <./immagini/3bestFeaturesFirrstLinear.jpg>]
-<immagini/bestFeaturesAccuracyFirstBoxPlot.jpg, id=965, 562.1pt x 421.575pt>
+<immagini/bestFeaturesAccuracyFirstBoxPlot.jpg, id=1324, 562.1pt x 421.575pt>
 File: immagini/bestFeaturesAccuracyFirstBoxPlot.jpg Graphic file (type jpg)
 
 <use immagini/bestFeaturesAccuracyFirstBoxPlot.jpg>
 Package pdftex.def Info: immagini/bestFeaturesAccuracyFirstBoxPlot.jpg used on 
-input line 374.
+input line 403.
 (pdftex.def)             Requested size: 254.28925pt x 190.7132pt.
- [31
+ [40
 
- <./immagini/bestFeaturesAccuracyFirstBoxPlot.jpg>] [32
+ <./immagini/bestFeaturesAccuracyFirstBoxPlot.jpg>] [41
 
 ]
-<immagini/2worseFeaturesFirstLinear.jpg, id=1023, 562.1pt x 421.575pt>
+<immagini/2worseFeaturesFirstLinear.jpg, id=1381, 562.1pt x 421.575pt>
 File: immagini/2worseFeaturesFirstLinear.jpg Graphic file (type jpg)
 
 <use immagini/2worseFeaturesFirstLinear.jpg>
 Package pdftex.def Info: immagini/2worseFeaturesFirstLinear.jpg used on input l
-ine 394.
+ine 423.
 (pdftex.def)             Requested size: 254.28925pt x 190.7132pt.
- [33
+ [42
 
- <./immagini/2worseFeaturesFirstLinear.jpg>] <immagini/peggiorePrimo.jpg, id=10
-52, 562.1pt x 421.575pt>
+ <./immagini/2worseFeaturesFirstLinear.jpg>] <immagini/peggiorePrimo.jpg, id=14
+10, 562.1pt x 421.575pt>
 File: immagini/peggiorePrimo.jpg Graphic file (type jpg)
 
 <use immagini/peggiorePrimo.jpg>
-Package pdftex.def Info: immagini/peggiorePrimo.jpg used on input line 398.
+Package pdftex.def Info: immagini/peggiorePrimo.jpg used on input line 427.
 (pdftex.def)             Requested size: 254.28925pt x 190.7132pt.
- [34
+ [43
 
- <./immagini/peggiorePrimo.jpg>] [35
+ <./immagini/peggiorePrimo.jpg>] [44
 
 ]
-<immagini/tuttePrimoBoxPlot.jpg, id=1109, 562.1pt x 421.575pt>
+<immagini/tuttePrimoBoxPlot.jpg, id=1468, 562.1pt x 421.575pt>
 File: immagini/tuttePrimoBoxPlot.jpg Graphic file (type jpg)
 
 <use immagini/tuttePrimoBoxPlot.jpg>
-Package pdftex.def Info: immagini/tuttePrimoBoxPlot.jpg used on input line 418.
+Package pdftex.def Info: immagini/tuttePrimoBoxPlot.jpg used on input line 447.
 
 (pdftex.def)             Requested size: 254.28925pt x 190.7132pt.
- [36
+ [45
 
  <./immagini/tuttePrimoBoxPlot.jpg>]
-[37
+[46
 
-] <immagini/bestRBFFirstBoxPlot.jpg, id=1167, 562.1pt x 421.575pt>
+] <immagini/bestRBFFirstBoxPlot.jpg, id=1525, 562.1pt x 421.575pt>
 File: immagini/bestRBFFirstBoxPlot.jpg Graphic file (type jpg)
 
 <use immagini/bestRBFFirstBoxPlot.jpg>
-Package pdftex.def Info: immagini/bestRBFFirstBoxPlot.jpg used on input line 44
-0.
+Package pdftex.def Info: immagini/bestRBFFirstBoxPlot.jpg used on input line 46
+9.
 (pdftex.def)             Requested size: 254.28925pt x 190.7132pt.
- [38
+ [47
 
- <./immagini/bestRBFFirstBoxPlot.jpg>] [39
+ <./immagini/bestRBFFirstBoxPlot.jpg>] [48
 
-] <immagini/tuttleSecondoBoxPlot.jpg, id=1223, 562.1pt x 421.575pt>
+] <immagini/tuttleSecondoBoxPlot.jpg, id=1581, 562.1pt x 421.575pt>
 File: immagini/tuttleSecondoBoxPlot.jpg Graphic file (type jpg)
 
 <use immagini/tuttleSecondoBoxPlot.jpg>
 Package pdftex.def Info: immagini/tuttleSecondoBoxPlot.jpg used on input line 4
-61.
+90.
 (pdftex.def)             Requested size: 254.28925pt x 190.7132pt.
- [40
+ [49
 
- <./immagini/tuttleSecondoBoxPlot.jpg>] [41
+ <./immagini/tuttleSecondoBoxPlot.jpg>] [50
 
-] <immagini/plotSecond.jpg, id=1279, 562.1pt x 421.575pt>
+] <immagini/plotSecond.jpg, id=1638, 562.1pt x 421.575pt>
 File: immagini/plotSecond.jpg Graphic file (type jpg)
 
 <use immagini/plotSecond.jpg>
-Package pdftex.def Info: immagini/plotSecond.jpg used on input line 484.
+Package pdftex.def Info: immagini/plotSecond.jpg used on input line 513.
 (pdftex.def)             Requested size: 254.28925pt x 190.7132pt.
- [42
+ [51
 
- <./immagini/plotSecond.jpg>] [43
+ <./immagini/plotSecond.jpg>] [52
 
 ]
-<immagini/bestSecondboxplot.jpg, id=1337, 421.575pt x 316.18124pt>
+<immagini/bestSecondboxplot.jpg, id=1695, 421.575pt x 316.18124pt>
 File: immagini/bestSecondboxplot.jpg Graphic file (type jpg)
 
 <use immagini/bestSecondboxplot.jpg>
-Package pdftex.def Info: immagini/bestSecondboxplot.jpg used on input line 506.
+Package pdftex.def Info: immagini/bestSecondboxplot.jpg used on input line 535.
 
 (pdftex.def)             Requested size: 254.28494pt x 190.7132pt.
- [44
+ [53
 
  <./immagini/bestSecondboxplot.jpg>]
-[45
+[54
 
 ]
 File: immagini/tuttleSecondoBoxPlot.jpg Graphic file (type jpg)
  <use immagini/tuttleSecondoBoxPlot.jpg>
 Package pdftex.def Info: immagini/tuttleSecondoBoxPlot.jpg used on input line 5
-29.
+58.
 (pdftex.def)             Requested size: 254.28925pt x 190.7132pt.
- [46
+ [55
 
-] [47
+] (template_Beamer.toc)
+[56
 
-] [48
+] [57
+
+] [58
+
+] [59
 
 ]
 \tf@nav=\write6
 \tf@toc=\write7
 \tf@snm=\write8
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 551.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 551.
-
-(template_Beamer.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 551.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 551.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 590.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 590.
+ (template_Beamer.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 590.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 590.
 Package rerunfilecheck Info: File `template_Beamer.out' has not changed.
-(rerunfilecheck)             Checksum: 785460FCBDDE7D883DBCD2E3BD02D40D;979.
+(rerunfilecheck)             Checksum: E49E6BCDE9379BA152AAED2AC8580806;981.
 
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 551.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 590.
  ) 
 Here is how much of TeX's memory you used:
- 19968 strings out of 493673
- 374868 string characters out of 3141529
- 453205 words of memory out of 3000000
- 22727 multiletter control sequences out of 15000+200000
+ 20072 strings out of 493673
+ 377083 string characters out of 3141529
+ 454261 words of memory out of 3000000
+ 22790 multiletter control sequences out of 15000+200000
  16709 words of font info for 45 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 56i,17n,62p,925b,662s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 56i,17n,65p,925b,706s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Luigi\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\
 ecss2074.pk> <C:\Users\Luigi\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\
 ec\dpi600\ecss0900.pk> <C:\Users\Luigi\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour
@@ -1338,9 +1397,9 @@ C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssi10.pfb><C
 :/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssi8.pfb><C:/
 Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Pr
 ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on template_Beamer.pdf (48 pages, 1155794 bytes).
+Output written on template_Beamer.pdf (59 pages, 1294234 bytes).
 PDF statistics:
- 1809 PDF objects out of 2073 (max. 8388607)
- 112 named destinations out of 1000 (max. 500000)
- 308 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2243 PDF objects out of 2487 (max. 8388607)
+ 134 named destinations out of 1000 (max. 500000)
+ 335 words of extra memory for PDF output out of 10000 (max. 10000000)
 

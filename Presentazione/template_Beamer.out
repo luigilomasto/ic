@@ -1,15 +1,15 @@
 \BOOKMARK [2][]{Outline0.1}{Introduzione al problema}{}% 1
 \BOOKMARK [2][]{Outline0.2}{Preprocessing}{}% 2
-\BOOKMARK [3][]{Outline0.2.1.8}{Pulizia delle immagini}{Outline0.2}% 3
-\BOOKMARK [3][]{Outline0.2.2.9}{Trasformazione delle immagini}{Outline0.2}% 4
-\BOOKMARK [3][]{Outline0.2.3.12}{Divisione, rotazione e cropping delle immagini}{Outline0.2}% 5
+\BOOKMARK [3][]{Outline0.2.1.10}{Pulizia delle immagini}{Outline0.2}% 3
+\BOOKMARK [3][]{Outline0.2.2.11}{Trasformazione delle immagini}{Outline0.2}% 4
+\BOOKMARK [3][]{Outline0.2.3.15}{Divisione, rotazione e cropping delle immagini}{Outline0.2}% 5
 \BOOKMARK [2][]{Outline0.3}{Feature extraction}{}% 6
-\BOOKMARK [3][]{Outline0.3.1.15}{Features primo classificatore}{Outline0.3}% 7
-\BOOKMARK [3][]{Outline0.3.2.17}{Features secondo classificatore}{Outline0.3}% 8
+\BOOKMARK [3][]{Outline0.3.1.20}{Features primo classificatore}{Outline0.3}% 7
+\BOOKMARK [3][]{Outline0.3.2.22}{Features secondo classificatore}{Outline0.3}% 8
 \BOOKMARK [2][]{Outline0.4}{Feature Selection}{}% 9
 \BOOKMARK [2][]{Outline0.5}{Scelta dei classificatori}{}% 10
 \BOOKMARK [2][]{Outline0.6}{Infrastruttura}{}% 11
 \BOOKMARK [2][]{Outline0.7}{Risultati}{}% 12
-\BOOKMARK [3][]{Outline0.7.1.26}{Primo classificatore}{Outline0.7}% 13
-\BOOKMARK [3][]{Outline0.7.2.41}{Secondo classificatore}{Outline0.7}% 14
+\BOOKMARK [3][]{Outline0.7.1.35}{Primo classificatore}{Outline0.7}% 13
+\BOOKMARK [3][]{Outline0.7.2.50}{Secondo classificatore}{Outline0.7}% 14
 \BOOKMARK [2][]{Outline0.8}{Conclusioni}{}% 15
