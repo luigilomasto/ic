@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.11.24)  28 FEB 2016 20:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.11.24)  28 FEB 2016 22:12
 entering extended mode
 **template_Beamer.tex
 (template_Beamer.tex
@@ -1154,7 +1154,7 @@ Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Overfull \vbox (5.264pt too high) detected at line 210
+Overfull \vbox (3.13538pt too high) detected at line 210
  []
 
 [18
@@ -1376,7 +1376,7 @@ i10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmssi
 8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.
 pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 >
-Output written on template_Beamer.pdf (48 pages, 1074223 bytes).
+Output written on template_Beamer.pdf (48 pages, 1073645 bytes).
 PDF statistics:
  1828 PDF objects out of 2073 (max. 8388607)
  112 named destinations out of 1000 (max. 500000)
